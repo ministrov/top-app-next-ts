@@ -1,9 +1,12 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { performAction } from './const';
 
-const f: number = 4;
+// const f: number = 4;
 
-console.log(f);
+// console.log(f);
+// console.log(f + 1);
+
 
 export default function Home() {
   return (
@@ -25,6 +28,8 @@ export default function Home() {
           <li>Save and see your changes instantly-2</li>
           <li>Save and see your changes instantly-3</li>
         </ol>
+
+        {performAction('down')}
 
         <div className={styles.ctas}>
           <a
