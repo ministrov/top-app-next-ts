@@ -1,7 +1,29 @@
+'use client';
+
 import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
+  type ActionType = 'up' | 'down';
+
+  function performAction(action: ActionType): -1 | 1 {
+    switch (action) {
+      case 'down':
+        return -1;
+      case 'up':
+        return 1;
+    }
+  }
+
+  enum Direction {
+    UP,
+    Down,
+    Left,
+    Right
+  }
+
+  console.log(Direction.Down);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -24,6 +46,8 @@ export default function Home() {
 
         <div className={styles.ctas}>
           {'sdfdkfsdkfsdfk'}
+          {`${performAction('down')}`}
+          {`${Direction.Down}`}
           <a
             className={styles.primary}
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
