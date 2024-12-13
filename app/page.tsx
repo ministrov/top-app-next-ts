@@ -1,12 +1,5 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { performAction } from './const';
-
-// const f: number = 4;
-
-// console.log(f);
-// console.log(f + 1);
-
 
 export default function Home() {
   return (
@@ -29,9 +22,8 @@ export default function Home() {
           <li>Save and see your changes instantly-3</li>
         </ol>
 
-        {performAction('down')}
-
         <div className={styles.ctas}>
+          {'sdfdkfsdkfsdfk'}
           <a
             className={styles.primary}
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
