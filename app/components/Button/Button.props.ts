@@ -1,5 +1,6 @@
+import { ReactNode } from 'react';
+
 export interface ButtonProps {
-    text: string;
-    type: string;
-    icon: string;
+    appearence: 'primary' | 'ghost';
+    children: ReactNode;
 }
