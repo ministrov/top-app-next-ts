@@ -5,7 +5,9 @@ export default function Home() {
     <div>
       dfkdjfskdfjsdkfjsd
 
-      {<Htag />}
+      <Htag tag='h3'>
+        Some text
+      </Htag>
     </div>
   );
 }
