@@ -20,6 +20,9 @@
 }
 
 .ghost {
+    display: flex;
+    align-items: center;
+    gap: 11px;
     color: var(--black);
     background: none;
     border: 1px solid var(--gray-light);
@@ -28,4 +31,9 @@
 .ghost:hover {
     color: var(--white);
     background-color: var(--primary-hover);
+}
+
+.down {
+    transform: rotate(90deg);
+    transition: all 0.2s;
 }
