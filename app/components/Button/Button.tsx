@@ -6,7 +6,6 @@ import cn from 'classnames';
 import styles from './Button.module.css';
 
 export const Button = ({ children, appearence, className, ...props }: ButtonProps): JSX.Element => {
-    // console.log([...props])
     return (
         <button
             className={cn(styles.button, className, {
