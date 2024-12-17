@@ -15,8 +15,9 @@ export default function Home() {
         Some text
       </Htag>
 
-      <Button appearence='primary' onClick={onclick} className='sfsfsdf'>Узнать подробнее</Button>
-      <Button appearence='ghost' arrowIcon='right'>Читать отзывы</Button>
+      <Button appearence='primary' onClick={onclick} className='sfsfsdf' arrow='right'>Узнать подробнее</Button>
+      <Button appearence='ghost' arrow='right'>Читать отзывы</Button>
+      <Button appearence='ghost' arrow='down'>Читать отзывы</Button>
     </div>
   );
 }
