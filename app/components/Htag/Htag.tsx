@@ -4,8 +4,6 @@ import { JSX } from 'react';
 import { HtagProps } from './Htag.props';
 import styles from './Htag.module.css';
 
-// console.log(styles.__checksum);
-
 export default function Htag({ tag, children }: HtagProps): JSX.Element {
     switch (tag) {
         case 'h1':
