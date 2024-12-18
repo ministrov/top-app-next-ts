@@ -3,6 +3,7 @@
 import { Button } from './components/Button/Button';
 import Htag from './components/Htag/Htag';
 import P from './components/P/P';
+import Tag from './components/Tag/Tag';
 
 export default function Home() {
   const onclick = () => {
@@ -23,6 +24,11 @@ export default function Home() {
       <P size={'large'}>Большой</P>
       <P>Средний</P>
       <P size={'small'}>Маленький</P>
+
+      <Tag size='small'>Ghost</Tag>
+      <Tag size='medium' color='red'>Red</Tag>
+      <Tag size='medium' color='green'>Green</Tag>
+      <Tag size='medium' color='primary'>Primary</Tag>
     </div>
   );
 }
