@@ -1,17 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from './components/Button/Button';
 import Htag from './components/Htag/Htag';
 import P from './components/P/P';
 import Tag from './components/Tag/Tag';
+import Rating from './components/Rating/Rating';
 
 export default function Home() {
   const [counter, setCounter] = useState<number>(0);
-  const onclick = () => {
-    console.log('clicked');
-    setCounter(x => x + 1);
-  }
+
+  useEffect(() => {
+    if (counter > 3) {
+      console.log('Counter: ' + counter);
+    }
+
+    return function cleanup() {
+      console.log('Unmount');
+    };
+  });
+
   return (
     <div>
       dfkdjfskdfjsdkfjsd
@@ -20,7 +28,7 @@ export default function Home() {
         {counter}
       </Htag>
 
-      <Button appearence='primary' onClick={onclick} className='sfsfsdf' arrow='right'>Узнать подробнее</Button>
+      <Button appearence='primary' onClick={() => setCounter(x => x + 1)} className='sfsfsdf' arrow='right'>Узнать подробнее</Button>
       <Button appearence='ghost' arrow='right'>Читать отзывы</Button>
       <Button appearence='ghost' arrow='down'>Читать отзывы</Button>
 
@@ -32,6 +40,8 @@ export default function Home() {
       <Tag size='medium' color='red'>Red</Tag>
       <Tag size='medium' color='green'>Green</Tag>
       <Tag size='medium' color='primary'>Primary</Tag>
+
+      <Rating rating={4} />
     </div>
   );
 }
