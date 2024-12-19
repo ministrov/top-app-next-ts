@@ -9,6 +9,7 @@ import Rating from './components/Rating/Rating';
 
 export default function Home() {
   const [counter, setCounter] = useState<number>(0);
+  const [rating, setRating] = useState<number>(4);
 
   useEffect(() => {
     if (counter > 3) {
@@ -41,7 +42,7 @@ export default function Home() {
       <Tag size='medium' color='green'>Green</Tag>
       <Tag size='medium' color='primary'>Primary</Tag>
 
-      <Rating rating={4} />
+      <Rating rating={rating} isEditable setRating={setRating} />
     </div>
   );
 }
