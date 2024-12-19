@@ -1,4 +1,4 @@
-import { JSX, useEffect, useState } from 'react';
+import { JSX, useEffect, useState, KeyboardEvent } from 'react';
 import StarIcon from '../StarIcon/StarIcon';
 import { RatingProps } from './Rating.props';
 import cn from 'classnames';
@@ -24,6 +24,8 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
                     setMouseEnter={() => changeDisplay(i + 1)}
                     setMouseLeave={() => changeDisplay(rating)}
                     setOnClick={() => onClick(i + 1)}
+                    tabIndex={isEditable ? 0 : -1}
+                    onKeyDown={(e: KeyboardEvent<SVGAElement>) => handleSpace(i + 1, e)}
                 />
             );
         });
@@ -43,6 +45,14 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
             return;
         }
 
+        setRating(i);
+    };
+
+    const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
+        if (e.code !== 'Space' || !setRating) {
+            return;
+        }
+        console.log(i, e);
         setRating(i);
     };
 
