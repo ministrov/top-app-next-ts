@@ -7,8 +7,6 @@ import styles from './Rating.module.css';
 const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps) => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
-    console.log(ratingArray);
-
     useEffect(() => {
         constructRating(rating);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -16,7 +14,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
 
     const constructRating = (currentRating: number) => {
         const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
-            console.log(r);
+            // console.log(r);
             return (
                 <span
                     key={i}
@@ -40,7 +38,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
     };
 
     const changeDisplay = (i: number) => {
-        console.log(i)
+        // console.log(i)
         if (!isEditable) {
             return;
         }
@@ -52,7 +50,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
             return;
         }
 
-        console.log(i);
+        // console.log(i);
 
         setRating(i);
     };
@@ -61,7 +59,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
         if (e.code !== 'Space' || !setRating) {
             return;
         }
-        console.log(i, e);
+        // console.log(i, e);
         setRating(i);
     };
 
