@@ -1,4 +1,4 @@
-import { JSX, useEffect, useState, KeyboardEvent } from 'react';
+import { JSX, useEffect, useState, KeyboardEvent, Fragment } from 'react';
 import StarIcon from '../StarIcon/StarIcon';
 import { RatingProps } from './Rating.props';
 import cn from 'classnames';
@@ -7,6 +7,8 @@ import styles from './Rating.module.css';
 const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps) => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
+    console.log(ratingArray);
+
     useEffect(() => {
         constructRating(rating);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -14,19 +16,23 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
 
     const constructRating = (currentRating: number) => {
         const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
+            console.log(r);
             return (
-                <StarIcon
+                <span
                     key={i}
                     className={cn(styles.star, {
                         [styles.filled]: i < currentRating,
                         [styles.editable]: isEditable
                     })}
-                    setMouseEnter={() => changeDisplay(i + 1)}
-                    setMouseLeave={() => changeDisplay(rating)}
-                    setOnClick={() => onClick(i + 1)}
-                    tabIndex={isEditable ? 0 : -1}
-                    onKeyDown={(e: KeyboardEvent<SVGAElement>) => handleSpace(i + 1, e)}
-                />
+                    onMouseEnter={() => changeDisplay(i + 1)}
+                    onMouseLeave={() => changeDisplay(rating)}
+                    onClick={() => onClick(i + 1)}
+                    onKeyDown={(e: KeyboardEvent<HTMLSpanElement>) => isEditable && handleSpace(i + 1, e)}
+                >
+                    <StarIcon
+                        isEditable={isEditable}
+                    />
+                </span>
             );
         });
 
@@ -34,6 +40,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
     };
 
     const changeDisplay = (i: number) => {
+        console.log(i)
         if (!isEditable) {
             return;
         }
@@ -45,10 +52,12 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
             return;
         }
 
+        console.log(i);
+
         setRating(i);
     };
 
-    const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
+    const handleSpace = (i: number, e: KeyboardEvent<HTMLSpanElement>) => {
         if (e.code !== 'Space' || !setRating) {
             return;
         }
@@ -58,7 +67,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
 
     return (
         <div {...props}>
-            {ratingArray.map((r, i) => (<span key={i}>{r}</span>))}
+            {ratingArray.map((r, i) => (<Fragment key={i}>{r}</Fragment>))}
         </div>
     )
 }
