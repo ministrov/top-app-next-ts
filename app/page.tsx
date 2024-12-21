@@ -7,20 +7,32 @@ import P from './components/P/P';
 import Tag from './components/Tag/Tag';
 import Rating from './components/Rating/Rating';
 
+interface Kettle {
+  isFull: boolean;
+  isHot: boolean;
+  isTurnOn: boolean;
+  tempreture: number;
+}
+
 export default function Home() {
   const [counter, setCounter] = useState<number>(0);
   const [rating, setRating] = useState<number>(4);
+  // const result = useState<number>(0);
   // const [checked, setChecked] = useState<boolean>(false);
-  const [kettle, setKettle] = useState<{ isFull: boolean, isHot: boolean, isTurnOn: boolean, tempreture: number }>({
+  const [kettle, setKettle] = useState<Kettle>({
     isFull: false,
     isHot: false,
     isTurnOn: false,
     tempreture: 23
   });
 
+  // const { isFull, isHot, isTurnOn, tempreture } = kettle;
+
   useEffect(() => {
     if (counter > 3) {
       console.log('Counter: ' + counter);
+
+      // console.log(result);
     }
 
     return function cleanup() {
@@ -29,13 +41,13 @@ export default function Home() {
   });
 
   const turnOnTheKettleHandler = () => {
-    setKettle(x => ({
-      ...x,
+    setKettle({
+      ...kettle,
       isFull: true,
       isHot: true,
       isTurnOn: true,
       tempreture: 80
-    }));
+    });
 
     console.log(kettle);
   };
@@ -68,7 +80,7 @@ export default function Home() {
 
       <div style={{ display: 'flex', gap: '15px', padding: '24px', border: '1px solid purple', borderRadius: '8px' }}>
         Оценка:
-        <Rating rating={rating} isEditable setRating={setRating} />
+        <Rating className={'dfdfsdfs'} rating={rating} isEditable setRating={setRating} />
       </div>
 
       {/* <input type="checkbox" value={1} checked={checked} /> */}

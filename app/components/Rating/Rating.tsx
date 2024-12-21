@@ -14,7 +14,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
 
     const constructRating = (currentRating: number) => {
         const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
-            // console.log(r);
+
             return (
                 <span
                     key={i}
@@ -38,7 +38,6 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
     };
 
     const changeDisplay = (i: number) => {
-        // console.log(i)
         if (!isEditable) {
             return;
         }
@@ -50,8 +49,6 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
             return;
         }
 
-        // console.log(i);
-
         setRating(i);
     };
 
@@ -59,7 +56,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
         if (e.code !== 'Space' || !setRating) {
             return;
         }
-        // console.log(i, e);
+
         setRating(i);
     };
 

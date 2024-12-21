@@ -1,4 +1,4 @@
-import { StarIconProps } from './StarIcon.props'
+import { StarIconProps } from './StarIcon.props';
 
 const StarIcon = ({ isEditable }: StarIconProps) => {
     return (
@@ -8,4 +8,4 @@ const StarIcon = ({ isEditable }: StarIconProps) => {
     )
 }
 
-export default StarIcon
+export default StarIcon;
