@@ -10,6 +10,7 @@ import Rating from './components/Rating/Rating';
 export default function Home() {
   const [counter, setCounter] = useState<number>(0);
   const [rating, setRating] = useState<number>(4);
+  // const [checked, setChecked] = useState<boolean>(false);
   const [kettle, setKettle] = useState<{ isFull: boolean, isHot: boolean, isTurnOn: boolean, tempreture: number }>({
     isFull: false,
     isHot: false,
@@ -21,8 +22,6 @@ export default function Home() {
     if (counter > 3) {
       console.log('Counter: ' + counter);
     }
-
-    // console.log(kettle);
 
     return function cleanup() {
       console.log('Unmount');
@@ -41,6 +40,10 @@ export default function Home() {
     console.log(kettle);
   };
 
+  // const changeHandler = () => {
+  //   setChecked(x => !x);
+  // };
+
   return (
     <div>
       dfkdjfskdfjsdkfjsd
@@ -50,8 +53,8 @@ export default function Home() {
       </Htag>
 
       <Button appearence='primary' onClick={() => setCounter(x => x + 1)} className='sfsfsdf' arrow='right'>Узнать подробнее</Button>
-      <Button appearence='ghost' arrow='right'>Читать отзывы</Button>
-      <Button appearence='ghost' arrow='down'>Читать отзывы</Button>
+      <Button appearence='ghost' arrow='right' onClick={(evt) => console.log(evt.nativeEvent)}>Читать отзывы</Button>
+      <Button appearence='ghost' arrow='down' onClick={() => console.log('ssdfdsf')}>Читать отзывы</Button>
       <Button appearence='primary' arrow='right' onClick={turnOnTheKettleHandler}>Включить чайник</Button>
 
       <P size={'large'}>Большой</P>
@@ -67,6 +70,8 @@ export default function Home() {
         Оценка:
         <Rating rating={rating} isEditable setRating={setRating} />
       </div>
+
+      {/* <input type="checkbox" value={1} checked={checked} /> */}
 
     </div>
   );
