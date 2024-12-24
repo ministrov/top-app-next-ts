@@ -21,7 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${notoSansKR.variable}`}>
-        {children}
+        {/* <header></header> */}
+        <main className={'layout'}>
+          {children}
+        </main>
+        {/* <footer></footer> */}
       </body>
     </html>
   );
