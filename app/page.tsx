@@ -17,8 +17,6 @@ interface Kettle {
 export default function Home() {
   const [counter, setCounter] = useState<number>(0);
   const [rating, setRating] = useState<number>(4);
-  // const result = useState<number>(0);
-  // const [checked, setChecked] = useState<boolean>(false);
   const [kettle, setKettle] = useState<Kettle>({
     isFull: false,
     isHot: false,
@@ -31,8 +29,6 @@ export default function Home() {
   useEffect(() => {
     if (counter > 3) {
       console.log('Counter: ' + counter);
-
-      // console.log(result);
     }
 
     return function cleanup() {
@@ -40,7 +36,7 @@ export default function Home() {
     };
   });
 
-  const turnOnTheKettleHandler = () => {
+  const turnOnKettleHandler = () => {
     setKettle({
       ...kettle,
       isFull: true,
@@ -51,10 +47,6 @@ export default function Home() {
 
     console.log(kettle);
   };
-
-  // const changeHandler = () => {
-  //   setChecked(x => !x);
-  // };
 
   return (
     <div>
@@ -67,7 +59,7 @@ export default function Home() {
       <Button appearence='primary' onClick={() => setCounter(x => x + 1)} className='sfsfsdf' arrow='right'>Узнать подробнее</Button>
       <Button appearence='ghost' arrow='right' onClick={(evt) => console.log(evt.nativeEvent)}>Читать отзывы</Button>
       <Button appearence='ghost' arrow='down' onClick={() => console.log('ssdfdsf')}>Читать отзывы</Button>
-      <Button appearence='primary' arrow='right' onClick={turnOnTheKettleHandler}>Включить чайник</Button>
+      <Button appearence='primary' arrow='right' onClick={turnOnKettleHandler}>Включить чайник</Button>
 
       <P size={'large'}>Большой</P>
       <P>Средний</P>
