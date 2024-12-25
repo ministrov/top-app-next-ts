@@ -60,7 +60,6 @@ a {
 
 .footer {
   grid-area: footer;
-  background-color: goldenrod;
 }
 
 @media (max-width: 765px) {
