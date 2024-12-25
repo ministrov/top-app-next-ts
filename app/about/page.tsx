@@ -1,18 +1,16 @@
-import Head from 'next/head';
 import styles from './aboutPage.module.css';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'О нас | Название компании',
+    description: 'Узнайте больше о нашей команде и миссии'
+}
 
 const AboutPage = () => {
     return (
-        <>
-            <Head>
-                <title>О нас | Название компании</title>
-                <meta name="description" content="Узнайте больше о нашей команде и миссии" />
-            </Head>
-
-            <section className={styles.container}>
-                about page
-            </section>
-        </>
+        <section className={styles.container}>
+            about page
+        </section>
     )
 }
 
