@@ -5,7 +5,16 @@
 .container {
 	display: grid;
 	gap: 10px;
-	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  height: 500px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  margin: 0;
+  padding: 0;
+	/* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
+  /* justify-content: left; */
+  /* justify-content: center; */
+  /* justify-content: right; */
+  border: 2px solid palegreen;
 }
 
 .container > div {
