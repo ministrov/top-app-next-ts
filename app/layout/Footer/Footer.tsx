@@ -1,8 +1,8 @@
-import styles from './Footer.module.css';
+// import styles from './Footer.module.css';
 
-const Footer = () => {
+const Footer = ({ ...props }) => {
     return (
-        <div className={styles.footer}>Footer</div>
+        <footer {...props}>Footer</footer>
     )
 }
 

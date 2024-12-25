@@ -1,8 +1,8 @@
-import styles from './Sidebar.module.css';
+// import styles from './Sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = ({ ...props }) => {
     return (
-        <div className={styles.sidebar}>Sidebar</div>
+        <aside {...props}>Sidebar</aside>
     )
 }
 
