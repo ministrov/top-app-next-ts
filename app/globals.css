@@ -55,7 +55,7 @@ a {
 
 .body {
   grid-area: body;
-  background-color: firebrick;
+  /* background-color: firebrick; */
 }
 
 .footer {
