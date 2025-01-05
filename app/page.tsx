@@ -6,7 +6,7 @@ import Htag from './components/Htag/Htag';
 import P from './components/P/P';
 import Rating from './components/Rating/Rating';
 import Tag from './components/Tag/Tag';
-import { Kettle } from './interfaces/kettle.interface';
+import { Kettle } from '../interfaces/kettle.interface';
 
 
 
