@@ -4,17 +4,15 @@ import { useEffect, useState } from 'react';
 import { Button } from './components/Button/Button';
 import Htag from './components/Htag/Htag';
 import P from './components/P/P';
-import Tag from './components/Tag/Tag';
 import Rating from './components/Rating/Rating';
+import Tag from './components/Tag/Tag';
+import { Kettle } from './interfaces/kettle.interface';
 
-interface Kettle {
-  isFull: boolean;
-  isHot: boolean;
-  isTurnOn: boolean;
-  tempreture: number;
-}
+
 
 export default function Home() {
+  console.log('I am Home!!!');
+
   const [counter, setCounter] = useState<number>(0);
   const [rating, setRating] = useState<number>(4);
   const [kettle, setKettle] = useState<Kettle>({
@@ -53,7 +51,7 @@ export default function Home() {
       dfkdjfskdfjsdkfjsd
 
       <Htag tag='h3'>
-        {counter}
+        {/* {counter} */}{'dfdf'}
       </Htag>
 
       <Button appearence='primary' onClick={() => setCounter(x => x + 1)} className='sfsfsdf' arrow='right'>Узнать подробнее</Button>
