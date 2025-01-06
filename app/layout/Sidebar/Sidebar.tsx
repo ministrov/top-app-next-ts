@@ -1,8 +1,10 @@
-// import styles from './Sidebar.module.css';
+import Menu from '../Menu/Menu';
 
 const Sidebar = ({ ...props }) => {
     return (
-        <aside {...props}>Sidebar</aside>
+        <aside {...props}>
+            <Menu />
+        </aside>
     )
 }
 
