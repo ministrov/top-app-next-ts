@@ -13,7 +13,6 @@ export const generateStaticParams = async () => {
 }
 
 export const ProductsPage = async ({ params }: { params: { alias: string } }) => {
-    console.log(params);
     const page = await getPage(params.alias);
     if (!page) {
         notFound();
