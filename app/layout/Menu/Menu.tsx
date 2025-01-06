@@ -15,7 +15,7 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
     { route: 'goods', name: 'Товары', icon: <GoodsIcon />, id: TopLevelCategory.Goods },
 ];
 
-const Menu = async () => {
+export const Menu = async () => {
     const firstCategory = TopLevelCategory.Courses;
     const menu = await getMenu(firstCategory);
     // console.log(JSON.stringify(menu));
@@ -44,6 +44,7 @@ const Menu = async () => {
     }
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
+        console.log(menuItem);
         return (
             <div>
                 {menu.map(m => (
@@ -82,5 +83,3 @@ const Menu = async () => {
         </div>
     )
 }
-
-export default Menu;
