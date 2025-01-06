@@ -9,8 +9,8 @@ export interface PageItem {
 }
 
 export interface MenuItem {
-    id: {
-        secondaryCategory: string;
+    _id: {
+        secondCategory: string;
     };
     isOpened?: boolean;
     pages: PageItem[];
