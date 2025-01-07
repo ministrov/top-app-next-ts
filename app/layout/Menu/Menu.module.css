@@ -22,3 +22,21 @@
 .firstLevel:hover svg {
     fill: var(--primary);
 }
+
+.secondLevel {
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: var(--gray-second);
+    cursor: pointer;
+}
+
+.secondLevelBlock {
+    margin-top: 15px;
+    margin-left: 12px;
+    padding-left: 32px;
+
+    border-left: 1px solid #DFDFDF;
+}
