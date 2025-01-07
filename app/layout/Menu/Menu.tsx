@@ -1,4 +1,5 @@
 import { JSX } from 'react';
+import Link from 'next/link';
 import { getMenu } from '@/api/menu';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import { TopLevelCategory } from '@/interfaces/page.interface';
@@ -27,14 +28,14 @@ export const Menu = (): JSX.Element => {
             <>
                 {firstLevelMenu.map(m => (
                     <div key={m.route}>
-                        <a href={`/${m.route}`}>
+                        <Link href={`/${m.route}`}>
                             <div className={cn(styles.firstLevel, {
                                 [styles.firstLevelActive]: m.id === firstCategory
                             })}>
                                 {m.icon}
                                 <span>{m.name}</span>
                             </div>
-                        </a>
+                        </Link>
                         {m.id === firstCategory && buildSecondLevel(m)}
                     </div>
                 ))}
@@ -63,11 +64,15 @@ export const Menu = (): JSX.Element => {
     const buildThirdLevel = (pages: PageItem[], route: string) => {
         return (
             pages.map(page => (
-                <a key={page.id} href={`/${route}/${page.alias}`} className={cn(styles.thirdLevel, {
-                    [styles.thirdLevelActive]: false
-                })}>
+                <Link
+                    key={page.id}
+                    href={`/${route}/${page.alias}`}
+                    className={cn(styles.thirdLevel, {
+                        [styles.thirdLevelActive]: false
+                    })}
+                >
                     {page.title}
-                </a>
+                </Link>
             ))
         );
     }
