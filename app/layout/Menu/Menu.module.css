@@ -1,3 +1,18 @@
 .menu {
     background-color: tomato;
 }
+
+.firstLevel {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    font-weight: 500px;
+    line-height: 25px;
+    color: var(--gray-second);
+}
+
+.firstLevelActive {
+    color: var(--primary);
+}
