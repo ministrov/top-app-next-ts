@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
-import { peoples } from '@/mocks';
+// import Image from 'next/image';
+// import { peoples } from '@/mocks';
 import styles from './aboutPage.module.css';
 
 export const metadata: Metadata = {
@@ -20,63 +20,63 @@ const AboutPage = () => {
                 <div className={styles.footer}>Footer</div>
             </div>
 
-            <ChemistsList />
+            {/* <ChemistsList />
 
-            <EveryOneElseList />
+            <EveryOneElseList /> */}
         </>
     )
 }
 
 export default AboutPage;
 
-export const ChemistsList = () => {
-    const chemists = peoples.filter(people => people.profession === 'chemist');
-    return (
-        <article>
-            <h2>Chemists</h2>
-            <ul>
-                {chemists.map(person => (
-                    <li key={person.id}>
-                        <Image
-                            src={'/public/arrow.svg'}
-                            width={123}
-                            height={234}
-                            alt={person.name}
-                        />
-                        <p>
-                            <b>{person.name}:</b>
-                            {' ' + person.profession + ' '}
-                            known for {person.accomplishment}
-                        </p>
-                    </li>
-                ))}
-            </ul>
-        </article>
-    )
-}
+// export const ChemistsList = () => {
+//     const chemists = peoples.filter(people => people.profession === 'chemist');
+//     return (
+//         <article>
+//             <h2>Chemists</h2>
+//             <ul>
+//                 {chemists.map(person => (
+//                     <li key={person.id}>
+//                         <Image
+//                             src={'/public/arrow.svg'}
+//                             width={123}
+//                             height={234}
+//                             alt={person.name}
+//                         />
+//                         <p>
+//                             <b>{person.name}:</b>
+//                             {' ' + person.profession + ' '}
+//                             known for {person.accomplishment}
+//                         </p>
+//                     </li>
+//                 ))}
+//             </ul>
+//         </article>
+//     )
+// }
 
-export const EveryOneElseList = () => {
-    const everyoneElse = peoples.filter(people => people.profession !== 'chemist');
-    return (
-        <article>
-            <h2>EveryoneElse</h2>
-            <ul>
-                {everyoneElse.map(person => (
-                    <li key={person.id}>
-                        <Image
-                            src={'/public/arrow.svg'}
-                            width={123}
-                            height={234}
-                            alt={person.name}
-                        />
-                        <p>
-                            <b>{person.name}:</b>
-                            {' ' + person.profession + ' '}
-                            known for {person.accomplishment}
-                        </p>
-                    </li>
-                ))}
-            </ul>
-        </article>
-    )
-}
+// export const EveryOneElseList = () => {
+//     const everyoneElse = peoples.filter(people => people.profession !== 'chemist');
+//     return (
+//         <article>
+//             <h2>EveryoneElse</h2>
+//             <ul>
+//                 {everyoneElse.map(person => (
+//                     <li key={person.id}>
+//                         <Image
+//                             src={'/public/arrow.svg'}
+//                             width={123}
+//                             height={234}
+//                             alt={person.name}
+//                         />
+//                         <p>
+//                             <b>{person.name}:</b>
+//                             {' ' + person.profession + ' '}
+//                             known for {person.accomplishment}
+//                         </p>
+//                     </li>
+//                 ))}
+//             </ul>
+//         </article>
+//     )
+// }
