@@ -23,7 +23,7 @@
   grid-template-areas: 
     "header header header"
     "sidebar body body"
-    "footer footer footer";
+    "sidebar footer footer";
   height: 100vh;
 }
 
