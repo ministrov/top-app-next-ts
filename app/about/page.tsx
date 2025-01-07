@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { People } from '@/interfaces/peoples.interface';
+import Image from 'next/image';
 import { peoples } from '@/mocks';
 import styles from './aboutPage.module.css';
 
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: 'Узнайте больше о нашей команде и миссии'
 }
 
-export const getImageUrl = (person: People): string => (`https://i.imgur.com/${person.imageId}s.jpg`);
+// export const getImageUrl = (imageId: string): string => (`https://i.imgur.com/${imageId}s.jpg`);
 
 const AboutPage = () => {
     return (
@@ -20,13 +20,63 @@ const AboutPage = () => {
                 <div className={styles.footer}>Footer</div>
             </div>
 
-            <ul>
-                {peoples.map(people => (
-                    <li key={people.id}>{people.name}</li>
-                ))}
-            </ul>
+            <ChemistsList />
+
+            <EveryOneElseList />
         </>
     )
 }
 
 export default AboutPage;
+
+export const ChemistsList = () => {
+    const chemists = peoples.filter(people => people.profession === 'chemist');
+    return (
+        <article>
+            <h2>Chemists</h2>
+            <ul>
+                {chemists.map(person => (
+                    <li key={person.id}>
+                        <Image
+                            src={'/public/arrow.svg'}
+                            width={123}
+                            height={234}
+                            alt={person.name}
+                        />
+                        <p>
+                            <b>{person.name}:</b>
+                            {' ' + person.profession + ' '}
+                            known for {person.accomplishment}
+                        </p>
+                    </li>
+                ))}
+            </ul>
+        </article>
+    )
+}
+
+export const EveryOneElseList = () => {
+    const everyoneElse = peoples.filter(people => people.profession !== 'chemist');
+    return (
+        <article>
+            <h2>EveryoneElse</h2>
+            <ul>
+                {everyoneElse.map(person => (
+                    <li key={person.id}>
+                        <Image
+                            src={'/public/arrow.svg'}
+                            width={123}
+                            height={234}
+                            alt={person.name}
+                        />
+                        <p>
+                            <b>{person.name}:</b>
+                            {' ' + person.profession + ' '}
+                            known for {person.accomplishment}
+                        </p>
+                    </li>
+                ))}
+            </ul>
+        </article>
+    )
+}
