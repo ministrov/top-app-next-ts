@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 // import Image from 'next/image';
 // import { peoples } from '@/mocks';
+import { recipes } from '@/mocks';
 import styles from './aboutPage.module.css';
 
 export const metadata: Metadata = {
@@ -20,63 +21,28 @@ const AboutPage = () => {
                 <div className={styles.footer}>Footer</div>
             </div>
 
-            {/* <ChemistsList />
-
-            <EveryOneElseList /> */}
+            <RecipesList />
         </>
     )
 }
 
 export default AboutPage;
 
-// export const ChemistsList = () => {
-//     const chemists = peoples.filter(people => people.profession === 'chemist');
-//     return (
-//         <article>
-//             <h2>Chemists</h2>
-//             <ul>
-//                 {chemists.map(person => (
-//                     <li key={person.id}>
-//                         <Image
-//                             src={'/public/arrow.svg'}
-//                             width={123}
-//                             height={234}
-//                             alt={person.name}
-//                         />
-//                         <p>
-//                             <b>{person.name}:</b>
-//                             {' ' + person.profession + ' '}
-//                             known for {person.accomplishment}
-//                         </p>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </article>
-//     )
-// }
+export const RecipesList = () => {
+    return (
+        <div>
+            <h1>Recipes</h1>
+            {recipes.map(recipe => (
+                <div key={recipe.id}>
+                    <h2>{recipe.name}</h2>
+                    <ul>
+                        {recipe.ingredients.map(ingredient => (
+                            <li key={ingredient}>{ingredient}</li>
+                        ))}
+                    </ul>
+                </div>
 
-// export const EveryOneElseList = () => {
-//     const everyoneElse = peoples.filter(people => people.profession !== 'chemist');
-//     return (
-//         <article>
-//             <h2>EveryoneElse</h2>
-//             <ul>
-//                 {everyoneElse.map(person => (
-//                     <li key={person.id}>
-//                         <Image
-//                             src={'/public/arrow.svg'}
-//                             width={123}
-//                             height={234}
-//                             alt={person.name}
-//                         />
-//                         <p>
-//                             <b>{person.name}:</b>
-//                             {' ' + person.profession + ' '}
-//                             known for {person.accomplishment}
-//                         </p>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </article>
-//     )
-// }
+            ))}
+        </div>
+    )
+}
