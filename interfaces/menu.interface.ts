@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-// import { TopLevelCategory } from './page.interface';
+import { TopLevelCategory } from './page.interface';
 
 export interface PageItem {
     alias: string;
@@ -9,8 +9,8 @@ export interface PageItem {
 }
 
 export interface MenuItem {
-    id: {
-        secondaryCategory: string;
+    _id: {
+        secondCategory: string;
     };
     isOpened?: boolean;
     pages: PageItem[];
@@ -20,5 +20,5 @@ export interface FirstLevelMenuItem {
 	route: string;
 	name: string;
 	icon: JSX.Element;
-	// id: TopLevelCategory;
+	id: TopLevelCategory;
 }

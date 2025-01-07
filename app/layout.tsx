@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
-import Header from './layout/Header/Header';
-import Sidebar from './layout/Sidebar/Sidebar';
-import Footer from './layout/Footer/Footer';
+import { Header } from './layout/Header/Header';
+import { Sidebar } from './layout/Sidebar/Sidebar';
+import { Footer } from './layout/Footer/Footer';
 import "./globals.css";
 
 const notoSansKR = Noto_Sans_KR({
