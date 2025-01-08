@@ -22,7 +22,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9.16.0",
     "eslint-config-next": "15.1.0",
-    "next-svg": "^1.0.7",
     "typescript": "^5"
   }
 }
