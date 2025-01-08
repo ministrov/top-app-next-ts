@@ -1,5 +1,39 @@
 import { People } from '@/interfaces/peoples.interface';
 import { Recipe } from '@/interfaces/recipe.interface';
+import { FirstLevelMenuItem } from '@/interfaces/menu.interface';
+import { TopLevelCategory } from '@/interfaces/page.interface';
+import CoursesIcon from '../app/assets/courses.svg';
+import ServicesIcon from '../app/assets/services.svg';
+import BooksIcon from '../app/assets/books.svg';
+import GoodsIcon from '../app/assets/goods.svg';
+
+
+export const firstLevelMenu: FirstLevelMenuItem[] = [
+    {
+        id: TopLevelCategory.Courses,
+        route: 'courses', 
+        name: 'Курсы', 
+        icon: CoursesIcon,
+    },
+    {
+        id: TopLevelCategory.Courses,
+        route: 'services', 
+        name: 'Сервисы', 
+        icon: ServicesIcon,
+    },
+    {
+        id: TopLevelCategory.Courses,
+        route: 'books',
+        name: 'Книги', 
+        icon: BooksIcon,
+    },
+    {
+        id: TopLevelCategory.Courses,
+        route: 'goods', 
+        name: 'Товары', 
+        icon: GoodsIcon,
+    },
+]
 
 export const peoples: People[] = [
     {
