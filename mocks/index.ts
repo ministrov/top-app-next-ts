@@ -2,11 +2,10 @@ import { People } from '@/interfaces/peoples.interface';
 import { Recipe } from '@/interfaces/recipe.interface';
 import { FirstLevelMenuItem } from '@/interfaces/menu.interface';
 import { TopLevelCategory } from '@/interfaces/page.interface';
-import CoursesIcon from '../app/assets/courses.svg';
-import ServicesIcon from '../app/assets/services.svg';
-import BooksIcon from '../app/assets/books.svg';
-import GoodsIcon from '../app/assets/goods.svg';
-
+import CoursesIcon from './courses.svg';
+import ServicesIcon from './services.svg';
+import BooksIcon from './books.svg';
+import GoodsIcon from './goods.svg';
 
 export const firstLevelMenu: FirstLevelMenuItem[] = [
     {
