@@ -1,4 +1,4 @@
-// import { JSX } from 'react';
+import { JSX } from 'react';
 import { TopLevelCategory } from './page.interface';
 
 export interface PageItem {
@@ -19,6 +19,6 @@ export interface MenuItem {
 export interface FirstLevelMenuItem {
 	route: string;
 	name: string;
-	// icon: JSX.Element;
+	icon: JSX.Element;
 	id: TopLevelCategory;
 }

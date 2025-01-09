@@ -6,9 +6,12 @@ export default async function Home() {
     <div>
       {'Home Page'}
 
-      <Icon.CoursesIcon />
+      <div style={{ width: '34px', height: '34px' }}>
+        <Icon.CoursesIcon />
+      </div>
 
       <Button arrow='down' appearence={'primary'}>{'fdfdfdf'}</Button>
+      <Button arrow='right' appearence={'ghost'}>{'fdfdfdf'}</Button>
     </div>
   );
 }
