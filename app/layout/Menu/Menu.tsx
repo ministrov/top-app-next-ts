@@ -34,7 +34,7 @@ export const Menu = (): JSX.Element => {
     }
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
-        console.log(menuItem);
+        // console.log(menuItem);
         return (
             <div className={styles.secondLevelBlock}>
                 {menu.map(m => (

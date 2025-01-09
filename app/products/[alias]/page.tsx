@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 export const generateStaticParams = async () => {
     const menu = await getMenu(0);
+    // console.log(flattedMenu);
     return menu.flatMap(item => item.pages.map(page => ({ alias: page.alias })));
 }
 
