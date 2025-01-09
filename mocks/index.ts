@@ -2,35 +2,35 @@ import { People } from '@/interfaces/peoples.interface';
 import { Recipe } from '@/interfaces/recipe.interface';
 import { FirstLevelMenuItem } from '@/interfaces/menu.interface';
 import { TopLevelCategory } from '@/interfaces/page.interface';
-import CoursesIcon from './courses.svg';
-import ServicesIcon from './services.svg';
-import BooksIcon from './books.svg';
-import GoodsIcon from './goods.svg';
+// import CoursesIcon from './courses.svg';
+// import ServicesIcon from './services.svg';
+// import BooksIcon from './books.svg';
+// import GoodsIcon from './goods.svg';
 
 export const firstLevelMenu: FirstLevelMenuItem[] = [
     {
         id: TopLevelCategory.Courses,
         route: 'courses', 
         name: 'Курсы', 
-        icon: CoursesIcon,
+        // icon: ''
     },
     {
         id: TopLevelCategory.Courses,
         route: 'services', 
         name: 'Сервисы', 
-        icon: ServicesIcon,
+        // icon: '',
     },
     {
         id: TopLevelCategory.Courses,
         route: 'books',
         name: 'Книги', 
-        icon: BooksIcon,
+        // icon: '',
     },
     {
         id: TopLevelCategory.Courses,
         route: 'goods', 
         name: 'Товары', 
-        icon: GoodsIcon,
+        // icon: '',
     },
 ]
 
