@@ -1,6 +1,6 @@
 // import { Metadata } from 'next';
-// import { notFound } from 'next/navigation';
-// import { getPage } from '@/api/page';
+import { notFound } from 'next/navigation';
+import { getPage } from '@/api/page';
 // import { getMenu } from '@/api/menu';
 
 // export const metadata: Metadata = {
@@ -13,10 +13,11 @@
 // }
 
 export default async function PageProducts({ params }: { params: { alias: string } }) {
-    // const page = await getPage(params.alias);
-    // if (!page) {
-    //     notFound();
-    // }
+    const page = await getPage(params.alias);
+    console.log(page);
+    if (!page) {
+        notFound();
+    }
     return (
         <div>{`Страница с alias ${params.alias}`}</div>
     )
