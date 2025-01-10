@@ -12,8 +12,9 @@ export const generateStaticParams = async () => {
     return menu.flatMap(item => item.pages.map(page => ({ alias: page.alias })));
 }
 
-export const ProductsPage = async ({ params }: { params: { alias: string } }) => {
-    const page = await getPage(params.alias);
+export default async function PageProduct({ params }: { params: { alias: string } }) {
+    const { alias } = params;
+    const page = await getPage(alias);
     if (!page) {
         notFound();
     }
