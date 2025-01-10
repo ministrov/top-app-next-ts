@@ -13,6 +13,8 @@ const firstCategory = TopLevelCategory.Courses;
 const menu = await getMenu(firstCategory);
 
 export const Menu = (): JSX.Element => {
+    const uniqueId = crypto.randomUUID();
+
     const buildFirstLevel = () => {
         return (
             <>
@@ -34,11 +36,10 @@ export const Menu = (): JSX.Element => {
     }
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
-        // console.log(menuItem);
         return (
             <div className={styles.secondLevelBlock}>
                 {menu.map(m => (
-                    <div key={m._id.secondCategory}>
+                    <div key={uniqueId + `1${Math.random() * 10}`}>
                         <div className={styles.secondLevel}>{m._id.secondCategory}</div>
                         <div className={cn(styles.secondLeveBlock, {
                             [styles.secondLevelBlockOpened]: m.isOpened

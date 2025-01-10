@@ -5,4 +5,4 @@ function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
 }
 
 getProperty(x, 'a');
-// getProperty(x, 'm');
+getProperty(x, 'b');
