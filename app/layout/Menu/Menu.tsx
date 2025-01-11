@@ -8,9 +8,7 @@ import { firstLevelMenu } from '@/mocks';
 import cn from 'classnames';
 import styles from './Menu.module.css';
 
-const firstCategory = TopLevelCategory.Courses;
-
-const menu = await getMenu(firstCategory);
+const menu = await getMenu(TopLevelCategory.Courses);
 
 export const Menu = (): JSX.Element => {
     const uniqueId = crypto.randomUUID();
@@ -22,13 +20,13 @@ export const Menu = (): JSX.Element => {
                     <div key={m.route}>
                         <Link href={`/${m.route}`}>
                             <div className={cn(styles.firstLevel, {
-                                [styles.firstLevelActive]: m.id === firstCategory
+                                [styles.firstLevelActive]: m.id === TopLevelCategory.Courses
                             })}>
                                 {m.icon}
                                 <span>{m.name}</span>
                             </div>
                         </Link>
-                        {m.id === firstCategory && buildSecondLevel(m)}
+                        {m.id === TopLevelCategory.Courses && buildSecondLevel(m)}
                     </div>
                 ))}
             </>
