@@ -10,19 +10,19 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
         icon: <Icon.CoursesIcon />,
     },
     {
-        id: TopLevelCategory.Courses,
+        id: TopLevelCategory.Services,
         route: 'services',
         name: 'Сервисы',
         icon: <Icon.ServicesIcon />,
     },
     {
-        id: TopLevelCategory.Courses,
+        id: TopLevelCategory.Books,
         route: 'books',
         name: 'Книги',
         icon: <Icon.BooksIcon />,
     },
     {
-        id: TopLevelCategory.Courses,
+        id: TopLevelCategory.Goods,
         route: 'goods',
         name: 'Товары',
         icon: <Icon.GoodsIcon />,
