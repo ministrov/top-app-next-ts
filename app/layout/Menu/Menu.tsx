@@ -1,4 +1,7 @@
+'use client';
+
 import { JSX } from 'react';
+import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import { MenuProps } from './Menu.props';
@@ -9,7 +12,8 @@ import cn from 'classnames';
 import styles from './Menu.module.css';
 
 export const Menu = ({ categories }: MenuProps): JSX.Element => {
-    const uniqueId = crypto.randomUUID();
+    const pathname = usePathname();
+    console.log(pathname);
 
     const buildFirstLevel = () => {
         return (
@@ -33,17 +37,25 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
         return (
-            <div className={styles.secondLevelBlock}>
-                {categories.map(category => (
-                    <div key={uniqueId + `1${Math.random() * 10}`}>
-                        <div className={styles.secondLevel}>{category._id.secondCategory}</div>
-                        <div className={cn(styles.secondLeveBlock, {
-                            [styles.secondLevelBlockOpened]: category.isOpened
-                        })}>
-                            {buildThirdLevel(category.pages, menuItem.route)}
+            <div className={styles.secondBlock}>
+                {categories.map(category => {
+
+                    if (category.pages.map(page => page.alias).includes(pathname.split('/')[1])) {
+                        category.isOpened = true;
+                        console.log(category.isOpened);
+                    }
+
+                    return (
+                        <div key={category._id.secondCategory}>
+                            <div className={styles.secondLevel}>{category._id.secondCategory}</div>
+                            <div className={cn(styles.secondLevelBlock, {
+                                [styles.secondLevelBlockOpened]: category.isOpened
+                            })}>
+                                {buildThirdLevel(category.pages, menuItem.route)}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         )
     }
