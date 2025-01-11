@@ -1,16 +1,14 @@
 import { JSX } from 'react';
 import Link from 'next/link';
-import { getMenu } from '@/api/menu';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
+import { MenuProps } from './Menu.props';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import { firstLevelMenu } from '@/mocks';
 
 import cn from 'classnames';
 import styles from './Menu.module.css';
 
-const menu = await getMenu(TopLevelCategory.Courses);
-
-export const Menu = (): JSX.Element => {
+export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const uniqueId = crypto.randomUUID();
 
     const buildFirstLevel = () => {
@@ -36,13 +34,13 @@ export const Menu = (): JSX.Element => {
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
         return (
             <div className={styles.secondLevelBlock}>
-                {menu.map(m => (
+                {categories.map(category => (
                     <div key={uniqueId + `1${Math.random() * 10}`}>
-                        <div className={styles.secondLevel}>{m._id.secondCategory}</div>
+                        <div className={styles.secondLevel}>{category._id.secondCategory}</div>
                         <div className={cn(styles.secondLeveBlock, {
-                            [styles.secondLevelBlockOpened]: m.isOpened
+                            [styles.secondLevelBlockOpened]: category.isOpened
                         })}>
-                            {buildThirdLevel(m.pages, menuItem.route)}
+                            {buildThirdLevel(category.pages, menuItem.route)}
                         </div>
                     </div>
                 ))}
