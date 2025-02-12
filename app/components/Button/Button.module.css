@@ -10,6 +10,12 @@
     transition: all 0.3s;
 }
 
+.arrow {
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+}
+
 .primary {
     display: flex;
     align-items: center;

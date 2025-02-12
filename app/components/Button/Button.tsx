@@ -1,8 +1,8 @@
 'use client';
 
 import React, { JSX } from 'react';
-import ArrowIcon from '../ArrowIcon/ArrowIcon';
 import { ButtonProps } from './Button.props';
+import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './Button.module.css';
 
@@ -17,7 +17,7 @@ export const Button = ({ children, arrow = 'none', appearence, className, ...pro
         >
             {children}
 
-            {arrow !== 'none' && <ArrowIcon className={cn(styles.arrow, {
+            {arrow !== 'none' && <Icon.ArrowIcon className={cn(styles.arrow, {
                 [styles.down]: arrow === 'down'
             })} />}
         </button>
