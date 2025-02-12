@@ -1,11 +1,9 @@
+// import { getMenu } from '@/api/menu';
 import { Icon } from './assets/Icon';
 import { Button } from './components/Button/Button';
 
 export default async function Home() {
-  console.log('I am home');
-  const a: string = 'I am at home';
-
-  console.log(`text: ${a}`);
+  // const menu = await getMenu(0);
   return (
     <div>
       {'Home Page'}
@@ -16,6 +14,8 @@ export default async function Home() {
 
       <Button arrow='down' appearence={'primary'}>{'fdfdfdf'}</Button>
       <Button arrow='right' appearence={'ghost'}>{'fdfdfdf'}</Button>
+
+      {/* {menu.length} */}
     </div>
   );
 }
