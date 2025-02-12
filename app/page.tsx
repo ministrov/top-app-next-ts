@@ -1,7 +1,11 @@
+import React, { JSX } from 'react';
 import { Icon } from './assets/Icon';
 import { Button } from './components/Button/Button';
 
 export default async function Home() {
+  const a: JSX.Element = <div>{1 + 1}</div>;
+
+  console.log(a);
   return (
     <div>
       {'Home Page'}
