@@ -10,13 +10,11 @@ type PageData = {
 }
 
 type PageProps = {
-    params: {
-        alias: string
-    }
+    params: Promise<{ alias: string }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const page = await getPage(params.alias);
+    const page = await getPage((await params).alias);
 
     return {
         title: page?.title || 'Page Not Found',
@@ -30,12 +28,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // }
 
 export default async function PageProducts({ params }: PageProps) {
-    const page: PageData | null = await getPage(params.alias);
+    const page: PageData | null = await getPage((await params).alias);
     console.log(page);
     if (!page) {
         notFound();
     }
     return (
-        <div>{`Страница с alias ${params.alias}`}</div>
+        <div>{`Страница с alias ${(await params).alias}`}</div>
     )
 }
