@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import { MenuProps } from './Menu.props';
-import { TopLevelCategory } from '@/interfaces/page.interface';
+// import { TopLevelCategory } from '@/interfaces/page.interface';
 import { firstLevelMenu } from '@/mocks';
 
 import cn from 'classnames';
@@ -21,13 +21,13 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                     <div key={m.id}>
                         <Link href={`/${m.route}`}>
                             <div className={cn(styles.firstLevel, {
-                                [styles.firstLevelActive]: m.id === TopLevelCategory.Courses
+                                [styles.firstLevelActive]: m.id === 0
                             })}>
                                 {m.icon}
                                 <span>{m.name}</span>
                             </div>
                         </Link>
-                        {m.id === TopLevelCategory.Courses && buildSecondLevel(m)}
+                        {m.id && buildSecondLevel(m)}
                     </div>
                 ))}
             </>
