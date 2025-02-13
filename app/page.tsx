@@ -3,6 +3,7 @@ import { Icon } from './assets/Icon';
 import { Button } from './components/Button/Button';
 
 export default async function Home() {
+  // throw new Error('dfsdfsdfs');
   // const menu = await getMenu(0);
   return (
     <div>
