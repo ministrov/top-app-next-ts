@@ -13,13 +13,12 @@ import styles from './Menu.module.css';
 
 export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const pathname = usePathname();
-    console.log(pathname);
 
     const buildFirstLevel = () => {
         return (
             <>
-                {firstLevelMenu.map(m => (
-                    <div key={m.route}>
+                {firstLevelMenu.map((m) => (
+                    <div key={m.id}>
                         <Link href={`/${m.route}`}>
                             <div className={cn(styles.firstLevel, {
                                 [styles.firstLevelActive]: m.id === TopLevelCategory.Courses
@@ -37,10 +36,10 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
         return (
-            <div className={styles.secondBlock}>
-                {categories.map(category => {
+            <div key={menuItem.id} className={styles.secondBlock}>
+                {categories.map((category) => {
 
-                    if (category.pages.map(page => page.alias).includes(pathname.split('/')[1])) {
+                    if (category.pages.map((page) => page.alias).includes(pathname.split('/')[1])) {
                         category.isOpened = true;
                         console.log(category.isOpened);
                     }
@@ -62,7 +61,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
     const buildThirdLevel = (pages: PageItem[], route: string) => {
         return (
-            pages.map(page => (
+            pages.map((page) => (
                 <Link
                     key={page.id}
                     href={`/${route}/${page.alias}`}
