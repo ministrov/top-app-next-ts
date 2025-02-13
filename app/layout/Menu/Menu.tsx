@@ -6,13 +6,42 @@ import Link from 'next/link';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import { MenuProps } from './Menu.props';
 import { TopLevelCategory } from '@/interfaces/page.interface';
-import { firstLevelMenu } from '@/mocks';
+import { Icon } from '@/app/assets/Icon';
 
 import cn from 'classnames';
 import styles from './Menu.module.css';
 
+const firstLevelMenu: FirstLevelMenuItem[] = [
+    {
+        id: TopLevelCategory.Courses,
+        route: 'courses',
+        name: 'Курсы',
+        icon: <Icon.CoursesIcon />,
+    },
+    {
+        id: TopLevelCategory.Services,
+        route: 'services',
+        name: 'Сервисы',
+        icon: <Icon.ServicesIcon />,
+    },
+    {
+        id: TopLevelCategory.Books,
+        route: 'books',
+        name: 'Книги',
+        icon: <Icon.BooksIcon />,
+    },
+    {
+        id: TopLevelCategory.Goods,
+        route: 'goods',
+        name: 'Товары',
+        icon: <Icon.GoodsIcon />,
+    },
+]
+
 export const Menu = ({ categories }: MenuProps): JSX.Element => {
+    const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
+    console.log(firstCategory);
 
     const buildFirstLevel = () => {
         return (
