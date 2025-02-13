@@ -50,13 +50,13 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                     <div key={m.id}>
                         <Link href={`/${m.route}`}>
                             <div className={cn(styles.firstLevel, {
-                                [styles.firstLevelActive]: m.id === TopLevelCategory.Courses
+                                [styles.firstLevelActive]: m.id === firstCategory
                             })}>
                                 {m.icon}
                                 <span>{m.name}</span>
                             </div>
                         </Link>
-                        {m.id === TopLevelCategory.Courses && buildSecondLevel(m)}
+                        {m.id === firstCategory && buildSecondLevel(m)}
                     </div>
                 ))}
             </>
