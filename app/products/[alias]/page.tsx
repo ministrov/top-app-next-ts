@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPage } from '@/api/page';
-// import { getMenu } from '@/api/menu';
+import { getMenu } from '@/api/menu';
 
 type PageData = {
     id?: number,
@@ -22,10 +22,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 }
 
-// export const generateStaticParams = async () => {
-//     const menu = await getMenu(0);
-//     return menu.flatMap(item => item.pages.map(page => ({ alias: page.alias })));
-// }
+export async function generateStaticParams() {
+    const menu = await getMenu(0);
+    return menu.flatMap(item => item.pages.map(page => ({ alias: page.alias })));
+}
 
 export default async function PageProducts({ params }: PageProps) {
     const page: PageData | null = await getPage((await params).alias);
