@@ -7,7 +7,6 @@ import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import { MenuProps } from './Menu.props';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import { Icon } from '@/app/assets/Icon';
-// import { MyContext } from '@/app/context/app.contex';
 
 import cn from 'classnames';
 import styles from './Menu.module.css';
@@ -42,9 +41,6 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
-    // const { text } = useContext(MyContext);
-
-    // console.log(text);
 
     const buildFirstLevel = () => {
         return (
@@ -72,7 +68,6 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                 {categories.map((category) => {
                     if (category.pages.map((page) => page.alias).includes(pathname.split('/')[2])) {
                         category.isOpened = true;
-                        // console.log(category.isOpened);
                     }
 
                     return (

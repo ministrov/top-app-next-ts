@@ -1,4 +1,3 @@
-// import { MyContextProvider } from './context/app.contex';
 import { Icon } from './assets/Icon';
 import { Button } from './components/Button/Button';
 
