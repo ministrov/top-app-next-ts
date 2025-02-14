@@ -43,6 +43,10 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
     const { text } = useContext(MyContext);
+    const promise: Promise<number> = new Promise((resolve) => resolve(1));
+
+
+    console.log(promise);
     console.log(firstCategory);
     console.log(text);
 

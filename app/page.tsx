@@ -4,7 +4,7 @@ import { Button } from './components/Button/Button';
 
 export default async function Home() {
   return (
-    <MyContextProvider text={1}>
+    <MyContextProvider text={0}>
       <div>
         {'Home Page'}
 
