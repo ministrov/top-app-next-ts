@@ -43,11 +43,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
     const { text } = useContext(MyContext);
-    const promise: Promise<number> = new Promise((resolve) => resolve(1));
 
-
-    console.log(promise);
-    console.log(firstCategory);
     console.log(text);
 
     const buildFirstLevel = () => {
@@ -101,7 +97,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                     key={page.id}
                     href={`/${route}/${page.alias}`}
                     className={cn(styles.thirdLevel, {
-                        [styles.thirdLevelActive]: false
+                        [styles.thirdLevelActive]: `/${route}/${page.alias}` == pathname
                     })}
                 >
                     {page.title}
