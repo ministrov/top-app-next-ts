@@ -1,13 +1,13 @@
 'use client';
 
-import { JSX, useContext } from 'react';
+import { JSX } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import { MenuProps } from './Menu.props';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import { Icon } from '@/app/assets/Icon';
-import { MyContext } from '@/app/context/app.contex';
+// import { MyContext } from '@/app/context/app.contex';
 
 import cn from 'classnames';
 import styles from './Menu.module.css';
@@ -42,9 +42,9 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
-    const { text } = useContext(MyContext);
+    // const { text } = useContext(MyContext);
 
-    console.log(text);
+    // console.log(text);
 
     const buildFirstLevel = () => {
         return (
@@ -70,13 +70,13 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
         return (
             <div key={menuItem.id} className={styles.secondBlock}>
                 {categories.map((category) => {
-                    if (category.pages.map((page) => page.alias).includes(pathname.split('/')[1])) {
+                    if (category.pages.map((page) => page.alias).includes(pathname.split('/')[2])) {
                         category.isOpened = true;
-                        console.log(category.isOpened);
+                        // console.log(category.isOpened);
                     }
 
                     return (
-                        <div key={category._id.secondCategory}>
+                        <div key={category?._id?.secondCategory}>
                             <div className={styles.secondLevel}>{category._id.secondCategory}</div>
                             <div className={cn(styles.secondLevelBlock, {
                                 [styles.secondLevelBlockOpened]: category.isOpened
@@ -87,7 +87,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                     );
                 })}
             </div>
-        )
+        );
     }
 
     const buildThirdLevel = (pages: PageItem[], route: string) => {
