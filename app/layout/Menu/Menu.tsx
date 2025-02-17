@@ -42,6 +42,10 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
 
+    // const openSecondLevelMenu = (secondCategory: string) => {
+
+    // }
+
     const buildFirstLevel = () => {
         return (
             <>
