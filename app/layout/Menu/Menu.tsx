@@ -71,7 +71,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                     }
 
                     return (
-                        <div key={category?._id?.secondCategory}>
+                        <div key={category._id.secondCategory}>
                             <div className={styles.secondLevel}>{category._id.secondCategory}</div>
                             <div className={cn(styles.secondLevelBlock, {
                                 [styles.secondLevelBlockOpened]: category.isOpened
@@ -92,7 +92,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                     key={page.id}
                     href={`/${route}/${page.alias}`}
                     className={cn(styles.thirdLevel, {
-                        [styles.thirdLevelActive]: `/${route}/${page.alias}` == pathname
+                        [styles.thirdLevelActive]: `/${route}/${page.alias}` === pathname
                     })}
                 >
                     {page.title}
