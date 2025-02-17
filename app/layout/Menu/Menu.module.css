@@ -42,10 +42,6 @@
     cursor: pointer;
 }
 
-/* .secondLevelBlock {
-    display: none;
-} */
-
 .secondLevelBlock:last-child {
     margin-bottom: 20px;
 }

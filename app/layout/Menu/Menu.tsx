@@ -1,10 +1,11 @@
 'use client';
 
-import { JSX } from 'react';
+import { JSX, useContext } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
-import { MenuProps } from './Menu.props';
+// import { MenuProps } from './Menu.props';
+import { AppContext } from '@/app/context/app.contex';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import { Icon } from '@/app/assets/Icon';
 
@@ -38,13 +39,22 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
     },
 ]
 
-export const Menu = ({ categories }: MenuProps): JSX.Element => {
-    const firstCategory = TopLevelCategory.Courses;
+export const Menu = (): JSX.Element => {
+    const { menu, setMenu, firstCategory } = useContext(AppContext);
     const pathname = usePathname();
 
-    // const openSecondLevelMenu = (secondCategory: string) => {
+    console.log(menu);
 
-    // }
+    const openSecondLevelMenu = (secondCategory: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        setMenu && setMenu(menu.map(m => {
+            if (m._id.secondCategory === secondCategory) {
+                m.isOpened = true;
+            }
+
+            return m;
+        }));
+    }
 
     const buildFirstLevel = () => {
         return (
@@ -69,18 +79,18 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
         return (
             <div key={menuItem.id} className={styles.secondBlock}>
-                {categories.map((category) => {
-                    if (category.pages.map((page) => page.alias).includes(pathname.split('/')[2])) {
-                        category.isOpened = true;
+                {menu && menu.map((m) => {
+                    if (m.pages.map((page) => page.alias).includes(pathname.split('/')[2])) {
+                        m.isOpened = true;
                     }
 
                     return (
-                        <div key={category._id.secondCategory}>
-                            <div className={styles.secondLevel}>{category._id.secondCategory}</div>
+                        <div key={m._id.secondCategory}>
+                            <div className={styles.secondLevel} onClick={() => openSecondLevelMenu(m._id.secondCategory)}>{m._id.secondCategory}</div>
                             <div className={cn(styles.secondLevelBlock, {
-                                [styles.secondLevelBlockOpened]: category.isOpened
+                                [styles.secondLevelBlockOpened]: m.isOpened
                             })}>
-                                {buildThirdLevel(category.pages, menuItem.route)}
+                                {buildThirdLevel(m.pages, menuItem.route)}
                             </div>
                         </div>
                     );

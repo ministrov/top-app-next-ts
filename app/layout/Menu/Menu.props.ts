@@ -1,5 +1,5 @@
-import { MenuItem } from '@/interfaces/menu.interface';
+// import { MenuItem } from '@/interfaces/menu.interface';
 
-export interface MenuProps {
-    categories: MenuItem[];
-}
+// export interface MenuProps {
+//     categories: MenuItem[];
+// }
