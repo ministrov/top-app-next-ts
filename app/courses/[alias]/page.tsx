@@ -29,11 +29,16 @@ export async function generateStaticParams() {
 
 export default async function PageCourses({ params }: PageProps) {
     const page: PageData | null = await getPage((await params).alias);
-    // console.log(page);
+
     if (!page) {
         notFound();
     }
     return (
-        <div>{`Страница с alias ${(await params).alias}`}</div>
+        <div>
+            {`Страница с alias ${(await params).alias}`}
+            {/* {Object.entries(page).length} */}
+            <br />
+            {Object.keys(page).length}
+        </div>
     )
 }
