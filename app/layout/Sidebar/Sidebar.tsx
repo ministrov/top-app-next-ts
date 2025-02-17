@@ -1,18 +1,12 @@
-'use client';
-
-import { AppContextProvider } from '@/app/context/app.contex';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import { Menu } from '../Menu/Menu';
-// import { getMenu } from '@/api/menu';
+import { getMenu } from '@/api/menu';
 
-// const menu = await getMenu(0);
-
-export const Sidebar = ({ ...props }) => {
+export const Sidebar = async ({ ...props }) => {
+    const menu = await getMenu(TopLevelCategory.Courses);
     return (
         <aside {...props}>
-            <AppContextProvider menu={props.menu} firstCategory={TopLevelCategory.Courses}>
-                <Menu />
-            </AppContextProvider>
+            <Menu categories={menu} />
         </aside>
     )
 }

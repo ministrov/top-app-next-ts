@@ -1,11 +1,10 @@
 'use client';
 
-import { JSX, useContext } from 'react';
+import { JSX } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
-// import { MenuProps } from './Menu.props';
-import { AppContext } from '@/app/context/app.contex';
+import { MenuProps } from './Menu.props';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import { Icon } from '@/app/assets/Icon';
 
@@ -39,21 +38,21 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
     },
 ]
 
-export const Menu = (): JSX.Element => {
-    const { menu, setMenu, firstCategory } = useContext(AppContext);
+export const Menu = ({ categories }: MenuProps): JSX.Element => {
+    // const { menu, setMenu, firstCategory } = useContext(AppContext);
+    const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
 
-    console.log(menu);
-
     const openSecondLevelMenu = (secondCategory: string) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        setMenu && setMenu(menu.map(m => {
-            if (m._id.secondCategory === secondCategory) {
-                m.isOpened = true;
-            }
 
-            return m;
-        }));
+        // setMenu && setMenu(menu.map(m => {
+        //     if (m._id.secondCategory === secondCategory) {
+        //         m.isOpened = true;
+        //     }
+
+        //     return m;
+        // }));
+        console.log(secondCategory);
     }
 
     const buildFirstLevel = () => {
@@ -79,18 +78,18 @@ export const Menu = (): JSX.Element => {
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
         return (
             <div key={menuItem.id} className={styles.secondBlock}>
-                {menu && menu.map((m) => {
-                    if (m.pages.map((page) => page.alias).includes(pathname.split('/')[2])) {
-                        m.isOpened = true;
+                {categories.map((category) => {
+                    if (category.pages.map((page) => page.alias).includes(pathname.split('/')[2])) {
+                        category.isOpened = true;
                     }
 
                     return (
-                        <div key={m._id.secondCategory}>
-                            <div className={styles.secondLevel} onClick={() => openSecondLevelMenu(m._id.secondCategory)}>{m._id.secondCategory}</div>
+                        <div key={category._id.secondCategory}>
+                            <div className={styles.secondLevel} onClick={() => openSecondLevelMenu(category._id.secondCategory)}>{category._id.secondCategory}</div>
                             <div className={cn(styles.secondLevelBlock, {
-                                [styles.secondLevelBlockOpened]: m.isOpened
+                                [styles.secondLevelBlockOpened]: category.isOpened
                             })}>
-                                {buildThirdLevel(m.pages, menuItem.route)}
+                                {buildThirdLevel(category.pages, menuItem.route)}
                             </div>
                         </div>
                     );
