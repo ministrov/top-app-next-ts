@@ -1,9 +1,9 @@
 'use client';
 
-import { JSX } from 'react';
+import { JSX, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
+import { FirstLevelMenuItem, MenuItem, PageItem } from '@/interfaces/menu.interface';
 import { MenuProps } from './Menu.props';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import { Icon } from '@/app/assets/Icon';
@@ -39,20 +39,24 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 ]
 
 export const Menu = ({ categories }: MenuProps): JSX.Element => {
-    // const { menu, setMenu, firstCategory } = useContext(AppContext);
+    const [menuState, setMenuState] = useState<MenuItem[]>([...categories]);
     const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
 
+    const setMenu = (newMenu: MenuItem[]) => {
+        setMenuState(newMenu);
+    };
+
     const openSecondLevelMenu = (secondCategory: string) => {
+        setMenu(menuState.map((item) => {
+            if (item._id.secondCategory === secondCategory) {
+                item.isOpened = !item.isOpened;
+            }
 
-        // setMenu && setMenu(menu.map(m => {
-        //     if (m._id.secondCategory === secondCategory) {
-        //         m.isOpened = true;
-        //     }
-
-        //     return m;
-        // }));
+            return item;
+        }));
         console.log(secondCategory);
+        console.log(menuState);
     }
 
     const buildFirstLevel = () => {
