@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export default function Error({ error }: { error: Error }) {
+export default function NotFound({ error }: { error: Error }) {
     useEffect(() => {
         console.log(error);
     }, [error]);
