@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
+import { Suspense } from 'react';
 import { Header } from './layout/Header/Header';
+import Loading from './loading';
 import { Sidebar } from './layout/Sidebar/Sidebar';
 import { Footer } from './layout/Footer/Footer';
 import "./globals.css";
@@ -27,9 +29,11 @@ export default function RootLayout({
         <div className={'wrapper'}>
           <Header className={'header'} />
           <Sidebar className={'sidebar'} />
-          <main className={'body'}>
-            {children}
-          </main>
+          <Suspense fallback={<Loading />}>
+            <main className={'body'}>
+              {children}
+            </main>
+          </Suspense>
           <Footer className={'footer'} />
         </div>
       </body>
