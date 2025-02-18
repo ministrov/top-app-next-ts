@@ -1,15 +1,22 @@
-'use client';
+// import { createContext, JSX, PropsWithChildren, useState } from 'react';
+// import { MenuItem } from '@/interfaces/menu.interface';
+// import { TopLevelCategory } from '@/interfaces/page.interface';
 
-import { createContext, PropsWithChildren } from 'react';
+// export interface IAppContext {
+//     menu: MenuItem[];
+//     firstCategory: TopLevelCategory;
+//     setMenu?: (newMenu: MenuItem[]) => void;
+// }
 
-export interface IMyContext {
-    text: number;
-}
+// export const AppContext = createContext<IAppContext>({ menu: [], firstCategory: TopLevelCategory.Courses });
 
-export const MyContext = createContext<IMyContext>({ text: 1 });
+// export const AppContextProvider = ({ menu, firstCategory, children }: PropsWithChildren<IAppContext>): JSX.Element => {
+//     const [menuState, setMenuState] = useState<MenuItem[]>(menu);
+//     const setMenu = (newMenu: MenuItem[]) => {
+//         setMenuState(newMenu);
+//     };
 
-export const MyContextProvider = ({ text, children }: PropsWithChildren<IMyContext>) => {
-    return <MyContext.Provider value={{ text }}>
-        {children}
-    </MyContext.Provider>
-};
+//     return <AppContext.Provider value={{ menu: menuState, firstCategory, setMenu }}>
+//         {children}
+//     </AppContext.Provider>;
+// };
