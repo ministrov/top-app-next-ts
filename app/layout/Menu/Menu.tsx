@@ -55,8 +55,8 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
             return item;
         }));
-        console.log(secondCategory);
-        console.log(menuState);
+        // console.log(secondCategory);
+        // console.log(menuState);
     }
 
     const buildFirstLevel = () => {
