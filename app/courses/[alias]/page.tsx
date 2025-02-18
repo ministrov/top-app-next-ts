@@ -28,7 +28,6 @@ export async function generateStaticParams() {
 }
 
 export default async function PageCourses({ params }: PageProps) {
-    // const pages = await getMenu(0);
     const page: PageData | null = await getPage((await params).alias);
 
     if (!page) {
