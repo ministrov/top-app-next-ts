@@ -2,7 +2,7 @@
 
 import { CardProps } from './Card.props';
 import cn from 'classnames';
-import styles from './Button.module.css';
+import styles from './Card.module.css';
 
 export const Card = ({ color = 'white', classNames, children, ...props }: CardProps) => {
     return (
