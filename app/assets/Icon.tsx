@@ -3,6 +3,7 @@ import ServicesIcon from './icons/services.svg';
 import BooksIcon from './icons/books.svg';
 import GoodsIcon from './icons/goods.svg';
 import ArrowIcon from './icons/arrow.svg';
+import LogoIcon from './icons/logo.svg';
 
 
 export const Icon = {
@@ -10,7 +11,8 @@ export const Icon = {
     ServicesIcon,
     BooksIcon,
     GoodsIcon,
-    ArrowIcon
+    ArrowIcon,
+    LogoIcon
 };
 
 export type IconType = keyof typeof Icon;

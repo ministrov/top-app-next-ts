@@ -6,37 +6,10 @@ import Link from 'next/link';
 import { FirstLevelMenuItem, MenuItem, PageItem } from '@/interfaces/menu.interface';
 import { MenuProps } from './Menu.props';
 import { TopLevelCategory } from '@/interfaces/page.interface';
-import { Icon } from '@/app/assets/Icon';
+import { firstLevelMenu } from '@/helpers';
 
 import cn from 'classnames';
 import styles from './Menu.module.css';
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-    {
-        id: TopLevelCategory.Courses,
-        route: 'courses',
-        name: 'Курсы',
-        icon: <Icon.CoursesIcon />,
-    },
-    {
-        id: TopLevelCategory.Services,
-        route: 'services',
-        name: 'Сервисы',
-        icon: <Icon.ServicesIcon />,
-    },
-    {
-        id: TopLevelCategory.Books,
-        route: 'books',
-        name: 'Книги',
-        icon: <Icon.BooksIcon />,
-    },
-    {
-        id: TopLevelCategory.Goods,
-        route: 'goods',
-        name: 'Товары',
-        icon: <Icon.GoodsIcon />,
-    },
-]
 
 export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const [menuState, setMenuState] = useState<MenuItem[]>([...categories]);
@@ -55,8 +28,6 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
             return item;
         }));
-        // console.log(secondCategory);
-        // console.log(menuState);
     }
 
     const buildFirstLevel = () => {

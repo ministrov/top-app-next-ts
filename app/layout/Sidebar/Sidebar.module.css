@@ -1,3 +1,9 @@
 .sidebar {
-    background-color: tomato;
+    display: grid;
+    align-content: flex-start;
+    gap: 20px;
+}
+
+.logo {
+    margin-top: 34px;
 }
