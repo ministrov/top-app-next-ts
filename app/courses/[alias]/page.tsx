@@ -8,7 +8,7 @@ import { MenuItem } from '@/interfaces/menu.interface';
 import Tag from '@/app/components/Tag/Tag';
 
 import styles from './page.module.css';
-import { HhData } from '@/app/components/HhData/HhData';
+// import { HhData } from '@/app/components/HhData/HhData';
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -53,14 +53,14 @@ export default async function PageCourses({ params }: PageProps) {
                     <Htag tag='h2'>Вакансии - {page.category}</Htag>
                     <Tag color='red' size='medium'>hh.ru</Tag>
                 </div>
-                {products && <HhData
+                {/* {products && <HhData
                     _id={page.hh?._id}
                     count={page.hh?.count}
                     juniorSalary={page.hh?.juniorSalary}
                     middleSalary={page.hh?.middleSalary}
                     seniorSalary={page.hh?.seniorSalary}
                     updatedAt={page.hh?.updatedAt}
-                />}
+                />} */}
             </div>
         </div>
     )

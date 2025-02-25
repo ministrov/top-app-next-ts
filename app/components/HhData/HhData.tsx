@@ -4,7 +4,7 @@ import { JSX } from 'react';
 import { HhDataProps } from './HhData.props';
 import { Card } from '../Card/Card';
 import { Icon } from '@/app/assets/Icon';
-// import cn from 'classnames';
+import { transformPrice } from '@/helpers';
 import styles from './HhData.module.css';
 
 export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDataProps): JSX.Element => {
@@ -18,7 +18,7 @@ export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDa
             <Card classNames={styles.salary}>
                 <div>
                     <div className={styles.title}>Начальный</div>
-                    <div className={styles.salaryValue}>{juniorSalary}</div>
+                    <div className={styles.salaryValue}>{`${transformPrice(juniorSalary)} ₽`}</div>
                     <div className={styles.rate}>
                         <span className={styles.rateIcon}>
                             <Icon.RateActiveIcon />
