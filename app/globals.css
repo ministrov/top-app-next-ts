@@ -70,11 +70,12 @@ a {
       "body"
       "footer";
   }
+
   .header {
     display: block;
   }
 
-  .sidebar {
+  /* .sidebar {
     display: none;
-  }
+  } */
 }
