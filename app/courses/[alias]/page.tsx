@@ -48,18 +48,20 @@ export default async function PageCourses({ params }: PageProps) {
                 {'Course'}
             </div>
 
-            <div className={styles.hhContent}>
-                <Htag tag='h2'>Вакансии - {page.category}</Htag>
-                <Tag color='red' size='medium'>hh.ru</Tag>
+            <div className={styles.hhWrapper}>
+                <div className={styles.hhContent}>
+                    <Htag tag='h2'>Вакансии - {page.category}</Htag>
+                    <Tag color='red' size='medium'>hh.ru</Tag>
+                </div>
+                <HhData
+                    _id={page.hh?._id}
+                    count={page.hh?.count}
+                    juniorSalary={page.hh?.juniorSalary}
+                    middleSalary={page.hh?.middleSalary}
+                    seniorSalary={page.hh?.seniorSalary}
+                    updatedAt={page.hh?.updatedAt}
+                />
             </div>
-            <HhData
-                _id={page.hh?._id}
-                count={page.hh?.count}
-                juniorSalary={page.hh?.juniorSalary}
-                middleSalary={page.hh?.middleSalary}
-                seniorSalary={page.hh?.seniorSalary}
-                updatedAt={page.hh?.updatedAt}
-            />
         </div>
     )
 }
