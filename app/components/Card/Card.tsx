@@ -1,12 +1,17 @@
 'use client';
 
-// import cn from 'classnames';
+import { CardProps } from './Card.props';
+import cn from 'classnames';
 import styles from './Button.module.css';
 
-export const Card = () => {
+export const Card = ({ color = 'white', classNames, children, ...props }: CardProps) => {
     return (
-        <div className={styles.Card}>
-
+        <div className={cn(styles.card, classNames, {
+            [styles.blue]: color === 'blue'
+        })}
+            {...props}
+        >
+            {children}
         </div>
     )
 }

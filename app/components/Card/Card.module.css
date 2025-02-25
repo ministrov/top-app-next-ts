@@ -1,53 +1,9 @@
-.button {
-    display: inline-block;
-    padding: 10px;
-    font-size: 14px;
-    text-align: center;
-    box-sizing: border-box;
-    cursor: pointer;
-    border: none;
+.card {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+    background-color: var(--white);
     border-radius: 5px;
-    transition: all 0.3s;
 }
 
-.arrow {
-    display: inline-block;
-    width: 6px;
-    height: 10px;
-}
-
-.primary {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    color: var(--white);
-    background-color: var(--primary);
-}
-
-.primary:hover {
-    background-color: var(--primary-hover);
-}
-
-.ghost {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    color: var(--black);
-    background: none;
-    border: 1px solid var(--gray-light);
-}
-
-.ghost:hover {
-    color: var(--white);
-    background-color: var(--primary-hover);
-}
-
-.down {
-    transform: rotate(90deg);
-    transition: all 0.2s;
-}
-
-.primary svg,
-.ghost:hover svg {
-    fill: var(--white);
+.blue {
+    background: #f9f8ff;
 }

@@ -5,15 +5,10 @@ import { getPage } from '@/api/page';
 import { getMenu } from '@/api/menu';
 import Htag from '@/app/components/Htag/Htag';
 import { MenuItem } from '@/interfaces/menu.interface';
+import { Card } from '@/app/components/Card/Card';
 import Tag from '@/app/components/Tag/Tag';
 
 import styles from './page.module.css';
-
-// type PageData = {
-//     id?: number,
-//     alias: string,
-//     title: string
-// }
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -58,7 +53,10 @@ export default async function PageCourses({ params }: PageProps) {
                 <Tag color='red' size='medium'>hh.ru</Tag>
             </div>
             <div className={styles.hh}>
-
+                <Card classNames={styles.hhCount}>
+                    <div className={styles.hhStatTitle}>Всего вакансий</div>
+                    <div className={styles.hhStatCount}>{page.hh?.count}</div>
+                </Card>
             </div>
         </div>
     )
