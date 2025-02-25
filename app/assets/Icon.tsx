@@ -4,6 +4,8 @@ import BooksIcon from './icons/books.svg';
 import GoodsIcon from './icons/goods.svg';
 import ArrowIcon from './icons/arrow.svg';
 import LogoIcon from './icons/logo.svg';
+import RateIcon from './icons/rate.svg';
+import RateActiveIcon from './icons/rate-active.svg';
 
 
 export const Icon = {
@@ -12,7 +14,9 @@ export const Icon = {
     BooksIcon,
     GoodsIcon,
     ArrowIcon,
-    LogoIcon
+    LogoIcon,
+    RateIcon,
+    RateActiveIcon
 };
 
 export type IconType = keyof typeof Icon;
