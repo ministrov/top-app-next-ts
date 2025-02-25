@@ -41,12 +41,24 @@ export default async function PageCourses({ params }: PageProps) {
         notFound();
     }
     return (
-        <div>
+        <div className={styles.wrapper}>
             <div className={styles.header}>
                 <Htag tag='h1'>{page.title}</Htag>
                 {products && <Tag color='grey' size='medium'>{products.length}</Tag>}
 
                 <span>Sorting</span>
+            </div>
+
+            <div>
+                {'Course'}
+            </div>
+
+            <div className={styles.hhContent}>
+                <Htag tag='h2'>Вакансии - {page.category}</Htag>
+                <Tag color='red' size='medium'>hh.ru</Tag>
+            </div>
+            <div className={styles.hh}>
+
             </div>
         </div>
     )
