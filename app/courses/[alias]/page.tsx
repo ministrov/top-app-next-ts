@@ -3,6 +3,11 @@ import { TopPageModel } from '@/interfaces/page.interface';
 import { notFound } from 'next/navigation';
 import { getPage } from '@/api/page';
 import { getMenu } from '@/api/menu';
+import Htag from '@/app/components/Htag/Htag';
+import { MenuItem } from '@/interfaces/menu.interface';
+import Tag from '@/app/components/Tag/Tag';
+
+import styles from './page.module.css';
 
 // type PageData = {
 //     id?: number,
@@ -29,14 +34,20 @@ export async function generateStaticParams() {
 }
 
 export default async function PageCourses({ params }: PageProps) {
-    const pages: TopPageModel | null = await getPage((await params).alias);
+    const page: TopPageModel | null = await getPage((await params).alias);
+    const products: MenuItem[] = await getMenu(0);
 
-    if (!pages) {
+    if (!page) {
         notFound();
     }
     return (
         <div>
-            {pages.title.length}
+            <div className={styles.header}>
+                <Htag tag='h1'>{page.title}</Htag>
+                {products && <Tag color='grey' size='medium'>{products.length}</Tag>}
+
+                <span>Sorting</span>
+            </div>
         </div>
     )
 }
