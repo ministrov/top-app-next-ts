@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
+import { TopPageModel } from '@/interfaces/page.interface';
 import { notFound } from 'next/navigation';
 import { getPage } from '@/api/page';
 import { getMenu } from '@/api/menu';
 
-type PageData = {
-    id?: number,
-    alias: string,
-    title: string
-}
+// type PageData = {
+//     id?: number,
+//     alias: string,
+//     title: string
+// }
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -28,14 +29,14 @@ export async function generateStaticParams() {
 }
 
 export default async function PageCourses({ params }: PageProps) {
-    const page: PageData | null = await getPage((await params).alias);
+    const pages: TopPageModel | null = await getPage((await params).alias);
 
-    if (!page) {
+    if (!pages) {
         notFound();
     }
     return (
         <div>
-            {page.alias}
+            {pages.title.length}
         </div>
     )
 }

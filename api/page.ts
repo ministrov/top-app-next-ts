@@ -2,7 +2,6 @@ import { API } from '@/app/api';
 import { TopPageModel } from '@/interfaces/page.interface';
 
 export const getPage = async (alias: string): Promise<TopPageModel | null> => {
-    // await new Promise((res) => setTimeout(() => { res('')}, 3000));
     const res = await fetch(API.topPage.byAlias + alias);
     
     if (!res.ok) {
