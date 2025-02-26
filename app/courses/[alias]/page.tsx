@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import parse from 'html-react-parser';
 import { getPage } from '@/api/page';
 import { getMenu } from '@/api/menu';
 import Htag from '@/app/components/Htag/Htag';
@@ -10,7 +11,6 @@ import { MenuItem } from '@/interfaces/menu.interface';
 
 import styles from './page.module.css';
 import { Advantages } from '@/app/components/Advantages/Advantages';
-import P from '@/app/components/P/P';
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -70,7 +70,7 @@ export default async function PageCourses({ params }: PageProps) {
                 <Advantages advantages={page.advantages} />
             </>}
 
-            {page.seoText && <P>{page.seoText}</P>}
+            {page.seoText && <div className={styles.seo}>{parse(page.seoText)}</div>}
 
             <Htag tag='h2'>Получаемые навыки</Htag>
 
