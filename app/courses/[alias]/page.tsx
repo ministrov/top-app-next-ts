@@ -45,7 +45,7 @@ export default async function PageCourses({ params }: PageProps) {
                 <Htag tag='h1'>{page.title}</Htag>
                 {products && <Tag color='grey' size='medium'>{products.length}</Tag>}
 
-                <Sorting sort={SortEnum.Price} setSort={() => console.log('sfsfsf')} />
+                <Sorting sort={SortEnum.Rating} />
             </div>
 
             <div>

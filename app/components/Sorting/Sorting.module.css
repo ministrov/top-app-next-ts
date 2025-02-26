@@ -1,5 +1,21 @@
 .sorting {
+    display: flex;
+    align-items: center;
+    gap: 45px;
     background-color: plum;
+}
+
+.sorting > span {
+    display: flex;
+    gap: 8px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    color: var(--initial-black);
+}
+
+.sorting .active {
+    font-weight: 700;
+    color: var(--primary);
 }
 
 .iconBox {
@@ -11,4 +27,12 @@
     display: inline-block;
     width: 20px;
     height: 13px;
+}
+
+.iconWrap {
+    display: none;
+}
+
+.active .iconWrap {
+    display: block;
 }
