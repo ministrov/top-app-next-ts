@@ -10,6 +10,7 @@ import { MenuItem } from '@/interfaces/menu.interface';
 
 import styles from './page.module.css';
 import { Advantages } from '@/app/components/Advantages/Advantages';
+import P from '@/app/components/P/P';
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -47,6 +48,7 @@ export default async function PageCourses({ params }: PageProps) {
 
             <div>
                 {'Course'}
+                {products.map(product => product.pages.map(page => page.title))}
             </div>
 
             <div className={styles.hhWrapper}>
@@ -67,6 +69,14 @@ export default async function PageCourses({ params }: PageProps) {
 
                 <Advantages advantages={page.advantages} />
             </>}
+
+            {page.seoText && <P>{page.seoText}</P>}
+
+            <Htag tag='h2'>Получаемые навыки</Htag>
+
+            {page.tags && page.tags.map(tag => (
+                <Tag key={tag} color='primary'>{tag}</Tag>
+            ))}
         </div>
     )
 }
