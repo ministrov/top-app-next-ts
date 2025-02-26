@@ -53,13 +53,17 @@ export default async function PageCourses({ params }: PageProps) {
                     <Htag tag='h2'>Вакансии - {page.category}</Htag>
                     <Tag color='red' size='medium'>hh.ru</Tag>
                 </div>
-                {products && <HhData
+                {products && page.hh && <HhData
                     count={page.hh?.count || 0}
                     juniorSalary={page.hh?.juniorSalary || 0}
                     middleSalary={page.hh?.middleSalary || 0}
                     seniorSalary={page.hh?.seniorSalary || 0}
                 />}
             </div>
+
+            {page.advantages && page.advantages.length > 0 && <>
+                <Htag tag='h2'>Преимущества</Htag>
+            </>}
         </div>
     )
 }
