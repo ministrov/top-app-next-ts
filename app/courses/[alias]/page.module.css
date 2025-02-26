@@ -1,0 +1,25 @@
+.wrapper {
+    margin-top: 40px;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    justify-items: left;
+    gap: 20px;
+    background-color: purple;
+}
+
+.hhWrapper {
+    background-color: plum;
+}
+
+.hhContent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    justify-items: left;
+    gap: 20px;
+    margin-bottom: 25px;
+}

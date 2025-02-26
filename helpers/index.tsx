@@ -29,6 +29,14 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
     },
 ]
 
+export const transformPrice = (price: number): string => {
+    return new Intl.NumberFormat('ru-Ru', {
+        style: 'currency',
+        currency: 'RUB',
+        minimumFractionDigits: 0
+    }).format(price);
+}
+
 
 // const x = { a: 1, b: 2, c: 3, d: 4 };
 
