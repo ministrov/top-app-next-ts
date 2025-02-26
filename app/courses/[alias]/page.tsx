@@ -6,11 +6,13 @@ import { getMenu } from '@/api/menu';
 import Htag from '@/app/components/Htag/Htag';
 import { HhData } from '@/app/components/HhData/HhData';
 import Tag from '@/app/components/Tag/Tag';
+import { Sorting } from '@/app/components/Sorting/Sorting';
 import { TopPageModel } from '@/interfaces/page.interface';
 import { MenuItem } from '@/interfaces/menu.interface';
 
 import styles from './page.module.css';
 import { Advantages } from '@/app/components/Advantages/Advantages';
+import { SortEnum } from '@/app/components/Sorting/Sorting.props';
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -43,7 +45,7 @@ export default async function PageCourses({ params }: PageProps) {
                 <Htag tag='h1'>{page.title}</Htag>
                 {products && <Tag color='grey' size='medium'>{products.length}</Tag>}
 
-                <span>Sorting</span>
+                <Sorting sort={SortEnum.Price} setSort={() => console.log('sfsfsf')} />
             </div>
 
             <div>

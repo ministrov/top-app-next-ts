@@ -1,3 +1,9 @@
 .sorting {
     background-color: plum;
 }
+
+.iconBox {
+    display: flex;
+    width: 20px;
+    height: 13px;
+}
