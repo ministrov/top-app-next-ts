@@ -9,6 +9,7 @@ import { TopPageModel } from '@/interfaces/page.interface';
 import { MenuItem } from '@/interfaces/menu.interface';
 
 import styles from './page.module.css';
+import { Advantages } from '@/app/components/Advantages/Advantages';
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -63,6 +64,8 @@ export default async function PageCourses({ params }: PageProps) {
 
             {page.advantages && page.advantages.length > 0 && <>
                 <Htag tag='h2'>Преимущества</Htag>
+
+                <Advantages advantages={page.advantages} />
             </>}
         </div>
     )
