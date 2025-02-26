@@ -4,6 +4,11 @@
 
 .iconBox {
     display: flex;
+    gap: 8px;
+}
+
+.iconWrap {
+    display: inline-block;
     width: 20px;
     height: 13px;
 }
