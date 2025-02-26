@@ -3,6 +3,7 @@
   --black: #3B434E;
   --gray-light: #EBEBEB;
   --gray-second: #787D85;
+  --gray-third: #D2D2D2;
   --white: #ffffff;
   --primary: #7653FC;
   --primary-hover: #6447d6;
@@ -74,8 +75,4 @@ a {
   .header {
     display: block;
   }
-
-  /* .sidebar {
-    display: none;
-  } */
 }
