@@ -1,0 +1,40 @@
+.advantage {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 10px 40px;
+    margin-bottom: 30px;
+}
+
+.title {
+    align-self: center;
+    margin: 0;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--black);
+}
+
+.vline {
+    border-right: 1px solid var(--gray-third);
+}
+
+.description {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 29px;
+    color: var(--black);
+}
+
+.icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+/* .icon svg circle {
+    fill: peachpuff;
+}
+
+.icon svg g path {
+    fill: rebeccapurple;
+} */

@@ -18,7 +18,7 @@ export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDa
             <Card classNames={styles.salary}>
                 <div>
                     <div className={styles.title}>Начальный</div>
-                    <div className={styles.salaryValue}>{`${transformPrice(juniorSalary)} ₽`}</div>
+                    <div className={styles.salaryValue}>{`${transformPrice(juniorSalary)}`}</div>
                     <div className={styles.rate}>
                         <span className={styles.rateIcon}>
                             <Icon.RateActiveIcon />
@@ -34,7 +34,7 @@ export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDa
 
                 <div>
                     <div className={styles.title}>Средний</div>
-                    <div className={styles.salaryValue}>{middleSalary}</div>
+                    <div className={styles.salaryValue}>{`${transformPrice(middleSalary)}`}</div>
                     <div className={styles.rate}>
                         <span className={styles.rateIcon}>
                             <Icon.RateActiveIcon />
@@ -50,7 +50,7 @@ export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDa
 
                 <div>
                     <div className={styles.title}>Профессионал</div>
-                    <div className={styles.salaryValue}>{seniorSalary}</div>
+                    <div className={styles.salaryValue}>{`${transformPrice(seniorSalary)}`}</div>
                     <div className={styles.rate}>
                         <span className={styles.rateIcon}>
                             <Icon.RateActiveIcon />

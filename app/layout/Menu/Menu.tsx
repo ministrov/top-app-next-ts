@@ -28,7 +28,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
             return item;
         }));
-    }
+    };
 
     const buildFirstLevel = () => {
         return (
@@ -48,11 +48,11 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                 ))}
             </>
         );
-    }
+    };
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
         return (
-            <div key={menuItem.id} className={styles.secondBlock}>
+            <div className={styles.secondBlock}>
                 {categories.map((category) => {
                     if (category.pages.map((page) => page.alias).includes(pathname.split('/')[2])) {
                         category.isOpened = true;
@@ -71,7 +71,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                 })}
             </div>
         );
-    }
+    };
 
     const buildThirdLevel = (pages: PageItem[], route: string) => {
         return (
@@ -87,7 +87,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                 </Link>
             ))
         );
-    }
+    };
 
     return (
         <div className={styles.menu}>

@@ -12,12 +12,12 @@ export interface TopPageAdvantage {
 }
 
 export interface HhData {
-	_id: string;
+	_id?: string;
 	count: number;
 	juniorSalary: number;
 	middleSalary: number;
 	seniorSalary: number;
-	updatedAt: Date;
+	updatedAt?: Date;
 }
 
 export interface TopPageModel {
