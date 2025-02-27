@@ -1,5 +1,6 @@
 :root {
   --font-family: 'Noto Sans KR', sans-serif;
+  --initial-black: #000000;
   --black: #3B434E;
   --gray-light: #EBEBEB;
   --gray-second: #787D85;
