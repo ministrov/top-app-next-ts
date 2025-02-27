@@ -1,8 +1,8 @@
-import { MenuItem } from '@/interfaces/menu.interface';
-import { TopPageModel } from '@/interfaces/page.interface';
+import { ProductModel } from '@/interfaces/product.interface';
+import { TopLevelCategory, TopPageModel } from '@/interfaces/page.interface';
 
 export interface TopPageComponentProps {
     page: TopPageModel;
-    products: MenuItem[];
-    firstCategory?: string;
+    products: ProductModel[];
+    firstCategory?: TopLevelCategory;
 }

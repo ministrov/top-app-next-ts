@@ -3,10 +3,12 @@ import { notFound } from 'next/navigation';
 
 import { getPage } from '@/api/page';
 import { getMenu } from '@/api/menu';
+import { getProduct } from '@/api/product';
 import { TopPageComponent } from '@/app/components/TopPageComponent/TopPageComponent';
 
 import { TopPageModel } from '@/interfaces/page.interface';
-import { MenuItem } from '@/interfaces/menu.interface';
+import { ProductModel } from '@/interfaces/product.interface';
+// import { MenuItem } from '@/interfaces/menu.interface';
 
 // import styles from './page.module.css';
 
@@ -31,7 +33,7 @@ export async function generateStaticParams() {
 
 export default async function PageCourses({ params }: PageProps) {
     const page: TopPageModel | null = await getPage((await params).alias);
-    const products: MenuItem[] = await getMenu(0);
+    const products = await getProduct() as ProductModel[];
 
     if (!page) {
         notFound();
