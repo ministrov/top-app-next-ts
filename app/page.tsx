@@ -1,5 +1,6 @@
 import { Icon } from './assets/Icon';
 import { Button } from './components/Button/Button';
+import { Input } from './components/Input/Input';
 
 export default async function Home() {
   return (
@@ -12,6 +13,9 @@ export default async function Home() {
 
       <Button arrow='down' appearence={'primary'}>{'fdfdfdf'}</Button>
       <Button arrow='right' appearence={'ghost'}>{'fdfdfdf'}</Button>
+
+
+      <Input className='input' placeholder={'Name'} />
     </div>
   );
 }

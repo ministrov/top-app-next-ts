@@ -4,6 +4,6 @@ import styles from './Input.module.css';
 
 export const Input = ({ className, ...props }: InputProps) => {
     return (
-        <input type="text" className={cn(className, styles.Input)} {...props} />
+        <input {...props} type="text" className={cn(className, styles.input)} />
     )
 }
