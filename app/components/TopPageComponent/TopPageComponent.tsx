@@ -17,7 +17,7 @@ export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
                 <Htag tag='h1'>{page.title}</Htag>
                 {products && <Tag color='grey' size='medium'>{products.length}</Tag>}
 
-                <Sorting sort={SortEnum.Rating} />
+                <Sorting sort={SortEnum.Rating} setSort={() => console.log('sfsdf')} />
             </div>
 
             <div>

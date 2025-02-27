@@ -5,14 +5,11 @@ import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './Sorting.module.css';
 
-export const Sorting = ({ sort, className, ...props }: SortingProps) => {
-    if (sort) {
-        // setSort(sort);
-    }
+export const Sorting = ({ sort, setSort, className, ...props }: SortingProps) => {
     return (
         <div className={cn(styles.sorting, className)} {...props}>
             <span
-                // onClick={() => setSort(SortEnum.Rating)}
+                onClick={() => setSort(SortEnum.Rating)}
                 className={cn({
                     [styles.active]: sort === SortEnum.Rating
                 })}
@@ -23,7 +20,7 @@ export const Sorting = ({ sort, className, ...props }: SortingProps) => {
             </span>
 
             <span
-                // onClick={() => setSort(SortEnum.Price)}
+                onClick={() => setSort(SortEnum.Price)}
                 className={cn({
                     [styles.active]: sort === SortEnum.Price
                 })}

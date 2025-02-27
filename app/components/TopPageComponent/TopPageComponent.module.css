@@ -4,11 +4,7 @@
     align-items: baseline;
     justify-items: left;
     gap: 20px;
-    background-color: purple;
-}
-
-.hhWrapper {
-    background-color: plum;
+    margin-bottom: 23px;
 }
 
 .hhContent {
