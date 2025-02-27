@@ -32,9 +32,9 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
     const buildFirstLevel = () => {
         return (
-            <>
+            <ul className={styles.firstLevelList}>
                 {firstLevelMenu.map((m) => (
-                    <div key={m.id}>
+                    <li key={m.id}>
                         <Link href={`/${m.route}`}>
                             <div className={cn(styles.firstLevel, {
                                 [styles.firstLevelActive]: m.id === firstCategory
@@ -44,9 +44,9 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                             </div>
                         </Link>
                         {m.id === firstCategory && buildSecondLevel(m)}
-                    </div>
+                    </li>
                 ))}
-            </>
+            </ul>
         );
     };
 
@@ -60,7 +60,12 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
                     return (
                         <div key={category._id.secondCategory}>
-                            <div className={styles.secondLevel} onClick={() => openSecondLevelMenu(category._id.secondCategory)}>{category._id.secondCategory}</div>
+                            <div
+                                className={styles.secondLevel}
+                                onClick={() => openSecondLevelMenu(category._id.secondCategory)}
+                            >
+                                {category._id.secondCategory}
+                            </div>
                             <div className={cn(styles.secondLevelBlock, {
                                 [styles.secondLevelBlockOpened]: category.isOpened
                             })}>
@@ -77,7 +82,7 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
         return (
             pages.map((page) => (
                 <Link
-                    key={page.id}
+                    key={page._id}
                     href={`/${route}/${page.alias}`}
                     className={cn(styles.thirdLevel, {
                         [styles.thirdLevelActive]: `/${route}/${page.alias}` === pathname

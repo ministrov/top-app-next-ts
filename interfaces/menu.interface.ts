@@ -4,7 +4,7 @@ import { TopLevelCategory } from './page.interface';
 export interface PageItem {
     alias: string;
     title: string;
-    id: string;
+    _id: string;
     category: string;
 }
 
