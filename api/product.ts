@@ -12,7 +12,7 @@ export const getProduct = async (page: TopPageModel) => {
             headers: new Headers({ 'content-type': 'application/json' })
         });
 
-        console.log(response);
+        // console.log(response);
 
         return await response.json();
     } catch (e) {

@@ -11,7 +11,7 @@ import { TopPageComponentProps } from './TopPageComponent.props';
 import styles from './TopPageComponent.module.css';
 
 export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
-    console.log(products);
+    // console.log(products);
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
