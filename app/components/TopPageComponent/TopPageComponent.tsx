@@ -11,18 +11,17 @@ import { TopPageComponentProps } from './TopPageComponent.props';
 import styles from './TopPageComponent.module.css';
 
 export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
-    // console.log(products);
+    console.log(products);
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
                 <Htag tag='h1'>{page.title}</Htag>
-                {products && <Tag color='grey' size='medium'>{products.length}</Tag>}
+                {products && <Tag color='grey' size='medium'>{products.length ?? 10}</Tag>}
 
                 <Sorting sort={SortEnum.Rating} setSort={() => console.log('sfsdf')} />
             </div>
 
-            <div>
-                {'Course'}
+            <div className={styles.productsList}>
                 {products && products.map(p => (<div key={p._id}>{p.title}</div>))}
             </div>
 

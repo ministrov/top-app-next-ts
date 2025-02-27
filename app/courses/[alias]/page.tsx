@@ -32,8 +32,8 @@ export async function generateStaticParams() {
 }
 
 export default async function PageCourses({ params }: PageProps) {
-    const page: TopPageModel | null = await getPage((await params).alias);
-    const products = await getProduct() as ProductModel[];
+    const page = await getPage((await params).alias) as TopPageModel;
+    const products = await getProduct(page) as ProductModel[];
 
     if (!page) {
         notFound();
