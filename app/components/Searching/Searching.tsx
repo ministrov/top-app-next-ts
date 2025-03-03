@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { KeyboardEvent, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { SearchingProps } from './Searching.props';
 import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
@@ -12,10 +12,20 @@ import styles from './Searching.module.css';
 const Searching = ({ className, ...props }: SearchingProps) => {
     const [search, setSearch] = useState<string>('');
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const params = new URLSearchParams(searchParams.toString());
 
     const goToSearch = () => {
+        params.set('search', search)
+        router.push(`/search?${params.toString()}`)
         console.log(router);
     };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            goToSearch();
+        }
+    }
 
     return (
         <div className={cn(className, styles.search)} {...props}>
@@ -30,6 +40,7 @@ const Searching = ({ className, ...props }: SearchingProps) => {
                 className={styles.button}
                 appearence={'primary'}
                 onClick={goToSearch}
+                onKeyDown={handleKeyDown}
             >
                 {/* <Icon.SearchIcon /> */}
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
