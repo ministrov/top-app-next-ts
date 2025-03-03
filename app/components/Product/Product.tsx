@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-// import Image from 'next/image';
 import { Card } from '../Card/Card';
 import { ProductProps } from './Product.props';
 // import cn from 'classnames';
@@ -7,6 +6,7 @@ import styles from './Product.module.css';
 import Rating from '../Rating/Rating';
 import Tag from '../Tag/Tag';
 import { Button } from '../Button/Button';
+import { transformPrice } from '@/helpers';
 
 export const Product = ({ product }: ProductProps) => {
     return (
@@ -19,8 +19,12 @@ export const Product = ({ product }: ProductProps) => {
                 )}
             </div>
             <div className={styles.title}>{product.title}</div>
-            <div className={styles.price}>{product.price}</div>
-            <div className={styles.credit}>{product.credit}</div>
+            <div className={styles.price}>
+                {transformPrice(product.price)}
+                {product.oldPrice && <Tag className={styles.oldPrice} color='green'>{transformPrice(product.price - product.oldPrice)}</Tag>}
+            </div>
+            <div className={styles.credit}>{transformPrice(product.credit)}/<span className={styles.month}>мес</span>
+            </div>
             <div className={styles.rating}>
                 <Rating rating={product.reviewAvg ?? product.initialRating} />
             </div>
