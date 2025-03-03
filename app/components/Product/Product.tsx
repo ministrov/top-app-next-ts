@@ -10,7 +10,7 @@ import Tag from '../Tag/Tag';
 export const Product = ({ product, className }: ProductProps) => {
     console.log(className);
     return (
-        <Card classNames={''}>
+        <Card classNames={styles.product}>
             <div className={styles.logo}>
                 {product.image ? (
                     <img src={product.image} width={70} height={70} alt={`Logo picture ${product.title}`} />
