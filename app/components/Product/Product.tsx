@@ -6,9 +6,9 @@ import { ProductProps } from './Product.props';
 import styles from './Product.module.css';
 import Rating from '../Rating/Rating';
 import Tag from '../Tag/Tag';
+import { Button } from '../Button/Button';
 
-export const Product = ({ product, className }: ProductProps) => {
-    console.log(className);
+export const Product = ({ product }: ProductProps) => {
     return (
         <Card classNames={styles.product}>
             <div className={styles.logo}>
@@ -30,6 +30,24 @@ export const Product = ({ product, className }: ProductProps) => {
             <div className={styles.priceTitle}>цена</div>
             <div className={styles.creditTitle}>в кредит</div>
             <div className={styles.rateTitle}>{product.reviewCount} отзывов</div>
+            <div className={styles.hr}><hr /></div>
+            <div className={styles.description}>{product.description}</div>
+            <div className={styles.features}>features</div>
+            <div className={styles.advWrapper}>
+                <div className={styles.advantages}>
+                    <div>Преимущества</div>
+                    <div>{product.advantages}</div>
+                </div>
+                <div className={styles.disadvantages}>
+                    <div>Недостатки</div>
+                    <div>{product.advantages}</div>
+                </div>
+            </div>
+            <div className={styles.hr}><hr /></div>
+            <div className={styles.actions}>
+                <Button appearence='primary'>Узнать подробнее</Button>
+                <Button appearence='ghost' arrow={'right'}>Читать отзывы</Button>
+            </div>
         </Card>
     )
 }

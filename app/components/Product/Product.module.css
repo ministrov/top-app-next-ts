@@ -1,7 +1,9 @@
 .product {
     display: grid;
     grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratestart] auto [end];
-    background-color: turquoise;
+    margin-bottom: 30px;
+    padding: 30px;
+    /* background-color: turquoise; */
 }
 
 .logo {
@@ -23,4 +25,22 @@
 
 .rating, .rateTitle {
     grid-column: ratestart / end;
+}
+
+.hr, .description, .actions {
+    grid-column: start / end;
+}
+
+.features {
+    grid-column: start / middle;
+}
+
+.advWrapper {
+    grid-column: middle / end;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 148px 148px;
+    gap: 20px;
 }
