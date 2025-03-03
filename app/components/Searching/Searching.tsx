@@ -18,7 +18,7 @@ const Searching = ({ className, ...props }: SearchingProps) => {
     const goToSearch = () => {
         params.set('search', search)
         router.push(`/search?${params.toString()}`)
-        console.log(router);
+        // console.log(router);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
