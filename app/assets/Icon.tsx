@@ -8,6 +8,7 @@ import RateIcon from './icons/rate.svg';
 import RateActiveIcon from './icons/rate-active.svg';
 import CheckIcon from './icons/check.svg';
 import SortingIcon from './icons/sorting.svg';
+import SearchIcon from './icons/search.svg';
 
 
 export const Icon = {
@@ -20,7 +21,8 @@ export const Icon = {
     RateIcon,
     RateActiveIcon,
     CheckIcon,
-    SortingIcon
+    SortingIcon,
+    SearchIcon
 };
 
 export type IconType = keyof typeof Icon;
