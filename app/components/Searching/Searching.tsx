@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { SearchingProps } from './Searching.props';
 import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
@@ -10,10 +11,11 @@ import styles from './Searching.module.css';
 
 const Searching = ({ className, ...props }: SearchingProps) => {
     const [search, setSearch] = useState<string>('');
+    const router = useRouter();
 
-    useEffect(() => {
-        console.log(search);
-    }, [search]);
+    const goToSearch = () => {
+        console.log(router);
+    };
 
     return (
         <div className={cn(className, styles.search)} {...props}>
@@ -25,9 +27,9 @@ const Searching = ({ className, ...props }: SearchingProps) => {
             />
 
             <Button
-                appearence={'primary'}
                 className={styles.button}
-                onClick={() => console.log('click')}
+                appearence={'primary'}
+                onClick={goToSearch}
             >
                 {/* <Icon.SearchIcon /> */}
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
