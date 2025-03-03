@@ -16,7 +16,7 @@ export const Sidebar = async ({ className, ...props }: SidebarProps) => {
     return (
         <aside className={cn(className, styles.sidebar)} {...props}>
             <Icon.LogoIcon className={styles.logo} />
-            <Searching />
+            <Searching className='search' />
             <Menu categories={menu} />
         </aside>
     )
