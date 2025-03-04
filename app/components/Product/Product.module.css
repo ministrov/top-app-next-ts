@@ -11,6 +11,13 @@
     height: 70px;
 }
 
+.logoSkeleton {
+    width: 70px;
+    height: 70px;
+    background-color: var(--green);
+    border-radius: 5px;
+}
+
 .title, .tags {
     grid-column: titlestart / middle;
 }
@@ -121,4 +128,30 @@
 .disadvantages {
     padding-left: 15px;
     border-left: 2px solid var(--red);
+}
+
+.characteristics {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 10px;
+    padding-right: 60px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 32px; 
+    color: var(--black);
+}
+
+.characteristicName {
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.characteristicDot {
+    margin-bottom: 5px;
+    border-bottom: 1px dashed var(--gray-light);
+}
+
+.characteristicValue {
+    font-weight: 500;
 }

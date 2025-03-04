@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { Card } from '../Card/Card';
 import { ProductProps } from './Product.props';
-// import cn from 'classnames';
-import styles from './Product.module.css';
 import Rating from '../Rating/Rating';
 import Tag from '../Tag/Tag';
 import { Button } from '../Button/Button';
-import { declineNumber, transformPrice } from '@/helpers';
 import { Divider } from '../Divider/Divider';
+import { declineNumber, transformPrice } from '@/helpers';
+// import cn from 'classnames';
+import styles from './Product.module.css';
 
 export const Product = ({ product }: ProductProps) => {
     return (
@@ -16,7 +16,7 @@ export const Product = ({ product }: ProductProps) => {
                 {product.image ? (
                     <img src={product.image} width={70} height={70} alt={`Logo picture ${product.title}`} />
                 ) : (
-                    <div>Logo</div>
+                    <div className={styles.logoSkeleton}>Logo</div>
                 )}
             </div>
             <div className={styles.title}>{product.title}</div>
@@ -37,7 +37,15 @@ export const Product = ({ product }: ProductProps) => {
             <div className={styles.rateTitle}>{product.reviewCount} {declineNumber(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
             <Divider className={styles.hr} />
             <div className={styles.description}>{product.description}</div>
-            <div className={styles.features}>features</div>
+            <div className={styles.features}>
+                {product.characteristics.map(c => (
+                    <div className={styles.characteristics} key={c.name}>
+                        <span className={styles.characteristicName}>{c.name}</span>
+                        <span className={styles.characteristicDot}></span>
+                        <span className={styles.characteristicValue}>{c.value}</span>
+                    </div>
+                ))}
+            </div>
             <div className={styles.advWrapper}>
                 <div className={styles.advantages}>
                     <div className={styles.advTitle}>Преимущества</div>
