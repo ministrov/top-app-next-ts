@@ -1,6 +1,7 @@
 :root {
   --font-family: 'Noto Sans KR', sans-serif;
   --initial-black: #000000;
+  --body: #f5f6f8;
   --black: #3B434E;
   --gray-light: #EBEBEB;
   --gray-second: #787D85;
@@ -23,6 +24,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--font-family);
+  background-color: var(--body);
 }
 
 * {
@@ -49,12 +51,12 @@ a {
 .header {
   grid-area: header;
   display: none;
-  background-color: tomato;
+  /* background-color: tomato; */
 }
 
 .sidebar {
   grid-area: sidebar;
-  background-color: palegreen;
+  /* background-color: palegreen; */
 }
 
 .body {
