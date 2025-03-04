@@ -6,7 +6,7 @@ import Tag from '../Tag/Tag';
 import { Button } from '../Button/Button';
 import { Divider } from '../Divider/Divider';
 import { declineNumber, transformPrice } from '@/helpers';
-// import cn from 'classnames';
+import cn from 'classnames';
 import styles from './Product.module.css';
 
 export const Product = ({ product }: ProductProps) => {
@@ -14,7 +14,6 @@ export const Product = ({ product }: ProductProps) => {
         <Card classNames={styles.product}>
             <div className={styles.logo}>
                 {product.image ? (
-                    // <img src={product.image} width={70} height={70} alt={`Logo picture ${product.title}`} />
                     <Image
                         src={product.image}
                         width={70}
@@ -62,7 +61,7 @@ export const Product = ({ product }: ProductProps) => {
                     <div>{product.advantages || 'Некоторое темы раскрыты не до конца'}</div>
                 </div>
             </div>
-            <Divider className={styles.hr} />
+            <Divider className={cn(styles.hr, styles.hr2)} />
             <div className={styles.actions}>
                 <Button appearence='primary'>Узнать подробнее</Button>
                 <Button appearence='ghost' arrow={'right'}>Читать отзывы</Button>
