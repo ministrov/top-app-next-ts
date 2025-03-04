@@ -24,6 +24,7 @@
 
 .price, .priceTitle {
     grid-column: pricestart / priceend;
+    white-space: nowrap;
 }
 
 .credit, .creditTitle {
@@ -32,6 +33,7 @@
 
 .rating, .rateTitle {
     grid-column: ratestart / end;
+    white-space: nowrap;
 }
 
 .hr, .description, .actions {
@@ -166,7 +168,7 @@
 			"priceTitle priceTitle priceTitle . creditTitle . rateTitle"
 			"hr hr hr hr hr hr hr"
 			"description description description description description description description"
-			"feature feature feature feature feature feature feature"
+			"features features features features features features features"
 			"advWrapper advWrapper advWrapper advWrapper advWrapper advWrapper advWrapper"
 			"hr2 hr2 hr2 hr2 hr2 hr2 hr2"
 			"actions actions actions actions actions actions actions";
@@ -174,6 +176,7 @@
 
     .logo {
         grid-area: logo;
+        margin-bottom: 20px;
     }
 
     .title {
@@ -182,6 +185,7 @@
 
     .tags {
         grid-area: tags;
+        margin-bottom: 20px;
     }
 
     .price {
@@ -216,12 +220,13 @@
         grid-area: description;
     }
 
-    .features {
-        grid-area: features;
-    }
-
     .advWrapper {
         grid-area: advWrapper;
+    }
+
+    .features {
+        grid-area: features;
+        margin-bottom: 20px;
     }
 
     .hr2 {
@@ -230,5 +235,57 @@
 
     .actions {
         grid-area: actions;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .product {
+        grid-template-columns: 70px 30px 1fr;
+        grid-template-areas:
+			"logo . title"
+			"logo . tags"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"rateTitle rateTitle rating"
+			"hr hr hr"
+			"description description description"
+			"features features features"
+			"advWrapper advWrapper advWrapper"
+			"hr2 hr2 hr2"
+			"actions actions actions";
+    }
+
+    .price {
+        margin-bottom: 10px;
+    }
+
+    .credit {
+        margin-bottom: 10px;
+    }
+
+    .rating {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .product {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+			"logo"
+			"title"
+			"tags"
+			"price"
+			"priceTitle"
+			"credit"
+			"creditTitle"
+			"rating"
+			"rateTitle"
+			"hr"
+			"description"
+			"features"
+			"advWrapper"
+			"hr2"
+			"actions";
     }
 }
