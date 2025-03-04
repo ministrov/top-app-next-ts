@@ -57,6 +57,17 @@
     color: var(--black);
 }
 
+.category {
+    margin-top: 10px;
+}
+
+.description {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--black);
+}
+
 .price, .credit {
     align-self: flex-end;
     font-size: 20px;
@@ -84,4 +95,30 @@
     font-weight: 300;
     font-size: 14px;
     color: var(--black);
+}
+
+.advTitle {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    color: var(--black);
+}
+
+.advWrapper {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: var(--black);
+}
+
+.advantages {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 2px solid var(--green);
+}
+
+.disadvantages {
+    padding-left: 15px;
+    border-left: 2px solid var(--red);
 }
