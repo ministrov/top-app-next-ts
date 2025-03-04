@@ -35,7 +35,20 @@ export const transformPrice = (price: number): string => {
         currency: 'RUB',
         minimumFractionDigits: 0
     }).format(price);
-}
+};
+
+export const declineNumber = (number: number, titles: [string, string, string]): string => {
+    const remainer = number % 10;
+    const exeptions = [11, 12, 13, 14];
+
+    if (remainer === 1 && !exeptions.includes(number)) {
+        return titles[0];
+    } else if (remainer > 1 && remainer < 5 && !exeptions.includes(number)) {
+        return titles[1];
+    } else {
+        return titles[2];
+    }
+};
 
 
 // const x = { a: 1, b: 2, c: 3, d: 4 };

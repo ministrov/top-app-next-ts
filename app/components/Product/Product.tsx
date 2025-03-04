@@ -6,7 +6,7 @@ import styles from './Product.module.css';
 import Rating from '../Rating/Rating';
 import Tag from '../Tag/Tag';
 import { Button } from '../Button/Button';
-import { transformPrice } from '@/helpers';
+import { declineNumber, transformPrice } from '@/helpers';
 import { Divider } from '../Divider/Divider';
 
 export const Product = ({ product }: ProductProps) => {
@@ -34,7 +34,7 @@ export const Product = ({ product }: ProductProps) => {
             </div>
             <div className={styles.priceTitle}>цена</div>
             <div className={styles.creditTitle}>в кредит</div>
-            <div className={styles.rateTitle}>{product.reviewCount} отзывов</div>
+            <div className={styles.rateTitle}>{product.reviewCount} {declineNumber(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
             <Divider className={styles.hr} />
             <div className={styles.description}>{product.description}</div>
             <div className={styles.features}>features</div>
