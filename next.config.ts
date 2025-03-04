@@ -2,6 +2,15 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        // hostname: "courses-top.ru",
+        hostname: "old-images.hb.ru-msk.vkcs.cloud",
+      },
+    ],
+  },
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

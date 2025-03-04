@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
 import { Card } from '../Card/Card';
 import { ProductProps } from './Product.props';
 import Rating from '../Rating/Rating';
@@ -14,7 +14,13 @@ export const Product = ({ product }: ProductProps) => {
         <Card classNames={styles.product}>
             <div className={styles.logo}>
                 {product.image ? (
-                    <img src={product.image} width={70} height={70} alt={`Logo picture ${product.title}`} />
+                    // <img src={product.image} width={70} height={70} alt={`Logo picture ${product.title}`} />
+                    <Image
+                        src={product.image}
+                        width={70}
+                        height={70}
+                        alt={`Logo picture ${product.title}`}
+                    />
                 ) : (
                     <div className={styles.logoSkeleton}>Logo</div>
                 )}
