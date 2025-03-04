@@ -51,12 +51,10 @@ a {
 .header {
   grid-area: header;
   display: none;
-  /* background-color: tomato; */
 }
 
 .sidebar {
   grid-area: sidebar;
-  /* background-color: palegreen; */
 }
 
 .body {

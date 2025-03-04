@@ -8,10 +8,6 @@ import { TopPageComponent } from '@/app/components/TopPageComponent/TopPageCompo
 
 import { TopPageModel } from '@/interfaces/page.interface';
 import { ProductModel } from '@/interfaces/product.interface';
-// import { MenuItem } from '@/interfaces/menu.interface';
-
-// import styles from './page.module.css';
-
 
 type PageProps = {
     params: Promise<{ alias: string }>

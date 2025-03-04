@@ -7,10 +7,6 @@
     margin-bottom: 23px;
 }
 
-/* .productsList {
-    background-color: powderblue;
-} */
-
 .hhContent {
     display: grid;
     grid-template-columns: auto 1fr;
