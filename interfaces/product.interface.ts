@@ -1,15 +1,15 @@
 export interface ProductCharacteristic {
-    value: string;
-    name: string;
+  value: string;
+  name: string;
 }
 
 export interface ReviewModel {
-    _id: string;
-    name: string;
-    title: string;
-    description: string;
-    rating: number;
-    createAt: Date;
+  _id: string;
+  name: string;
+  title: string;
+  description: string;
+  rating: number;
+  createAt: Date;
 }
 
 export interface ProductModel {
