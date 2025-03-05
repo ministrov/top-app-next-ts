@@ -30,14 +30,52 @@
 
 .rating {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr;
     gap: 20px;
 }
 
 .success {
-    background-color: plum;
+    position: relative;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--green-light);
+    border-radius: 5px;
 }
 
-/* .successTitle {
+.closeBox {
+    width: 15px;
+    height: 15px;
+}
 
-} */
+.successTitle {
+    font-weight: 700;
+}  
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1100px) {
+    .reviewForm {
+        grid-template-columns: [start] 1fr 1fr [end];
+    }
+
+    .title {
+        justify-self: normal;
+    }
+
+    .rating {
+        grid-column: start / end;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .reviewForm {
+        grid-template-columns: [start] 1fr [end];
+    }
+}
