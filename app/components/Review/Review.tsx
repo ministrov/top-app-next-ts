@@ -13,7 +13,7 @@ export const Review = ({ review, className, ...props }: ReviewProps) => {
             </div>
 
             <div className={styles.user}>
-                <span className={styles.name}>{name}:</span>
+                <span className={styles.name}>{name}:</span>&nbsp;&nbsp;
                 <span>{title}</span>
             </div>
 
