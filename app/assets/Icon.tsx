@@ -10,6 +10,7 @@ import CheckIcon from './icons/check.svg';
 import SortingIcon from './icons/sorting.svg';
 import SearchIcon from './icons/search.svg';
 import UserIcon from './icons/user.svg';
+import CloseIcon from './icons/close.svg';
 
 
 export const Icon = {
@@ -24,7 +25,8 @@ export const Icon = {
     CheckIcon,
     SortingIcon,
     SearchIcon,
-    UserIcon
+    UserIcon,
+    CloseIcon
 };
 
 export type IconType = keyof typeof Icon;

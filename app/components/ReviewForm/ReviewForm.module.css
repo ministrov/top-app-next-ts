@@ -1,6 +1,7 @@
 .reviewForm {
     display: grid;
     grid-template-columns: [start] auto 1fr auto [end];
+    align-items: center;
     gap: 20px 30px;
     font-size: 14px;
     line-height: 24px;
@@ -19,7 +20,12 @@
 .submit {
     display: grid;
     grid-template-columns: 148px auto;
+    align-items: center;
     gap: 15px;
+}
+
+.checking {
+    margin: 0;
 }
 
 .rating {
@@ -28,6 +34,10 @@
     gap: 20px;
 }
 
-.btn {
-    max-width: 148px;
+.success {
+    background-color: plum;
 }
+
+/* .successTitle {
+
+} */
