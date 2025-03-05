@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { ReviewFormProps } from './ReviewForm.props';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
@@ -11,7 +11,6 @@ import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './ReviewForm.module.css';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) => {
     const { register, control, handleSubmit } = useForm<IReviewForm>();
 
@@ -19,17 +18,25 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
 
     console.dir(register, control);
 
+    console.log(productId);
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={cn(styles.reviewForm, className)} {...props}>
-                <Input placeholder='Имя' />
-                <Input className={styles.title} placeholder='Заголовок отзыва' />
+                <Input {...register('name')} placeholder='Имя' />
+                <Input {...register('title')} className={styles.title} placeholder='Заголовок отзыва' />
                 <div className={styles.rating}>
                     <span>Оценка:</span>
 
-                    <Rating rating={4} />
+                    <Controller
+                        control={control}
+                        name='rating'
+                        render={({ field }) => (
+                            <Rating isEditable rating={field.value} setRating={field.onChange} />
+                        )}
+                    />
                 </div>
-                <Textarea className={styles.description} placeholder='Текст отзыва' />
+                <Textarea {...register('description')} className={styles.description} placeholder='Текст отзыва' />
                 <div className={styles.submit}>
                     <Button className={styles.btn} appearence={'primary'}>
                         Отправить
