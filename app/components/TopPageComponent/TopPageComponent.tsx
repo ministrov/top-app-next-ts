@@ -11,6 +11,7 @@ import { TopPageComponentProps } from './TopPageComponent.props';
 import styles from './TopPageComponent.module.css';
 import { useReducer } from 'react';
 import { sortReducer } from './sort.reducer';
+import { Product } from '../Product/Product';
 
 export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
     const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
@@ -29,7 +30,7 @@ export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
             </div>
 
             <div className={styles.productsList}>
-                {sortedProducts && sortedProducts.map(p => (<div key={p._id}>{p.title}</div>))}
+                {sortedProducts && sortedProducts.map(p => (<Product key={p._id} product={p} />))}
             </div>
 
             <div className={styles.hhWrapper}>
