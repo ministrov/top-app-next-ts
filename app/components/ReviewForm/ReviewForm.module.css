@@ -1,3 +1,33 @@
 .reviewForm {
+    display: grid;
+    grid-template-columns: [start] auto 1fr auto [end];
+    gap: 20px 30px;
+    font-size: 14px;
+    line-height: 24px;
     background-color: tomato;
+}
+
+.title {
+    justify-self: left;
+}
+
+.description,
+.submit {
+    grid-column: start / end;
+}
+
+.submit {
+    display: grid;
+    grid-template-columns: 148px auto;
+    gap: 15px;
+}
+
+.rating {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+}
+
+.btn {
+    max-width: 148px;
 }

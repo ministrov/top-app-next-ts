@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import Image from 'next/image';
 import { Card } from '../Card/Card';
 import { ProductProps } from './Product.props';
@@ -9,15 +9,13 @@ import Rating from '../Rating/Rating';
 import Tag from '../Tag/Tag';
 import { Button } from '../Button/Button';
 import { Divider } from '../Divider/Divider';
+import { ReviewForm } from '../ReviewForm/ReviewForm';
 import { declineNumber, transformPrice } from '@/helpers';
 import cn from 'classnames';
 import styles from './Product.module.css';
-import { ReviewForm } from '../ReviewForm/ReviewForm';
 
 export const Product = ({ product }: ProductProps) => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
-
-    console.log(setIsReviewOpened);
 
     return (
         <>
@@ -62,14 +60,14 @@ export const Product = ({ product }: ProductProps) => {
                     ))}
                 </div>
                 <div className={styles.advWrapper}>
-                    <div className={styles.advantages}>
+                    {product.advantages && <div className={styles.advantages}>
                         <div className={styles.advTitle}>Преимущества</div>
-                        <div>{product.advantages || 'Хорошо структурирован курс, быстрый отклик преподователей, качество подачи материала'}</div>
-                    </div>
-                    <div className={styles.disadvantages}>
+                        <div>{product.advantages}</div>
+                    </div>}
+                    {product.disadvantages && <div className={styles.disadvantages}>
                         <div className={styles.advTitle}>Недостатки</div>
-                        <div>{product.advantages || 'Некоторое темы раскрыты не до конца'}</div>
-                    </div>
+                        <div>{product.disadvantages}</div>
+                    </div>}
                 </div>
                 <Divider className={cn(styles.hr, styles.hr2)} />
                 <div className={styles.actions}>
@@ -93,14 +91,14 @@ export const Product = ({ product }: ProductProps) => {
                 [styles.closed]: !isReviewOpened
             })}>
                 {product.reviews.map(r => (
-                    <>
+                    <Fragment key={r._id}>
                         <Review
                             key={r._id}
                             review={r}
                         />
 
                         <Divider className={''} />
-                    </>
+                    </Fragment>
                 ))}
 
                 <ReviewForm productId={product._id} />
