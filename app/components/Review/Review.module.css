@@ -1,3 +1,8 @@
 .review {
     background-color: tomato;
 }
+
+.iconBox {
+    width: 30px;
+    height: 30px;
+}

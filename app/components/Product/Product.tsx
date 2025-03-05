@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Card } from '../Card/Card';
 import { ProductProps } from './Product.props';
+import { Review } from '../Review/Review';
 import Rating from '../Rating/Rating';
 import Tag from '../Tag/Tag';
 import { Button } from '../Button/Button';
@@ -90,7 +91,12 @@ export const Product = ({ product }: ProductProps) => {
                 [styles.opened]: isReviewOpened,
                 [styles.closed]: !isReviewOpened
             })}>
-                {'Revews'}
+                {product.reviews.map(r => (
+                    <Review
+                        key={r._id}
+                        review={r}
+                    />
+                ))}
             </Card>
         </>
     )
