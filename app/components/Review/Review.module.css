@@ -40,14 +40,6 @@
 }
 
 @media screen and (max-width: 360px) {
-    /* .review {
-        grid-template-columns: [start] 30px [titlestart] auto [dateend] 1fr [end];
-    }
-
-    .user {
-        grid-column: titlestart / end;
-    } */
-
     .date {
         grid-column: start / end;
     }

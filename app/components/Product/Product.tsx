@@ -12,6 +12,7 @@ import { Divider } from '../Divider/Divider';
 import { declineNumber, transformPrice } from '@/helpers';
 import cn from 'classnames';
 import styles from './Product.module.css';
+import { ReviewForm } from '../ReviewForm/ReviewForm';
 
 export const Product = ({ product }: ProductProps) => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
@@ -92,11 +93,17 @@ export const Product = ({ product }: ProductProps) => {
                 [styles.closed]: !isReviewOpened
             })}>
                 {product.reviews.map(r => (
-                    <Review
-                        key={r._id}
-                        review={r}
-                    />
+                    <>
+                        <Review
+                            key={r._id}
+                            review={r}
+                        />
+
+                        <Divider className={''} />
+                    </>
                 ))}
+
+                <ReviewForm productId={product._id} />
             </Card>
         </>
     )
