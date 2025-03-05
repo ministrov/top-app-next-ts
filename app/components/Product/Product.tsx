@@ -93,7 +93,6 @@ export const Product = ({ product }: ProductProps) => {
                 {product.reviews.map(r => (
                     <Fragment key={r._id}>
                         <Review
-                            key={r._id}
                             review={r}
                         />
 
