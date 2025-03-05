@@ -71,12 +71,22 @@ export const Product = ({ product }: ProductProps) => {
                 </div>
                 <Divider className={cn(styles.hr, styles.hr2)} />
                 <div className={styles.actions}>
-                    <Button appearence='primary'>Узнать подробнее</Button>
-                    <Button appearence='ghost' arrow={'right'}>Читать отзывы</Button>
+                    <Button
+                        appearence='primary'
+                    >
+                        Узнать подробнее
+                    </Button>
+                    <Button
+                        appearence='ghost'
+                        arrow={isReviewOpened ? 'down' : 'right'}
+                        onClick={() => setIsReviewOpened(!isReviewOpened)}
+                    >
+                        Читать отзывы
+                    </Button>
                 </div>
             </Card>
 
-            <Card color='blue' classNames={cn(styles.review, {
+            <Card color='blue' classNames={cn(styles.reviews, {
                 [styles.opened]: isReviewOpened,
                 [styles.closed]: !isReviewOpened
             })}>
