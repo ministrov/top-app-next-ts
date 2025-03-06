@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import { useForm, Controller } from 'react-hook-form';
 import { ReviewFormProps } from './ReviewForm.props';
@@ -7,6 +7,7 @@ import { Input } from '../Input/Input';
 import { Textarea } from '../Textarea/Textarea';
 import Rating from '../Rating/Rating';
 import { IReviewForm } from './ReviewForm.interface';
+import { API } from '@/helpers/api';
 import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './ReviewForm.module.css';
@@ -14,10 +15,31 @@ import styles from './ReviewForm.module.css';
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) => {
     const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
 
-    const onSubmit = (data: IReviewForm) => { console.log(data) };
+    const onSubmit = async (formData: IReviewForm) => {
+        try {
+            const response = await fetch(API.review.createDemo, {
+                method: 'POST',
+                body: JSON.stringify({
+                    ...formData,
+                    productId
+                })
+            });
+
+            const data = await response.json();
+
+            console.log(data);
+            // const {} = data.then(res => res);
+
+            if (data.message) {
+
+            }
+        } catch (e) {
+            console.log(e);
+        }
+        // console.log(formData)
+    };
 
     console.log(productId);
-    console.log(errors);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
