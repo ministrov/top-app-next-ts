@@ -33,12 +33,19 @@
     gap: 20px;
 }
 
-.success {
+.panel {
     position: relative;
     margin-top: 20px;
     padding: 20px;
-    background-color: var(--green-light);
     border-radius: 5px;
+}
+
+.success {
+    background-color: var(--green-light);
+}
+
+.errorBox {
+    background-color: var(--red-light);
 }
 
 .closeBox {
@@ -57,6 +64,10 @@
     width: 15px;
     height: 15px;
     cursor: pointer;
+}
+
+.errorBox .close path {
+    stroke: var(--red-light);
 }
 
 @media screen and (max-width: 1100px) {
