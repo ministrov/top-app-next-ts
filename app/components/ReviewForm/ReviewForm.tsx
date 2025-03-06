@@ -16,7 +16,9 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
 
     const onSubmit = (data: IReviewForm) => { console.log(data) };
 
-    console.dir(register, control);
+    console.dir(register);
+
+    console.dir(control);
 
     console.log(productId);
 
@@ -32,7 +34,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
                         control={control}
                         name='rating'
                         render={({ field }) => (
-                            <Rating isEditable rating={field.value} setRating={field.onChange} />
+                            <Rating isEditable rating={field.value} ref={field.ref} setRating={field.onChange} />
                         )}
                     />
                 </div>

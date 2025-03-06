@@ -4,7 +4,7 @@ import { RatingProps } from './Rating.props';
 import cn from 'classnames';
 import styles from './Rating.module.css';
 
-const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps) => {
+const Rating = ({ isEditable = false, rating, setRating, ref, ...props }: RatingProps) => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps
     };
 
     return (
-        <div {...props}>
+        <div ref={ref} {...props}>
             {ratingArray.map((r, i) => (<Fragment key={i}>{r}</Fragment>))}
         </div>
     )
