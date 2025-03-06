@@ -44,7 +44,12 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
                         )}
                     />
                 </div>
-                <Textarea {...register('description')} className={styles.description} placeholder='Текст отзыва' />
+                <Textarea
+                    {...register('description', { required: { value: true, message: 'Заполните описание' } })}
+                    className={styles.description}
+                    placeholder='Текст отзыва'
+                    error={errors.description}
+                />
                 <div className={styles.submit}>
                     <Button className={styles.btn} appearence={'primary'}>
                         Отправить

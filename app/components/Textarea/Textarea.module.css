@@ -1,4 +1,9 @@
-.input {
+.textareaWrapper {
+    position: relative;
+}
+
+.textarea {
+    width: 100%;
     padding: 7px 15px;
     font-family: var(--font-family);
     font-size: 16px;
@@ -8,11 +13,23 @@
     outline-color: var(--primary);
     background-color: var(--white);
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+    resize: none;
 }
 
-.input::placeholder {
+.textarea::placeholder {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
     color: #a4a4a4;
+}
+
+.error {
+    border: 1px solid var(--red);
+}
+
+.errorMessage {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: var(--red);
 }

@@ -4,10 +4,10 @@ import styles from './Input.module.css';
 
 export const Input = ({ className, error, ref, ...props }: InputProps) => {
     return (
-        <div className={styles.inputWrapper}>
+        <div className={cn(styles.inputWrapper, className)}>
             <input
                 type="text"
-                className={cn(className, styles.input, {
+                className={cn(styles.input, {
                     [styles.error]: error
                 })}
                 ref={ref}
