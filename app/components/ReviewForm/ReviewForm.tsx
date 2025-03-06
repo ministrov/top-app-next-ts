@@ -12,20 +12,17 @@ import cn from 'classnames';
 import styles from './ReviewForm.module.css';
 
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) => {
-    const { register, control, handleSubmit } = useForm<IReviewForm>();
+    const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
 
     const onSubmit = (data: IReviewForm) => { console.log(data) };
 
-    console.dir(register);
-
-    console.dir(control);
-
     console.log(productId);
+    console.log(errors);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={cn(styles.reviewForm, className)} {...props}>
-                <Input {...register('name')} placeholder='Имя' />
+                <Input {...register('name', { required: { value: true, message: 'Заполните имя' } })} placeholder='Имя' />
                 <Input {...register('title')} className={styles.title} placeholder='Заголовок отзыва' />
                 <div className={styles.rating}>
                     <span>Оценка:</span>
