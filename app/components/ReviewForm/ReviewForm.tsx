@@ -6,40 +6,55 @@ import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import { Textarea } from '../Textarea/Textarea';
 import Rating from '../Rating/Rating';
-import { IReviewForm } from './ReviewForm.interface';
+import { IReviewForm, IReviewSentResponse } from './ReviewForm.interface';
 import { API } from '@/helpers/api';
 import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './ReviewForm.module.css';
+import axios from 'axios';
 
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) => {
     const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
 
+    // const onSubmit = async (formData: IReviewForm) => {
+    //     try {
+    //         const response = await fetch(API.review.createDemo, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                 formData: formData,
+    //                 productId: productId
+    //             })
+    //         });
+
+    //         if (!response.ok) {
+    //             throw new Error('Failed to submit form');
+    //         }
+
+    //         const data = await response.json();
+
+    //         console.log(data);
+    //         console.log(data.message);
+
+    //         // if (data.message) {
+
+    //         // }
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // };
+
     const onSubmit = async (formData: IReviewForm) => {
         try {
-            const response = await fetch(API.review.createDemo, {
-                method: 'POST',
-                body: JSON.stringify({
-                    ...formData,
-                    productId
-                })
-            });
-
-            const data = await response.json();
+            const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
 
             console.log(data);
-            // const {} = data.then(res => res);
-
-            if (data.message) {
-
-            }
         } catch (e) {
             console.log(e);
         }
-        // console.log(formData)
     };
-
-    console.log(productId);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
