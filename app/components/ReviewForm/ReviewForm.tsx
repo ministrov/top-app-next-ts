@@ -22,8 +22,17 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={cn(styles.reviewForm, className)} {...props}>
-                <Input {...register('name', { required: { value: true, message: 'Заполните имя' } })} placeholder='Имя' />
-                <Input {...register('title')} className={styles.title} placeholder='Заголовок отзыва' />
+                <Input
+                    {...register('name', { required: { value: true, message: 'Заполните имя' } })}
+                    placeholder='Имя'
+                    error={errors.name}
+                />
+                <Input
+                    {...register('title', { required: { value: true, message: 'Заполните заголовок отзыва' } })}
+                    className={styles.title}
+                    placeholder='Заголовок отзыва'
+                    error={errors.title}
+                />
                 <div className={styles.rating}>
                     <span>Оценка:</span>
 
