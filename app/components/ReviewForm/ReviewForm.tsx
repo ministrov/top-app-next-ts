@@ -16,41 +16,12 @@ import axios from 'axios';
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) => {
     const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
 
-    // const onSubmit = async (formData: IReviewForm) => {
-    //     try {
-    //         const response = await fetch(API.review.createDemo, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                 formData: formData,
-    //                 productId: productId
-    //             })
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error('Failed to submit form');
-    //         }
-
-    //         const data = await response.json();
-
-    //         console.log(data);
-    //         console.log(data.message);
-
-    //         // if (data.message) {
-
-    //         // }
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // };
-
     const onSubmit = async (formData: IReviewForm) => {
         try {
-            const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
+            // const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
+            const res = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
 
-            console.log(data);
+            console.log(res);
         } catch (e) {
             console.log(e);
         }

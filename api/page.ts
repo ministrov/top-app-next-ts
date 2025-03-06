@@ -8,5 +8,5 @@ export const getPage = async (alias: string): Promise<TopPageModel | null> => {
         return null;
     }
 
-    return res.json();
+    return await res.json();
 }  
