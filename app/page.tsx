@@ -1,7 +1,7 @@
 import { Icon } from './assets/Icon';
 import { Button } from './components/Button/Button';
-import { Input } from './components/Input/Input';
-import { Textarea } from './components/Textarea/Textarea';
+// import { Input } from './components/Input/Input';
+// import { Textarea } from './components/Textarea/Textarea';
 
 export default async function Home() {
   return (
@@ -16,9 +16,9 @@ export default async function Home() {
       <Button arrow='right' appearence={'ghost'}>{'fdfdfdf'}</Button>
 
 
-      <Input className='input' placeholder='Имя' />
+      {/* <Input className='input' placeholder='Имя' />
 
-      <Textarea className='input' placeholder='Текст отзыва' />
+      <Textarea className='input' placeholder='Текст отзыва' /> */}
     </div>
   );
 }
