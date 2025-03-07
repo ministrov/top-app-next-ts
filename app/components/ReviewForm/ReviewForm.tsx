@@ -19,13 +19,9 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [errorText, setErrorText] = useState<string | null>(null);
 
-    console.log(isSuccess);
-    console.log(setIsSuccess)
-
     const onSubmit = async (formData: IReviewForm) => {
         try {
             const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
-            // const res = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
             if (data.message) {
                 setIsSuccess(true);
                 reset();
