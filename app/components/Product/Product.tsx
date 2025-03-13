@@ -19,6 +19,11 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
     const reviewRef = useRef<HTMLDivElement>(null);
 
+    const variants = {
+        visible: { opacity: 1, height: 'auto' },
+        hidden: { opacity: 0, height: 0 }
+    };
+
     const scrollToReview = () => {
         setIsReviewOpened(true);
         reviewRef.current?.scrollIntoView({
@@ -100,22 +105,25 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                 </div>
             </Card>
 
-            <Card color='blue' classNames={cn(styles.reviews, {
-                [styles.opened]: isReviewOpened,
-                [styles.closed]: !isReviewOpened
-            })} ref={reviewRef}>
-                {product.reviews.map(r => (
-                    <Fragment key={r._id}>
-                        <Review
-                            review={r}
-                        />
+            <motion.div
+                initial={'hidden'}
+                variants={variants}
+                animate={isReviewOpened ? 'visible' : 'hidden'}
+            >
+                <Card color='blue' classNames={cn(styles.reviews)} ref={reviewRef}>
+                    {product.reviews.map(r => (
+                        <Fragment key={r._id}>
+                            <Review
+                                review={r}
+                            />
 
-                        <Divider className={''} />
-                    </Fragment>
-                ))}
+                            <Divider className={''} />
+                        </Fragment>
+                    ))}
 
-                <ReviewForm productId={product._id} />
-            </Card>
+                    <ReviewForm productId={product._id} />
+                </Card>
+            </motion.div>
         </div>
     )
 });
