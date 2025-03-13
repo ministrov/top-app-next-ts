@@ -3,6 +3,7 @@ import { Noto_Sans_KR } from "next/font/google";
 import { Header } from './layout/Header/Header';
 import { Sidebar } from './layout/Sidebar/Sidebar';
 import { Footer } from './layout/Footer/Footer';
+import { Up } from './components/Up/Up';
 import "./globals.css";
 
 const notoSansKR = Noto_Sans_KR({
@@ -31,6 +32,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer className={'footer'} />
+          <Up />
         </div>
       </body>
     </html>
