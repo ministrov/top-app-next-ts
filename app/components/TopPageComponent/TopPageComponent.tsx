@@ -16,13 +16,10 @@ import styles from './TopPageComponent.module.css';
 
 export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
     const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
-    // const y = useScrollY();
 
     const setSort = (sort: SortEnum) => {
         dispatchSort({ type: sort });
     };
-
-    // console.log(y);
 
     return (
         <div className={styles.wrapper}>

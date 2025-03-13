@@ -11,7 +11,7 @@ import SortingIcon from './icons/sorting.svg';
 import SearchIcon from './icons/search.svg';
 import UserIcon from './icons/user.svg';
 import CloseIcon from './icons/close.svg';
-import ArrowUpIcon from './icons/close.svg';
+import ArrowUpIcon from './icons/up.svg';
 import MenuIcon from './icons/menu.svg';
 import MenuClose from './icons/menuClose.svg';
 
