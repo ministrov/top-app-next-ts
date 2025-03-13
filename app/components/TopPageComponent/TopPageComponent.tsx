@@ -1,27 +1,32 @@
 'use client';
 
+import { useReducer } from 'react';
 import parse from 'html-react-parser';
+import { useScrollY } from '@/hooks/useScrollY';
 import Htag from '@/app/components/Htag/Htag';
 import { HhData } from '@/app/components/HhData/HhData';
 import Tag from '@/app/components/Tag/Tag';
 import { Sorting } from '@/app/components/Sorting/Sorting';
 import { Advantages } from '@/app/components/Advantages/Advantages';
 import { SortEnum } from '@/app/components/Sorting/Sorting.props';
-import { TopPageComponentProps } from './TopPageComponent.props';
-import styles from './TopPageComponent.module.css';
-import { useReducer } from 'react';
-import { sortReducer } from './sort.reducer';
 import { Product } from '../Product/Product';
+import { TopPageComponentProps } from './TopPageComponent.props';
+import { sortReducer } from './sort.reducer';
+import styles from './TopPageComponent.module.css';
 
 export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
     const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
+    const y = useScrollY();
 
     const setSort = (sort: SortEnum) => {
         dispatchSort({ type: sort });
     };
 
+    console.log(y);
+
     return (
         <div className={styles.wrapper}>
+            {y}
             <div className={styles.header}>
                 <Htag tag='h1'>{page.title}</Htag>
                 {products && <Tag color='grey' size='medium'>{products.length ?? 10}</Tag>}
