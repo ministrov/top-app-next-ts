@@ -2,7 +2,7 @@
 
 import { useReducer } from 'react';
 import parse from 'html-react-parser';
-import { useScrollY } from '@/hooks/useScrollY';
+// import { useScrollY } from '@/hooks/useScrollY';
 import Htag from '@/app/components/Htag/Htag';
 import { HhData } from '@/app/components/HhData/HhData';
 import Tag from '@/app/components/Tag/Tag';
@@ -16,17 +16,16 @@ import styles from './TopPageComponent.module.css';
 
 export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
     const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
-    const y = useScrollY();
+    // const y = useScrollY();
 
     const setSort = (sort: SortEnum) => {
         dispatchSort({ type: sort });
     };
 
-    console.log(y);
+    // console.log(y);
 
     return (
         <div className={styles.wrapper}>
-            {y}
             <div className={styles.header}>
                 <Htag tag='h1'>{page.title}</Htag>
                 {products && <Tag color='grey' size='medium'>{products.length ?? 10}</Tag>}
