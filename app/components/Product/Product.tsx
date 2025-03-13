@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, Fragment, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Card } from '../Card/Card';
 import { ProductProps } from './Product.props';
@@ -14,7 +15,7 @@ import { declineNumber, transformPrice } from '@/helpers';
 import cn from 'classnames';
 import styles from './Product.module.css';
 
-export const Product = ({ product, className, ...props }: ProductProps) => {
+export const Product = motion.create(({ product, className, ref, ...props }: ProductProps) => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
     const reviewRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +28,7 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
     }
 
     return (
-        <div className={className} {...props}>
+        <div className={className} {...props} ref={ref}>
             <Card classNames={styles.product}>
                 <div className={styles.logo}>
                     {product.image ? (
@@ -117,4 +118,4 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
             </Card>
         </div>
     )
-}
+});
