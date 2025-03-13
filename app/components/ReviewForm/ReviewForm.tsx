@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import axios from 'axios';
 import { useForm, Controller } from 'react-hook-form';
 import { ReviewFormProps } from './ReviewForm.props';
 import { Button } from '../Button/Button';
@@ -11,29 +13,21 @@ import { API } from '@/helpers/api';
 import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './ReviewForm.module.css';
-import axios from 'axios';
-import { useState } from 'react';
 
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) => {
     const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [errorText, setErrorText] = useState<string | null>(null);
 
-    console.log(isSuccess);
-    console.log(setIsSuccess)
-
     const onSubmit = async (formData: IReviewForm) => {
         try {
             const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
-            // const res = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
             if (data.message) {
                 setIsSuccess(true);
                 reset();
             } else {
                 setErrorText('Что-то пошло нек так!!!');
             }
-
-            console.log(data);
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             setErrorText('e');

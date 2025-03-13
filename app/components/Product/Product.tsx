@@ -18,8 +18,6 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
     const reviewRef = useRef<HTMLDivElement>(null);
 
-    console.log(reviewRef);
-
     const scrollToReview = () => {
         setIsReviewOpened(true);
         reviewRef.current?.scrollIntoView({
