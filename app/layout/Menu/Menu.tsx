@@ -3,6 +3,7 @@
 import { JSX, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { FirstLevelMenuItem, MenuItem, PageItem } from '@/interfaces/menu.interface';
 import { MenuProps } from './Menu.props';
 import { TopLevelCategory } from '@/interfaces/page.interface';
@@ -15,6 +16,16 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const [menuState, setMenuState] = useState<MenuItem[]>([...categories]);
     const firstCategory = TopLevelCategory.Courses;
     const pathname = usePathname();
+
+    const variants = {
+        visible: {
+            transition: {
+                when: 'beforeChildren',
+                staggerChildren: 0.1
+            }
+        },
+        hidden: {}
+    };
 
     const setMenu = (newMenu: MenuItem[]) => {
         setMenuState(newMenu);
@@ -66,11 +77,13 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                             >
                                 {category._id.secondCategory}
                             </div>
-                            <div className={cn(styles.secondLevelBlock, {
-                                [styles.secondLevelBlockOpened]: category.isOpened
-                            })}>
+                            <motion.div
+                                layout
+                                variants={variants}
+                                className={cn(styles.secondLevelBlock)}
+                            >
                                 {buildThirdLevel(category.pages, menuItem.route)}
-                            </div>
+                            </motion.div>
                         </div>
                     );
                 })}
