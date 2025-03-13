@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import axios from 'axios';
 import { useForm, Controller } from 'react-hook-form';
 import { ReviewFormProps } from './ReviewForm.props';
 import { Button } from '../Button/Button';
@@ -11,8 +13,6 @@ import { API } from '@/helpers/api';
 import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './ReviewForm.module.css';
-import axios from 'axios';
-import { useState } from 'react';
 
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) => {
     const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
@@ -28,8 +28,6 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
             } else {
                 setErrorText('Что-то пошло нек так!!!');
             }
-
-            console.log(data);
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             setErrorText('e');
