@@ -1,5 +1,7 @@
 .up {
     width: 40px;
     height: 40px;
-    background-color: red;
+    border-radius: 10px;
+    background-color: var(--primary);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
 }
