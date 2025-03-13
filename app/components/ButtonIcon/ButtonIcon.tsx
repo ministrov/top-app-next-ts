@@ -1,11 +1,12 @@
 'use client';
 
-import { ButtonIconProps } from './Button.props';
+import { ButtonIconProps } from './ButtonIcon.props';
 import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './ButtonIcon.module.css';
 
 export const ButtonIcon = ({ appearence, icon, className, ...props }: ButtonIconProps) => {
+    const IconComp = Icon[icon];
     return (
         <button
             className={cn(styles.button, className, {
@@ -14,7 +15,7 @@ export const ButtonIcon = ({ appearence, icon, className, ...props }: ButtonIcon
             })}
             {...props}
         >
-            {icon && <Icon.MenuClose />}
+            <IconComp />
         </button>
     )
 }
