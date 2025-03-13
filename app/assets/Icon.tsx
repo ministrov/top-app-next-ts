@@ -12,6 +12,8 @@ import SearchIcon from './icons/search.svg';
 import UserIcon from './icons/user.svg';
 import CloseIcon from './icons/close.svg';
 import ArrowUpIcon from './icons/close.svg';
+import MenuIcon from './icons/menu.svg';
+import MenuClose from './icons/menuClose.svg';
 
 export const Icon = {
     CoursesIcon,
@@ -27,7 +29,9 @@ export const Icon = {
     SearchIcon,
     UserIcon,
     CloseIcon,
-    ArrowUpIcon
+    ArrowUpIcon,
+    MenuIcon,
+    MenuClose
 };
 
 export type IconType = keyof typeof Icon;
