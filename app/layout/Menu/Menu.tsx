@@ -19,12 +19,24 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
 
     const variants = {
         visible: {
+            marginBottom: 20,
             transition: {
                 when: 'beforeChildren',
                 staggerChildren: 0.1
             }
         },
-        hidden: {}
+        hidden: { marginBottom: 0 }
+    };
+
+    const variantsChildren = {
+        visible: {
+            opacity: 1,
+            height: 29
+        },
+        hidden: {
+            opacity: 0,
+            height: 0
+        }
     };
 
     const setMenu = (newMenu: MenuItem[]) => {
@@ -80,6 +92,8 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
                             <motion.div
                                 layout
                                 variants={variants}
+                                initial={category.isOpened ? 'visible' : 'hidden'}
+                                animate={category.isOpened ? 'visible' : 'hidden'}
                                 className={cn(styles.secondLevelBlock)}
                             >
                                 {buildThirdLevel(category.pages, menuItem.route)}
@@ -94,15 +108,19 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const buildThirdLevel = (pages: PageItem[], route: string) => {
         return (
             pages.map((page) => (
-                <Link
+                <motion.div
                     key={page._id}
-                    href={`/${route}/${page.alias}`}
-                    className={cn(styles.thirdLevel, {
-                        [styles.thirdLevelActive]: `/${route}/${page.alias}` === pathname
-                    })}
+                    variants={variantsChildren}
                 >
-                    {page.title}
-                </Link>
+                    <Link
+                        href={`/${route}/${page.alias}`}
+                        className={cn(styles.thirdLevel, {
+                            [styles.thirdLevelActive]: `/${route}/${page.alias}` === pathname
+                        })}
+                    >
+                        {page.title}
+                    </Link>
+                </motion.div>
             ))
         );
     };

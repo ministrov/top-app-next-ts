@@ -45,7 +45,7 @@
 }
 
 .secondLevelBlock {
-    display: none;
+    overflow: hidden;
 }
 
 .thirdLevel {
