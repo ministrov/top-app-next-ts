@@ -12,6 +12,10 @@
     padding: 15px;
   }
 
+  .header .sidebar {
+    display: block;
+  }
+
   .logo {
     width: 159px;
     height: 42px;
