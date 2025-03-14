@@ -158,15 +158,8 @@
     font-weight: 500;
 }
 
-.closed {
+.reviews {
     overflow: hidden;
-    max-height: 0;
-    padding: 0;
-}
-
-.opened {
-    max-height: fit-content;
-    padding: 30px;
 }
 
 .rateAnchor {
@@ -302,5 +295,6 @@
 			"advWrapper"
 			"hr2"
 			"actions";
+        padding: 15px;
     }
 }

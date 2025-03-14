@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, Fragment, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Card } from '../Card/Card';
 import { ProductProps } from './Product.props';
@@ -14,9 +15,14 @@ import { declineNumber, transformPrice } from '@/helpers';
 import cn from 'classnames';
 import styles from './Product.module.css';
 
-export const Product = ({ product, className, ...props }: ProductProps) => {
+export const Product = motion.create(({ product, className, ref, ...props }: ProductProps) => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
     const reviewRef = useRef<HTMLDivElement>(null);
+
+    const variants = {
+        visible: { opacity: 1, height: 'auto', padding: 30 },
+        hidden: { opacity: 0, height: 0, padding: 0 }
+    };
 
     const scrollToReview = () => {
         setIsReviewOpened(true);
@@ -27,7 +33,7 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
     }
 
     return (
-        <div className={className} {...props}>
+        <div className={className} {...props} ref={ref}>
             <Card classNames={styles.product}>
                 <div className={styles.logo}>
                     {product.image ? (
@@ -99,10 +105,14 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
                 </div>
             </Card>
 
-            <Card color='blue' classNames={cn(styles.reviews, {
-                [styles.opened]: isReviewOpened,
-                [styles.closed]: !isReviewOpened
-            })} ref={reviewRef}>
+            <Card
+                initial={'hidden'}
+                variants={variants}
+                animate={isReviewOpened ? 'visible' : 'hidden'}
+                color='blue'
+                classNames={cn(styles.reviews)}
+                ref={reviewRef}
+            >
                 {product.reviews.map(r => (
                     <Fragment key={r._id}>
                         <Review
@@ -117,4 +127,4 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
             </Card>
         </div>
     )
-}
+});
