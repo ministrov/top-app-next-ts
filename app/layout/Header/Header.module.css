@@ -1,3 +1,19 @@
-/* .header {
+.header {
+    display: none;
     background-color: palegoldenrod;
-} */
+}
+
+@media (max-width: 765px) {
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .logo {
+    width: 159px;
+    height: 42px;
+  }
+}
