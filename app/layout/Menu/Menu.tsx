@@ -42,6 +42,7 @@ export const Menu = (): JSX.Element => {
     // };
 
     const openSecondLevelMenu = (secondCategory: string) => {
+        if (!menu) return null;
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         setMenu && setMenu(menu.map((item) => {
             if (item._id.secondCategory === secondCategory) {
@@ -73,10 +74,11 @@ export const Menu = (): JSX.Element => {
     };
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
+        if (!menu) return null;
         return (
             <div className={styles.secondBlock}>
                 {menu.map((m) => {
-                    if (m.pages.map((p) => p.alias).includes(pathname.split('/')[2])) {
+                    if (m.pages?.map((p) => p.alias).includes(pathname.split('/')[2])) {
                         m.isOpened = true;
                     }
 

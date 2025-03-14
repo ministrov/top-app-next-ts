@@ -1,21 +1,43 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ButtonIcon } from '@/app/components/ButtonIcon/ButtonIcon';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { HeaderProps } from './Header.props';
 import { Icon } from '@/app/assets/Icon';
-import { getMenu } from '@/api/menu';
 import { TopLevelCategory } from '@/interfaces/page.interface';
+import { API } from '@/helpers/api';
 import { AppContextProvider } from '@/context/app.context';
+import { MenuItem } from '@/interfaces/menu.interface';
 import cn from 'classnames';
 import styles from './Header.module.css';
 
-const menu = await getMenu(TopLevelCategory.Courses);
-
 export const Header = ({ className, ...props }: HeaderProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
+
+    const [data, setData] = useState<MenuItem[]>();
+
+    useEffect(() => {
+        const getMenu = async (firstCategory: number) => {
+            const response = await fetch(API.topPage.find, {
+                method: 'POST',
+                body: JSON.stringify({
+                    firstCategory
+                }),
+                headers: new Headers({ 'content-type': 'application/json' })
+            });
+
+            const result = await response.json();
+            setData(result);
+        }
+
+        getMenu(TopLevelCategory.Courses);
+    }, []);
+
+    // useEffect(() => {
+
+    // }, []);
 
     const variants = {
         opened: {
@@ -30,8 +52,9 @@ export const Header = ({ className, ...props }: HeaderProps) => {
             x: '100%',
         }
     };
+
     return (
-        <AppContextProvider menu={menu} firstCategory={TopLevelCategory.Courses}>
+        <AppContextProvider menu={data as MenuItem[]} firstCategory={TopLevelCategory.Courses}>
             <header className={cn(className, styles.header)} {...props}>
                 <Icon.LogoIcon className={styles.logo} />
 
