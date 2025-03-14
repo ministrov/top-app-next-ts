@@ -15,8 +15,7 @@ import styles from './Header.module.css';
 
 export const Header = ({ className, ...props }: HeaderProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
-
-    const [data, setData] = useState<MenuItem[]>();
+    const [data, setData] = useState<MenuItem[] | null>(null);
 
     useEffect(() => {
         const getMenu = async (firstCategory: number) => {
@@ -28,16 +27,14 @@ export const Header = ({ className, ...props }: HeaderProps) => {
                 headers: new Headers({ 'content-type': 'application/json' })
             });
 
-            const result = await response.json();
+            const result = await response.json() as MenuItem[];
+
+            console.log(result);
             setData(result);
         }
 
         getMenu(TopLevelCategory.Courses);
     }, []);
-
-    // useEffect(() => {
-
-    // }, []);
 
     const variants = {
         opened: {
@@ -54,32 +51,32 @@ export const Header = ({ className, ...props }: HeaderProps) => {
     };
 
     return (
-        <AppContextProvider menu={data as MenuItem[]} firstCategory={TopLevelCategory.Courses}>
-            <header className={cn(className, styles.header)} {...props}>
-                <Icon.LogoIcon className={styles.logo} />
+        <header className={cn(className, styles.header)} {...props}>
+            <Icon.LogoIcon className={styles.logo} />
+
+            <ButtonIcon
+                onClick={() => setIsOpened(true)}
+                appearence='white'
+                icon='MenuIcon'
+            />
+
+            <motion.div
+                initial={'closed'}
+                variants={variants}
+                animate={isOpened ? 'opened' : 'closed'}
+                className={styles.mobileMenu}
+            >
+                <AppContextProvider menu={data as MenuItem[]} firstCategory={TopLevelCategory.Courses}>
+                    <Sidebar className={styles.sidebar} />
+                </AppContextProvider>
 
                 <ButtonIcon
-                    onClick={() => setIsOpened(true)}
+                    onClick={() => setIsOpened(false)}
+                    className={styles.menuClose}
                     appearence='white'
-                    icon='MenuIcon'
+                    icon='MenuClose'
                 />
-
-                <motion.div
-                    initial={'closed'}
-                    variants={variants}
-                    animate={isOpened ? 'opened' : 'closed'}
-                    className={styles.mobileMenu}
-                >
-                    <Sidebar className={styles.sidebar} />
-
-                    <ButtonIcon
-                        onClick={() => setIsOpened(false)}
-                        className={styles.menuClose}
-                        appearence='white'
-                        icon='MenuClose'
-                    />
-                </motion.div>
-            </header>
-        </AppContextProvider>
+            </motion.div>
+        </header>
     )
 }

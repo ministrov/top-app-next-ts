@@ -15,6 +15,8 @@ export const Menu = (): JSX.Element => {
     const { menu, setMenu, firstCategory } = useContext(AppContext);
     const pathname = usePathname();
 
+    console.log(menu);
+
     const variants = {
         visible: {
             marginBottom: 20,
@@ -36,10 +38,6 @@ export const Menu = (): JSX.Element => {
             height: 0
         }
     };
-
-    // const setMenu = (newMenu: MenuItem[]) => {
-    //     setMenuState(newMenu);
-    // };
 
     const openSecondLevelMenu = (secondCategory: string) => {
         if (!menu) return null;
