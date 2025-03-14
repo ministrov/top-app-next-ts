@@ -1,20 +1,18 @@
 'use client';
 
-import { JSX, useState } from 'react';
+import { JSX, useContext } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FirstLevelMenuItem, MenuItem, PageItem } from '@/interfaces/menu.interface';
-import { MenuProps } from './Menu.props';
-import { TopLevelCategory } from '@/interfaces/page.interface';
+import { AppContext } from '@/context/app.context';
+import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import { firstLevelMenu } from '@/helpers';
 
 import cn from 'classnames';
 import styles from './Menu.module.css';
 
-export const Menu = ({ categories }: MenuProps): JSX.Element => {
-    const [menuState, setMenuState] = useState<MenuItem[]>([...categories]);
-    const firstCategory = TopLevelCategory.Courses;
+export const Menu = (): JSX.Element => {
+    const { menu, setMenu, firstCategory } = useContext(AppContext);
     const pathname = usePathname();
 
     const variants = {
@@ -39,12 +37,13 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
         }
     };
 
-    const setMenu = (newMenu: MenuItem[]) => {
-        setMenuState(newMenu);
-    };
+    // const setMenu = (newMenu: MenuItem[]) => {
+    //     setMenuState(newMenu);
+    // };
 
     const openSecondLevelMenu = (secondCategory: string) => {
-        setMenu(menuState.map((item) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        setMenu && setMenu(menu.map((item) => {
             if (item._id.secondCategory === secondCategory) {
                 item.isOpened = !item.isOpened;
             }
@@ -76,27 +75,27 @@ export const Menu = ({ categories }: MenuProps): JSX.Element => {
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
         return (
             <div className={styles.secondBlock}>
-                {categories.map((category) => {
-                    if (category.pages.map((page) => page.alias).includes(pathname.split('/')[2])) {
-                        category.isOpened = true;
+                {menu.map((m) => {
+                    if (m.pages.map((p) => p.alias).includes(pathname.split('/')[2])) {
+                        m.isOpened = true;
                     }
 
                     return (
-                        <div key={category._id.secondCategory}>
+                        <div key={m._id.secondCategory}>
                             <div
                                 className={styles.secondLevel}
-                                onClick={() => openSecondLevelMenu(category._id.secondCategory)}
+                                onClick={() => openSecondLevelMenu(m._id.secondCategory)}
                             >
-                                {category._id.secondCategory}
+                                {m._id.secondCategory}
                             </div>
                             <motion.div
                                 layout
                                 variants={variants}
-                                initial={category.isOpened ? 'visible' : 'hidden'}
-                                animate={category.isOpened ? 'visible' : 'hidden'}
+                                initial={m.isOpened ? 'visible' : 'hidden'}
+                                animate={m.isOpened ? 'visible' : 'hidden'}
                                 className={cn(styles.secondLevelBlock)}
                             >
-                                {buildThirdLevel(category.pages, menuItem.route)}
+                                {buildThirdLevel(m.pages, menuItem.route)}
                             </motion.div>
                         </div>
                     );
