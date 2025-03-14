@@ -1,10 +1,10 @@
 .header {
-    display: none;
-    background-color: palegoldenrod;
+  display: none;
+  background-color: palegoldenrod;
 }
 
 .mobileMenu {
-    position: fixed;
+  position: fixed;
 	z-index: 10;
 	top: 0;
 	right: 0;

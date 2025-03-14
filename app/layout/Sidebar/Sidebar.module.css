@@ -8,4 +8,9 @@
   .sidebar {
     display: none;
   }
+
+  .logo {
+    width: 159px;
+    height: 42px;
+  }
 }

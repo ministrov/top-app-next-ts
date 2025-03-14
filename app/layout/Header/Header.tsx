@@ -1,41 +1,29 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ButtonIcon } from '@/app/components/ButtonIcon/ButtonIcon';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { HeaderProps } from './Header.props';
 import { Icon } from '@/app/assets/Icon';
 import { TopLevelCategory } from '@/interfaces/page.interface';
-import { API } from '@/helpers/api';
 import { AppContextProvider } from '@/context/app.context';
-import { MenuItem } from '@/interfaces/menu.interface';
 import cn from 'classnames';
 import styles from './Header.module.css';
+import { getMenu } from '@/api/menu';
 
 export const Header = ({ className, ...props }: HeaderProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
-    const [data, setData] = useState<MenuItem[] | null>(null);
 
-    useEffect(() => {
-        const getMenu = async (firstCategory: number) => {
-            const response = await fetch(API.topPage.find, {
-                method: 'POST',
-                body: JSON.stringify({
-                    firstCategory
-                }),
-                headers: new Headers({ 'content-type': 'application/json' })
-            });
+    async function getData(firstCategory: TopLevelCategory) {
+        const res = await getMenu(firstCategory);
 
-            const result = await response.json() as MenuItem[];
+        return res;
+    }
 
-            console.log(result);
-            setData(result);
-        }
+    const menu = getData(TopLevelCategory.Courses);
 
-        getMenu(TopLevelCategory.Courses);
-    }, []);
-
+    console.log(menu);
     const variants = {
         opened: {
             opacity: 1,
@@ -66,7 +54,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
                 animate={isOpened ? 'opened' : 'closed'}
                 className={styles.mobileMenu}
             >
-                <AppContextProvider menu={data as MenuItem[]} firstCategory={TopLevelCategory.Courses}>
+                <AppContextProvider menu={[]} firstCategory={TopLevelCategory.Courses}>
                     <Sidebar className={styles.sidebar} />
                 </AppContextProvider>
 
