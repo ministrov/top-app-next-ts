@@ -8,27 +8,29 @@ import styles from './Sorting.module.css';
 export const Sorting = ({ sort, setSort, className, ...props }: SortingProps) => {
     return (
         <div className={cn(styles.sorting, className)} {...props}>
-            <span
+            <button
                 onClick={() => setSort(SortEnum.Rating)}
                 className={cn({
                     [styles.active]: sort === SortEnum.Rating
                 })}
+            // tabIndex={0}
             >
                 <span className={styles.iconWrap}>
                     <Icon.SortingIcon />
                 </span> По рейтингу
-            </span>
+            </button>
 
-            <span
+            <button
                 onClick={() => setSort(SortEnum.Price)}
                 className={cn({
                     [styles.active]: sort === SortEnum.Price
                 })}
+            // tabIndex={0}
             >
                 <span className={styles.iconWrap}>
                     <Icon.SortingIcon />
                 </span> По цене
-            </span>
+            </button>
         </div>
     )
 }

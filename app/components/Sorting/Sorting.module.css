@@ -4,13 +4,17 @@
     gap: 45px;
 }
 
-.sorting > span {
+.sorting button {
     display: flex;
     gap: 8px;
+    padding: 0;
     font-family: var(--font-family);
     font-size: 16px;
     color: var(--initial-black);
     cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 .sorting .active {
