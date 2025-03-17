@@ -14,7 +14,7 @@ import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './ReviewForm.module.css';
 
-export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) => {
+export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewFormProps) => {
     const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [errorText, setErrorText] = useState<string | null>(null);
@@ -41,12 +41,14 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
                     {...register('name', { required: { value: true, message: 'Заполните имя' } })}
                     placeholder='Имя'
                     error={errors.name}
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <Input
                     {...register('title', { required: { value: true, message: 'Заполните заголовок отзыва' } })}
                     className={styles.title}
                     placeholder='Заголовок отзыва'
                     error={errors.title}
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <div className={styles.rating}>
                     <span>Оценка:</span>
@@ -62,6 +64,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
                                 ref={field.ref}
                                 setRating={field.onChange}
                                 error={errors.rating}
+                                tabIndex={isOpened ? 0 : -1}
                             />
                         )}
                     />
@@ -71,9 +74,14 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps) 
                     className={styles.description}
                     placeholder='Текст отзыва'
                     error={errors.description}
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <div className={styles.submit}>
-                    <Button className={styles.btn} appearence={'primary'}>
+                    <Button
+                        className={styles.btn}
+                        appearence={'primary'}
+                        tabIndex={isOpened ? 0 : -1}
+                    >
                         Отправить
                     </Button>
                     <p className={styles.checking}><sup>*</sup> Перед публикацией отзыв пройдет предварительную модерацию и проверку</p>

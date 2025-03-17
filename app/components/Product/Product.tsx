@@ -30,6 +30,7 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
             behavior: 'smooth',
             block: 'start'
         });
+        reviewRef.current?.focus()
     }
 
     return (
@@ -111,6 +112,7 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                 animate={isReviewOpened ? 'visible' : 'hidden'}
                 color='blue'
                 classNames={cn(styles.reviews)}
+                tabIndex={isReviewOpened ? 0 : -1}
                 ref={reviewRef}
             >
                 {product.reviews.map(r => (
@@ -123,7 +125,7 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                     </Fragment>
                 ))}
 
-                <ReviewForm productId={product._id} />
+                <ReviewForm productId={product._id} isOpened={isReviewOpened} />
             </Card>
         </div>
     )
