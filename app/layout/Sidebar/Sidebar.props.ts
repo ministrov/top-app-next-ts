@@ -1,4 +1,8 @@
+import { MenuItem } from '@/interfaces/menu.interface';
+import { TopLevelCategory } from '@/interfaces/page.interface';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface SidebarProps extends DetailedHTMLProps<HTMLAttributes<HTMLBaseElement>, HTMLBaseElement> { }
+export interface SidebarProps extends DetailedHTMLProps<HTMLAttributes<HTMLBaseElement>, HTMLBaseElement> { 
+    firstCategory: TopLevelCategory;
+    menu: MenuItem[];
+}

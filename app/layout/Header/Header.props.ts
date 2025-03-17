@@ -1,4 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface HeaderProps extends DetailedHTMLProps<HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>  {}
+import { MenuItem } from '@/interfaces/menu.interface';
+import { TopLevelCategory } from '@/interfaces/page.interface';
+export interface HeaderProps extends DetailedHTMLProps<HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>  {
+    firstCategory: TopLevelCategory;
+    menu: MenuItem[];
+}

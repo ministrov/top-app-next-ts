@@ -9,7 +9,7 @@ import { Icon } from '@/app/assets/Icon';
 import cn from 'classnames';
 import styles from './Header.module.css';
 
-export const Header = ({ className, ...props }: HeaderProps) => {
+export const Header = ({ menu, firstCategory, className, ...props }: HeaderProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
 
     const variants = {
@@ -42,7 +42,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
                 animate={isOpened ? 'opened' : 'closed'}
                 className={styles.mobileMenu}
             >
-                <Sidebar className={styles.sidebar} />
+                <Sidebar menu={menu} firstCategory={firstCategory} className={styles.sidebar} />
 
                 <ButtonIcon
                     onClick={() => setIsOpened(false)}
