@@ -6,24 +6,12 @@ import { ButtonIcon } from '@/app/components/ButtonIcon/ButtonIcon';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { HeaderProps } from './Header.props';
 import { Icon } from '@/app/assets/Icon';
-import { TopLevelCategory } from '@/interfaces/page.interface';
-import { AppContextProvider } from '@/context/app.context';
 import cn from 'classnames';
 import styles from './Header.module.css';
-import { getMenu } from '@/api/menu';
 
-export const Header = ({ className, ...props }: HeaderProps) => {
+export const Header = ({ menu, firstCategory, className, ...props }: HeaderProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
 
-    async function getData(firstCategory: TopLevelCategory) {
-        const res = await getMenu(firstCategory);
-
-        return res;
-    }
-
-    const menu = getData(TopLevelCategory.Courses);
-
-    console.log(menu);
     const variants = {
         opened: {
             opacity: 1,
@@ -54,9 +42,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
                 animate={isOpened ? 'opened' : 'closed'}
                 className={styles.mobileMenu}
             >
-                <AppContextProvider menu={[]} firstCategory={TopLevelCategory.Courses}>
-                    <Sidebar className={styles.sidebar} />
-                </AppContextProvider>
+                <Sidebar menu={menu} firstCategory={firstCategory} className={styles.sidebar} />
 
                 <ButtonIcon
                     onClick={() => setIsOpened(false)}

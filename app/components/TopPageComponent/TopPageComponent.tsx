@@ -2,7 +2,6 @@
 
 import { useReducer } from 'react';
 import parse from 'html-react-parser';
-// import { useScrollY } from '@/hooks/useScrollY';
 import Htag from '@/app/components/Htag/Htag';
 import { HhData } from '@/app/components/HhData/HhData';
 import Tag from '@/app/components/Tag/Tag';

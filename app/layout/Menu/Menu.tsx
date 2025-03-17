@@ -1,21 +1,26 @@
 'use client';
 
-import { JSX, useContext } from 'react';
+import { JSX, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { AppContext } from '@/context/app.context';
-import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
+import { FirstLevelMenuItem, MenuItem, PageItem } from '@/interfaces/menu.interface';
 import { firstLevelMenu } from '@/helpers';
+import { MenuProps } from './Menu.props';
 
 import cn from 'classnames';
 import styles from './Menu.module.css';
 
-export const Menu = (): JSX.Element => {
-    const { menu, setMenu, firstCategory } = useContext(AppContext);
+export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element => {
+    const [menuState, setMenuState] = useState<MenuItem[]>([...categories]);
     const pathname = usePathname();
 
-    console.log(menu);
+    console.log(categories);
+    console.log(menuState);
+
+    const setMenu = (newMenu: MenuItem[]) => {
+        setMenuState(newMenu);
+    };
 
     const variants = {
         visible: {
@@ -40,9 +45,7 @@ export const Menu = (): JSX.Element => {
     };
 
     const openSecondLevelMenu = (secondCategory: string) => {
-        if (!menu) return null;
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        setMenu && setMenu(menu.map((item) => {
+        setMenu(menuState.map((item) => {
             if (item._id.secondCategory === secondCategory) {
                 item.isOpened = !item.isOpened;
             }
@@ -72,10 +75,12 @@ export const Menu = (): JSX.Element => {
     };
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
-        if (!menu) return null;
+        if (!Array.isArray(categories)) {
+            return null;
+        }
         return (
             <div className={styles.secondBlock}>
-                {menu.map((m) => {
+                {categories.map((m) => {
                     if (m.pages?.map((p) => p.alias).includes(pathname.split('/')[2])) {
                         m.isOpened = true;
                     }

@@ -7,12 +7,12 @@ import { SidebarProps } from './Sidebar.props';
 import cn from 'classnames';
 import styles from './Sidebar.module.css';
 
-export const Sidebar = ({ className, ...props }: SidebarProps) => {
+export const Sidebar = ({ menu, firstCategory, className, ...props }: SidebarProps) => {
     return (
         <aside className={cn(className, styles.sidebar)} {...props}>
             <Icon.LogoIcon className={styles.logo} />
             <Searching className='search' />
-            <Menu />
+            <Menu categories={menu} firstCategory={firstCategory} />
         </aside>
     )
 }
