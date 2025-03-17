@@ -15,9 +15,6 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
     const [menuState, setMenuState] = useState<MenuItem[]>([...categories]);
     const pathname = usePathname();
 
-    console.log(categories);
-    console.log(menuState);
-
     const setMenu = (newMenu: MenuItem[]) => {
         setMenuState(newMenu);
     };
