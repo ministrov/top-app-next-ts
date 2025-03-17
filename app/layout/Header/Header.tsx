@@ -12,15 +12,6 @@ import styles from './Header.module.css';
 export const Header = ({ className, ...props }: HeaderProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
 
-    // async function getData(firstCategory: TopLevelCategory) {
-    //     const res = await getMenu(firstCategory);
-
-    //     return res;
-    // }
-
-    // const menu = getData(TopLevelCategory.Courses);
-
-    // console.log(menu);
     const variants = {
         opened: {
             opacity: 1,

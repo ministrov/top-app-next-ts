@@ -7,12 +7,10 @@ export async function getMenu(firstCategory: number) {
     const {data} = await axios.post<MenuItem[]>(API.topPage.find, {
       firstCategory,
     });
+
 	  return data;
+    
   } catch (e) {
     console.log(e);
   }
 }
-
-// export async function getMenu(firstCategory: number) {
-	
-// }

@@ -9,6 +9,7 @@ export async function getCourses(page: TopPageModel) {
             category: page.category,
             limit: 20
 	    });
+        
 	    return data;
     } catch (e) {
         console.log(e);
