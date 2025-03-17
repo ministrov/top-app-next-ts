@@ -1,12 +1,18 @@
-import { API } from '@/helpers/api';
+import axios from 'axios';
 import { TopPageModel } from '@/interfaces/page.interface';
+import { API } from '@/helpers/api';
 
-export const getPage = async (alias: string): Promise<TopPageModel | null> => {
-    const res = await fetch(API.topPage.byAlias + alias);
-    
-    if (!res.ok) {
-        return null;
+export const getPage = async (alias: string) => {
+    try {
+        const {data} = await axios.get<TopPageModel>(API.topPage.byAlias + alias);
+
+        return data;
+    } catch (e) {
+        console.log(e);
     }
+} 
 
-    return await res.json();
-}  
+// export async function getPage(alias: string) {
+// 	const {data} = await axios.get<IPage>(API.topPage.byAlias + alias);
+// 	return data;
+// }
