@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 
 import { getPage } from '@/api/page';
 import { getMenu } from '@/api/menu';
-import { getProduct } from '@/api/product';
+// import { getProduct } from '@/api/product';
+import { getCourses } from '@/api/product';
 import { TopPageComponent } from '@/app/components/TopPageComponent/TopPageComponent';
 
 import { TopPageModel } from '@/interfaces/page.interface';
@@ -29,12 +30,14 @@ export async function generateStaticParams() {
 
 export default async function PageCourses({ params }: PageProps) {
     const page = await getPage((await params).alias) as TopPageModel;
-    const products = await getProduct(page) as ProductModel[];
+    const courses = await getCourses(page) as ProductModel[];
+
+    console.log(courses);
 
     if (!page) {
         notFound();
     }
     return (
-        <TopPageComponent page={page} products={products} />
+        <TopPageComponent page={page} products={courses} />
     )
 }
