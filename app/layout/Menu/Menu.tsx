@@ -1,6 +1,6 @@
 'use client';
 
-import { JSX, useState } from 'react';
+import { JSX, KeyboardEvent, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -51,18 +51,23 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
         }));
     };
 
+    const openSecondLevelKey = (key: KeyboardEvent, secondCategory: string) => {
+        if (key.code === 'Space' || key.code === 'Enter') {
+            key.preventDefault();
+            openSecondLevelMenu(secondCategory);
+        }
+    };
+
     const buildFirstLevel = () => {
         return (
             <ul className={styles.firstLevelList}>
                 {firstLevelMenu.map((m) => (
                     <li key={m.id}>
-                        <Link href={`/${m.route}`}>
-                            <div className={cn(styles.firstLevel, {
-                                [styles.firstLevelActive]: m.id === firstCategory
-                            })}>
-                                {m.icon}
-                                <span>{m.name}</span>
-                            </div>
+                        <Link href={`/${m.route}`} className={cn(styles.firstLevel, {
+                            [styles.firstLevelActive]: m.id === firstCategory
+                        })}>
+                            {m.icon}
+                            <span>{m.name}</span>
                         </Link>
                         {m.id === firstCategory && buildSecondLevel(m)}
                     </li>
@@ -87,6 +92,8 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
                             <div
                                 className={styles.secondLevel}
                                 onClick={() => openSecondLevelMenu(m._id.secondCategory)}
+                                onKeyDown={(key: KeyboardEvent) => openSecondLevelKey(key, m._id.secondCategory)}
+                                tabIndex={0}
                             >
                                 {m._id.secondCategory}
                             </div>
@@ -97,7 +104,7 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
                                 animate={m.isOpened ? 'visible' : 'hidden'}
                                 className={cn(styles.secondLevelBlock)}
                             >
-                                {buildThirdLevel(m.pages, menuItem.route)}
+                                {buildThirdLevel(m.pages, menuItem.route, m.isOpened ?? false)}
                             </motion.div>
                         </div>
                     );
@@ -106,7 +113,7 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
         );
     };
 
-    const buildThirdLevel = (pages: PageItem[], route: string) => {
+    const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean) => {
         return (
             pages.map((page) => (
                 <motion.div
@@ -118,6 +125,7 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
                         className={cn(styles.thirdLevel, {
                             [styles.thirdLevelActive]: `/${route}/${page.alias}` === pathname
                         })}
+                        tabIndex={isOpened ? 0 : -1}
                     >
                         {page.title}
                     </Link>

@@ -6,7 +6,7 @@
     margin-top: 20px;
     font-size: 18px;
     font-weight: 500;
-    line-height: 25px;
+    /* line-height: 25px; */
     color: var(--gray-second);
 }
 
@@ -38,7 +38,7 @@
     margin-bottom: 10px;
     font-size: 12px;
     font-weight: 300;
-    line-height: 16px;
+    /* line-height: 16px; */
     text-transform: uppercase;
     color: var(--gray-second);
     cursor: pointer;
@@ -53,8 +53,8 @@
     margin-bottom: 10px;
     font-size: 14px;
     font-weight: 500;
-    line-height: 19px;
     color: var(--gray-second);
+    outline-offset: -1px;
 }
 
 .thirdLevelActive,
