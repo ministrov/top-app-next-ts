@@ -128,6 +128,7 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
                             [styles.thirdLevelActive]: `/${route}/${page.alias}` === pathname
                         })}
                         tabIndex={isOpened ? 0 : -1}
+                        aria-current={`/${route}/${page.alias}` === pathname ? 'page' : false}
                     >
                         {page.title}
                     </Link>

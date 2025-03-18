@@ -6,7 +6,6 @@
     margin-top: 20px;
     font-size: 18px;
     font-weight: 500;
-    /* line-height: 25px; */
     color: var(--gray-second);
 }
 
@@ -45,11 +44,13 @@
     color: var(--gray-second);
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .secondLevelBlock {
     overflow: hidden;
     padding: 0;
+    margin: 0;
     list-style: none;
 }
 
