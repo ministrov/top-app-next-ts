@@ -72,7 +72,7 @@ const Rating = ({ isEditable = false, error, rating, setRating, ref, ...props }:
         })} ref={ref} {...props}>
             {ratingArray.map((r, i) => (<Fragment key={i}>{r}</Fragment>))}
 
-            {error && <span className={styles.errorMessage}>{error.message}</span>}
+            {error && <span role="alert" className={styles.errorMessage}>{error.message}</span>}
         </div>
     )
 }

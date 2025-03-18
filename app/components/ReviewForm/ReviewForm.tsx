@@ -15,7 +15,7 @@ import cn from 'classnames';
 import styles from './ReviewForm.module.css';
 
 export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewFormProps) => {
-    const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
+    const { register, control, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<IReviewForm>();
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [errorText, setErrorText] = useState<string | null>(null);
 
@@ -83,6 +83,7 @@ export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewF
                 <div className={styles.submit}>
                     <Button
                         className={styles.btn}
+                        onClick={() => clearErrors()}
                         appearence={'primary'}
                         tabIndex={isOpened ? 0 : -1}
                     >
