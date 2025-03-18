@@ -10,10 +10,6 @@ import styles from './Button.module.css';
 export const Button = ({ children, arrow = 'none', appearence, className, ...props }: ButtonProps): JSX.Element => {
     const scale = useMotionValue(1);
 
-    // useMotionValueEvent(scale, 'change', (latest) => {
-    //     console.log(latest);
-    // });
-
     return (
         <motion.button
             whileHover={{ scale: 1.06 }}
