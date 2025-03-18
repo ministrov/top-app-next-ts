@@ -13,7 +13,7 @@
     color: var(--initial-black);
     cursor: pointer;
     border: none;
-    outline: none;
+    /* outline: none; */
     background-color: transparent;
 }
 

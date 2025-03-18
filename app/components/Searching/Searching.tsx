@@ -26,7 +26,7 @@ const Searching = ({ className, ...props }: SearchingProps) => {
     }
 
     return (
-        <div className={cn(className, styles.search)} {...props}>
+        <form className={cn(className, styles.search)} {...props} role='search'>
             <Input
                 className={styles.input}
                 placeholder='Поиск...'
@@ -46,7 +46,7 @@ const Searching = ({ className, ...props }: SearchingProps) => {
                     </svg>
                 </div>
             </Button>
-        </div>
+        </form>
     )
 }
 
