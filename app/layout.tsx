@@ -36,7 +36,7 @@ export default async function RootLayout({
           <SkipLink />
           <Header menu={menu as MenuItem[]} firstCategory={TopLevelCategory.Courses} className={'header'} />
           <Sidebar menu={menu as MenuItem[]} firstCategory={TopLevelCategory.Courses} className={'sidebar'} />
-          <main className={'body'}>
+          <main className={'body'} role='main'>
             {children}
           </main>
           <Footer className={'footer'} />
