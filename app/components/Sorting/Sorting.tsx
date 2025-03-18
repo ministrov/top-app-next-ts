@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/role-supports-aria-props */
+
 'use client';
 
 import { SortEnum, SortingProps } from './Sorting.props';
@@ -8,27 +10,34 @@ import styles from './Sorting.module.css';
 export const Sorting = ({ sort, setSort, className, ...props }: SortingProps) => {
     return (
         <div className={cn(styles.sorting, className)} {...props}>
-            <span
+            <div className={styles.sortName} id="sort">Сортировка</div>
+            <button
+                id="rating"
                 onClick={() => setSort(SortEnum.Rating)}
                 className={cn({
                     [styles.active]: sort === SortEnum.Rating
                 })}
+                aria-selected={sort === SortEnum.Rating}
+                aria-labelledby="sort rating"
             >
                 <span className={styles.iconWrap}>
                     <Icon.SortingIcon />
                 </span> По рейтингу
-            </span>
+            </button>
 
-            <span
+            <button
+                id="price"
                 onClick={() => setSort(SortEnum.Price)}
                 className={cn({
                     [styles.active]: sort === SortEnum.Price
                 })}
+                aria-selected={sort === SortEnum.Price}
+                aria-labelledby="sort price"
             >
                 <span className={styles.iconWrap}>
                     <Icon.SortingIcon />
                 </span> По цене
-            </span>
+            </button>
         </div>
     )
 }

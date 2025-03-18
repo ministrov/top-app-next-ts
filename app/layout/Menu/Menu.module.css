@@ -6,7 +6,6 @@
     margin-top: 20px;
     font-size: 18px;
     font-weight: 500;
-    line-height: 25px;
     color: var(--gray-second);
 }
 
@@ -29,23 +28,30 @@
 .secondBlock {
     margin-top: 15px;
     margin-left: 12px;
+    padding: 0;
     padding-left: 32px;
-
+    list-style: none;
     border-left: 1px solid #DFDFDF;
 }
 
 .secondLevel {
+    margin: 0;
     margin-bottom: 10px;
+    padding: 0;
     font-size: 12px;
     font-weight: 300;
-    line-height: 16px;
     text-transform: uppercase;
     color: var(--gray-second);
+    border: none;
+    background-color: transparent;
     cursor: pointer;
 }
 
 .secondLevelBlock {
     overflow: hidden;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .thirdLevel {
@@ -53,8 +59,8 @@
     margin-bottom: 10px;
     font-size: 14px;
     font-weight: 500;
-    line-height: 19px;
     color: var(--gray-second);
+    outline-offset: -1px;
 }
 
 .thirdLevelActive,

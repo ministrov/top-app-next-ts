@@ -26,6 +26,12 @@ const Rating = ({ isEditable = false, error, rating, setRating, ref, ...props }:
                     onMouseLeave={() => changeDisplay(rating)}
                     onClick={() => onClick(i + 1)}
                     onKeyDown={(e: KeyboardEvent<HTMLSpanElement>) => isEditable && handleSpace(i + 1, e)}
+                    role={isEditable ? 'slider' : ''}
+                    aria-invalid={error ? true : false}
+                    aria-valuenow={rating}
+                    aria-valuemax={5}
+                    aria-valuemin={1}
+                    aria-label={isEditable ? 'Укажите рейтинг' : ('рейтинг' + rating)}
                 >
                     <StarIcon
                         isEditable={isEditable}
@@ -66,7 +72,7 @@ const Rating = ({ isEditable = false, error, rating, setRating, ref, ...props }:
         })} ref={ref} {...props}>
             {ratingArray.map((r, i) => (<Fragment key={i}>{r}</Fragment>))}
 
-            {error && <span className={styles.errorMessage}>{error.message}</span>}
+            {error && <span role="alert" className={styles.errorMessage}>{error.message}</span>}
         </div>
     )
 }

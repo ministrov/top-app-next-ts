@@ -30,6 +30,7 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
             behavior: 'smooth',
             block: 'start'
         });
+        reviewRef.current?.focus()
     }
 
     return (
@@ -49,19 +50,25 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                 </div>
                 <div className={styles.title}>{product.title}</div>
                 <div className={styles.price}>
-                    {transformPrice(product.price)}
-                    {product.oldPrice && <Tag className={styles.oldPrice} color='green'>{transformPrice(product.price - product.oldPrice)}</Tag>}
+                    <span><span className='visuallyHidden'>Цена</span>{transformPrice(product.price)}</span>
+                    {product.oldPrice && <Tag className={styles.oldPrice} color='green'>
+                        <span className='visuallyHidden'>Скидка</span>
+                        {transformPrice(product.price - product.oldPrice)}
+                    </Tag>}
                 </div>
-                <div className={styles.credit}>{transformPrice(product.credit)}/<span className={styles.month}>мес</span>
+                <div className={styles.credit}>
+                    <span className='visuallyHidden'>Кредит</span>
+                    {transformPrice(product.credit)}/<span className={styles.month}>мес</span>
                 </div>
                 <div className={styles.rating}>
+                    <span className='visuallyHidden'>{'Рейтинг' + (product.reviewAvg ?? product.initialRating)}</span>
                     <Rating rating={product.reviewAvg ?? product.initialRating} />
                 </div>
                 <div className={styles.tags}>
                     {product.categories.map(category => <Tag key={category} className={styles.category} color='ghost'>{category}</Tag>)}
                 </div>
-                <div className={styles.priceTitle}>цена</div>
-                <div className={styles.creditTitle}>в кредит</div>
+                <div className={styles.priceTitle} aria-hidden={true}>цена</div>
+                <div className={styles.creditTitle} aria-hidden={true}>в кредит</div>
                 <div className={styles.rateTitle}>
                     <a className={styles.rateAnchor} href="#ref" onClick={scrollToReview}>
                         {product.reviewCount} {declineNumber(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
@@ -90,15 +97,12 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                 </div>
                 <Divider className={cn(styles.hr, styles.hr2)} />
                 <div className={styles.actions}>
-                    <Button
-                        appearence='primary'
-                    >
-                        Узнать подробнее
-                    </Button>
+                    <Button appearence='primary'>Узнать подробнее</Button>
                     <Button
                         appearence='ghost'
                         arrow={isReviewOpened ? 'down' : 'right'}
                         onClick={() => setIsReviewOpened(!isReviewOpened)}
+                        aria-expanded={isReviewOpened}
                     >
                         Читать отзывы
                     </Button>
@@ -111,6 +115,7 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                 animate={isReviewOpened ? 'visible' : 'hidden'}
                 color='blue'
                 classNames={cn(styles.reviews)}
+                tabIndex={isReviewOpened ? 0 : -1}
                 ref={reviewRef}
             >
                 {product.reviews.map(r => (
@@ -123,7 +128,7 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                     </Fragment>
                 ))}
 
-                <ReviewForm productId={product._id} />
+                <ReviewForm productId={product._id} isOpened={isReviewOpened} />
             </Card>
         </div>
     )

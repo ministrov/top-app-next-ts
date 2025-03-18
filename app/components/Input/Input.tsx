@@ -14,7 +14,7 @@ export const Input = ({ className, error, ref, ...props }: InputProps) => {
                 {...props}
             />
 
-            {error && <span className={styles.errorMessage}>{error.message}</span>}
+            {error && <span role="alert" className={styles.errorMessage}>{error.message}</span>}
         </div>
     )
 }
