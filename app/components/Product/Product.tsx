@@ -50,19 +50,25 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                 </div>
                 <div className={styles.title}>{product.title}</div>
                 <div className={styles.price}>
-                    {transformPrice(product.price)}
-                    {product.oldPrice && <Tag className={styles.oldPrice} color='green'>{transformPrice(product.price - product.oldPrice)}</Tag>}
+                    <span><span className='visuallyHidden'>Цена</span>{transformPrice(product.price)}</span>
+                    {product.oldPrice && <Tag className={styles.oldPrice} color='green'>
+                        <span className='visuallyHidden'>Скидка</span>
+                        {transformPrice(product.price - product.oldPrice)}
+                    </Tag>}
                 </div>
-                <div className={styles.credit}>{transformPrice(product.credit)}/<span className={styles.month}>мес</span>
+                <div className={styles.credit}>
+                    <span className='visuallyHidden'>Кредит</span>
+                    {transformPrice(product.credit)}/<span className={styles.month}>мес</span>
                 </div>
                 <div className={styles.rating}>
+                    <span className='visuallyHidden'>{'Рейтинг' + (product.reviewAvg ?? product.initialRating)}</span>
                     <Rating rating={product.reviewAvg ?? product.initialRating} />
                 </div>
                 <div className={styles.tags}>
                     {product.categories.map(category => <Tag key={category} className={styles.category} color='ghost'>{category}</Tag>)}
                 </div>
-                <div className={styles.priceTitle}>цена</div>
-                <div className={styles.creditTitle}>в кредит</div>
+                <div className={styles.priceTitle} aria-hidden={true}>цена</div>
+                <div className={styles.creditTitle} aria-hidden={true}>в кредит</div>
                 <div className={styles.rateTitle}>
                     <a className={styles.rateAnchor} href="#ref" onClick={scrollToReview}>
                         {product.reviewCount} {declineNumber(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
