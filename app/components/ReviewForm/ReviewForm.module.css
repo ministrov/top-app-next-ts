@@ -48,7 +48,18 @@
     background-color: var(--red-light);
 }
 
-.closeBox {
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.closeIcon {
+    display: inline-block;
     width: 15px;
     height: 15px;
 }
@@ -56,15 +67,6 @@
 .successTitle {
     font-weight: 700;
 }  
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-}
 
 .errorBox .close path {
     stroke: var(--red-light);
