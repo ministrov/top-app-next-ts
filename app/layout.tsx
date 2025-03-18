@@ -8,6 +8,7 @@ import { getMenu } from '@/api/menu';
 import { Up } from './components/Up/Up';
 import "./globals.css";
 import { MenuItem } from '@/interfaces/menu.interface';
+import { SkipLink } from './components/SkipLink/SkipLink';
 
 const notoSansKR = Noto_Sans_KR({
   weight: ['100', '200', '400', '600', '700', '800'],
@@ -32,6 +33,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${notoSansKR.variable}`}>
         <div className={'wrapper'}>
+          <SkipLink />
           <Header menu={menu as MenuItem[]} firstCategory={TopLevelCategory.Courses} className={'header'} />
           <Sidebar menu={menu as MenuItem[]} firstCategory={TopLevelCategory.Courses} className={'sidebar'} />
           <main className={'body'}>
@@ -44,3 +46,4 @@ export default async function RootLayout({
     </html>
   );
 }
+
