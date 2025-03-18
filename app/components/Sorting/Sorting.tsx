@@ -13,7 +13,6 @@ export const Sorting = ({ sort, setSort, className, ...props }: SortingProps) =>
                 className={cn({
                     [styles.active]: sort === SortEnum.Rating
                 })}
-            // tabIndex={0}
             >
                 <span className={styles.iconWrap}>
                     <Icon.SortingIcon />
@@ -25,7 +24,6 @@ export const Sorting = ({ sort, setSort, className, ...props }: SortingProps) =>
                 className={cn({
                     [styles.active]: sort === SortEnum.Price
                 })}
-            // tabIndex={0}
             >
                 <span className={styles.iconWrap}>
                     <Icon.SortingIcon />

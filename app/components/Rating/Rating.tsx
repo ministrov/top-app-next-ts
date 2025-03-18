@@ -4,7 +4,7 @@ import { RatingProps } from './Rating.props';
 import cn from 'classnames';
 import styles from './Rating.module.css';
 
-const Rating = ({ isEditable = false, error, rating, setRating, ref, tabIndex, ...props }: RatingProps) => {
+const Rating = ({ isEditable = false, error, rating, setRating, ref, ...props }: RatingProps) => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
     useEffect(() => {
@@ -12,7 +12,7 @@ const Rating = ({ isEditable = false, error, rating, setRating, ref, tabIndex, .
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [rating]);
 
-    console.log(tabIndex);
+    // console.log(tabIndex);
 
     const constructRating = (currentRating: number) => {
         const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {

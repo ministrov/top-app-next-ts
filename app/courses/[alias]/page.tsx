@@ -33,8 +33,6 @@ export default async function PageCourses({ params }: PageProps) {
     const page = await getPage((await params).alias) as TopPageModel;
     const courses = await getCourses(page) as ProductModel[];
 
-    console.log(courses);
-
     if (!page) {
         notFound();
     }
