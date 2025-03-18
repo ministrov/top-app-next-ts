@@ -97,15 +97,12 @@ export const Product = motion.create(({ product, className, ref, ...props }: Pro
                 </div>
                 <Divider className={cn(styles.hr, styles.hr2)} />
                 <div className={styles.actions}>
-                    <Button
-                        appearence='primary'
-                    >
-                        Узнать подробнее
-                    </Button>
+                    <Button appearence='primary'>Узнать подробнее</Button>
                     <Button
                         appearence='ghost'
                         arrow={isReviewOpened ? 'down' : 'right'}
                         onClick={() => setIsReviewOpened(!isReviewOpened)}
+                        aria-expanded={isReviewOpened}
                     >
                         Читать отзывы
                     </Button>

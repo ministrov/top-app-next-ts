@@ -12,8 +12,6 @@ const Rating = ({ isEditable = false, error, rating, setRating, ref, ...props }:
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [rating]);
 
-    // console.log(tabIndex);
-
     const constructRating = (currentRating: number) => {
         const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
 
@@ -28,6 +26,12 @@ const Rating = ({ isEditable = false, error, rating, setRating, ref, ...props }:
                     onMouseLeave={() => changeDisplay(rating)}
                     onClick={() => onClick(i + 1)}
                     onKeyDown={(e: KeyboardEvent<HTMLSpanElement>) => isEditable && handleSpace(i + 1, e)}
+                    role={isEditable ? 'slider' : ''}
+                    aria-invalid={error ? true : false}
+                    aria-valuenow={rating}
+                    aria-valuemax={5}
+                    aria-valuemin={1}
+                    aria-label={isEditable ? 'Укажите рейтинг' : ('рейтинг' + rating)}
                 >
                     <StarIcon
                         isEditable={isEditable}

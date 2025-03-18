@@ -42,6 +42,7 @@ export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewF
                     placeholder='Имя'
                     error={errors.name}
                     tabIndex={isOpened ? 0 : -1}
+                    aria-invalid={errors.name ? true : false}
                 />
                 <Input
                     {...register('title', { required: { value: true, message: 'Заполните заголовок отзыва' } })}
@@ -49,6 +50,7 @@ export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewF
                     placeholder='Заголовок отзыва'
                     error={errors.title}
                     tabIndex={isOpened ? 0 : -1}
+                    aria-invalid={errors.title ? true : false}
                 />
                 <div className={styles.rating}>
                     <span>Оценка:</span>
@@ -75,6 +77,8 @@ export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewF
                     placeholder='Текст отзыва'
                     error={errors.description}
                     tabIndex={isOpened ? 0 : -1}
+                    aria-label='Текст отзыва'
+                    aria-invalid={errors.description ? true : false}
                 />
                 <div className={styles.submit}>
                     <Button
