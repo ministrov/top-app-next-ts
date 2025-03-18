@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ButtonIcon } from '@/app/components/ButtonIcon/ButtonIcon';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { HeaderProps } from './Header.props';
@@ -11,6 +11,7 @@ import styles from './Header.module.css';
 
 export const Header = ({ menu, firstCategory, className, ...props }: HeaderProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
+    const shoudReduceMotion = useReducedMotion();
 
     const variants = {
         opened: {
@@ -21,7 +22,7 @@ export const Header = ({ menu, firstCategory, className, ...props }: HeaderProps
             }
         },
         closed: {
-            opacity: 0,
+            opacity: shoudReduceMotion ? 1 : 0,
             x: '100%',
         }
     };

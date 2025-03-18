@@ -1,6 +1,7 @@
 'use client';
 
 import { useReducer } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import parse from 'html-react-parser';
 import Htag from '@/app/components/Htag/Htag';
 import { HhData } from '@/app/components/HhData/HhData';
@@ -15,6 +16,9 @@ import styles from './TopPageComponent.module.css';
 
 export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
     const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
+    const shoudReduceMotion = useReducedMotion();
+
+    // console.log(shoudReduceMotion);
 
     const setSort = (sort: SortEnum) => {
         dispatchSort({ type: sort });
@@ -30,7 +34,7 @@ export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
             </div>
 
             <div className={styles.productsList} role='list'>
-                {sortedProducts && sortedProducts.map(p => (<Product layout key={p._id} product={p} role='listitem' />))}
+                {sortedProducts && sortedProducts.map(p => (<Product layout={shoudReduceMotion ? false : true} key={p._id} product={p} role='listitem' />))}
             </div>
 
             <div className={styles.hhWrapper}>

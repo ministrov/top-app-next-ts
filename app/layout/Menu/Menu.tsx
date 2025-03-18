@@ -4,7 +4,7 @@
 import { JSX, KeyboardEvent, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { FirstLevelMenuItem, MenuItem, PageItem } from '@/interfaces/menu.interface';
 import { firstLevelMenu } from '@/helpers';
 import { MenuProps } from './Menu.props';
@@ -15,6 +15,7 @@ import styles from './Menu.module.css';
 export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element => {
     const [menuState, setMenuState] = useState<MenuItem[]>([...categories]);
     const [announce, setAnnounce] = useState<'closed' | 'opened' | 'undefined'>();
+    const shoudReduceMotion = useReducedMotion();
     const pathname = usePathname();
 
     const setMenu = (newMenu: MenuItem[]) => {
@@ -24,7 +25,7 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
     const variants = {
         visible: {
             marginBottom: 20,
-            transition: {
+            transition: shoudReduceMotion ? {} : {
                 when: 'beforeChildren',
                 staggerChildren: 0.1
             }
@@ -38,7 +39,7 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
             height: 'auto'
         },
         hidden: {
-            opacity: 0,
+            opacity: shoudReduceMotion ? 1 : 0,
             height: 0
         }
     };
@@ -144,3 +145,4 @@ export const Menu = ({ categories = [], firstCategory }: MenuProps): JSX.Element
         </nav>
     )
 }
+
