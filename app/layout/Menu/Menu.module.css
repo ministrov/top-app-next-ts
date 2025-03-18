@@ -29,23 +29,28 @@
 .secondBlock {
     margin-top: 15px;
     margin-left: 12px;
+    padding: 0;
     padding-left: 32px;
-
+    list-style: none;
     border-left: 1px solid #DFDFDF;
 }
 
 .secondLevel {
+    margin: 0;
     margin-bottom: 10px;
+    padding: 0;
     font-size: 12px;
     font-weight: 300;
-    /* line-height: 16px; */
     text-transform: uppercase;
     color: var(--gray-second);
-    cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
 
 .secondLevelBlock {
     overflow: hidden;
+    padding: 0;
+    list-style: none;
 }
 
 .thirdLevel {
