@@ -22,6 +22,10 @@
     color: var(--primary);
 }
 
+.sortName {
+	display: none;
+}
+
 .iconBox {
     display: flex;
     gap: 8px;
