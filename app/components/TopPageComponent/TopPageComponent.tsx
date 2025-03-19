@@ -18,8 +18,6 @@ export const TopPageComponent = ({ page, products }: TopPageComponentProps) => {
     const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
     const shoudReduceMotion = useReducedMotion();
 
-    // console.log(shoudReduceMotion);
-
     const setSort = (sort: SortEnum) => {
         dispatchSort({ type: sort });
     };

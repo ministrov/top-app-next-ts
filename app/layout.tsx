@@ -1,4 +1,3 @@
-import { Router } from 'next/router';
 import { Noto_Sans_KR } from "next/font/google";
 import { Header } from './layout/Header/Header';
 import { Sidebar } from './layout/Sidebar/Sidebar';
@@ -21,14 +20,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  Router.events.on('routeChangeComplete', (url: string) => {
-    if (typeof window !== 'undefined') {
-      console.log(url);
-    }
-  });
-
-  console.log(Router);
 
   const menu = await getMenu(TopLevelCategory.Courses);
 
