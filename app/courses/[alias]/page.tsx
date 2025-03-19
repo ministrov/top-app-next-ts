@@ -1,15 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
 import { getPage } from '@/api/page';
-// import { getMenu } from '@/api/menu';
-// import { getProduct } from '@/api/product';
 import { getCourses } from '@/api/product';
 import { TopPageComponent } from '@/app/components/TopPageComponent/TopPageComponent';
 
 import { TopPageModel } from '@/interfaces/page.interface';
 import { ProductModel } from '@/interfaces/product.interface';
-// import { MenuItem } from '@/interfaces/menu.interface';
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -19,7 +15,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const page = await getPage((await params).alias);
 
     return {
-        title: page?.title || 'Page Not Found',
+        title: page?.metaTitle,
         description: page?.metaDescription || ''
     }
 }
