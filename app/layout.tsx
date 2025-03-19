@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Noto_Sans_KR } from "next/font/google";
 import { Header } from './layout/Header/Header';
 import { Sidebar } from './layout/Sidebar/Sidebar';
@@ -26,6 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${notoSansKR.variable}`}>
+        <GoogleAnalytics gaId={'G-XYZ'} />
         <div className={'wrapper'}>
           <SkipLink />
           <Header menu={menu as MenuItem[]} firstCategory={TopLevelCategory.Courses} className={'header'} />
