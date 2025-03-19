@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { Icon } from '@/app/assets/Icon';
 import { Menu } from '../Menu/Menu';
 import Searching from '@/app/components/Searching/Searching';
@@ -11,7 +12,9 @@ export const Sidebar = ({ menu, firstCategory, className, ...props }: SidebarPro
     return (
         <aside className={cn(className, styles.sidebar)} {...props}>
             <Icon.LogoIcon className={styles.logo} />
-            <Searching className='search' />
+            <Suspense>
+                <Searching className='search' />
+            </Suspense>
             <Menu categories={menu} firstCategory={firstCategory} />
         </aside>
     )

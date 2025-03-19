@@ -27,6 +27,7 @@ export const Up = () => {
             className={styles.up}
             initial={{ opacity: 0 }}
             animate={controls}
+            aria-label='Наверх'
         >
             <ButtonIcon
                 onClick={scrollToTop}

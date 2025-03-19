@@ -13,6 +13,7 @@ export const ButtonIcon = ({ appearence, icon, className, ...props }: ButtonIcon
                 [styles.primary]: appearence === 'primary',
                 [styles.white]: appearence === 'white'
             })}
+            aria-label={`${Icon[icon]}`}
             {...props}
         >
             <IconComp />
