@@ -16,7 +16,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return {
         title: page?.metaTitle,
-        description: page?.metaDescription || ''
+        description: page?.metaDescription || '',
+        openGraph: {
+            title: page?.metaTitle,
+            description: page?.metaDescription
+        }
     }
 }
 
