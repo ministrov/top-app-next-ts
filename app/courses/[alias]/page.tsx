@@ -6,6 +6,10 @@ import { TopPageComponent } from '@/app/components/TopPageComponent/TopPageCompo
 
 import { TopPageModel } from '@/interfaces/page.interface';
 import { ProductModel } from '@/interfaces/product.interface';
+// import { firstLevelMenu } from '@/helpers';
+// import { API } from '@/helpers/api';
+// import { MenuItem } from '@/interfaces/menu.interface';
+// import axios from 'axios';
 
 type PageProps = {
     params: Promise<{ alias: string }>
@@ -25,8 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 // export async function generateStaticParams() {
-//     const menu = await getMenu(0);
-//     return menu.flatMap(item => item.pages.map(page => ({ alias: page.alias })));
+//     // ...
 // }
 
 export default async function PageCourses({ params }: PageProps) {
