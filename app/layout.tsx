@@ -1,4 +1,3 @@
-// import type { Metadata } from "next";
 import { Router } from 'next/router';
 import { Noto_Sans_KR } from "next/font/google";
 import { Header } from './layout/Header/Header';
@@ -17,17 +16,19 @@ const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
 });
 
-Router.events.on('routeChangeComplete', (url: string) => {
-  if (typeof window !== 'undefined') {
-    console.log(url);
-  }
-});
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  Router.events.on('routeChangeComplete', (url: string) => {
+    if (typeof window !== 'undefined') {
+      console.log(url);
+    }
+  });
+
+  console.log(Router);
 
   const menu = await getMenu(TopLevelCategory.Courses);
 
