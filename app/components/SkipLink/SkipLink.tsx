@@ -10,12 +10,11 @@ export const SkipLink = () => {
     const skipContentAction = (key: KeyboardEvent) => {
         if (key.code == 'Space' || key.code == 'Enter') {
             key.preventDefault();
-            // bodyRef.current?.focus();
         }
         setIsSkipLinkDisplayed(false);
     };
     return (
-        <a
+        <span
             onFocus={() => setIsSkipLinkDisplayed(true)}
             tabIndex={0}
             className={cn(styles.skipLink, {
@@ -24,6 +23,6 @@ export const SkipLink = () => {
             onKeyDown={skipContentAction}
         >
             Сразу к содержанию
-        </a>
+        </span>
     )
 }
